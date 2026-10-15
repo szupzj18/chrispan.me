@@ -23,10 +23,6 @@ summary: "I use 100% markdown format in anywhere."
 - Swift/SwiftUI is my go-to for iOS developing.
 - TypeScript for Frontend/Backend.
 
-# SaaS/Online Service
-
-- bento.me for online profile.
-
 # On Going Project
 
 - Building GPT from scratch https://github.com/szupzj18/GPT-from-scratch
