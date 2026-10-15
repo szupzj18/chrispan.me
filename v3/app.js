@@ -29,7 +29,7 @@
   }
   const p = (...k) => h('p', { class: 'ind' }, ...k);
 
-  function render(D) {
+  function render(D, posts) {
     const P = D.profile;
     const own = D.repos;
     const highlighted = new Set([...D.building, ...D.featured].map((x) => x.name));
@@ -68,6 +68,14 @@
     out.push(section('building', 'CURRENTLY BUILDING', projDl(D.building)));
     out.push(section('featured', 'FEATURED', projDl(D.featured)));
 
+    // same list as the terminal's `blog` and /blog/ (built from posts/*.md)
+    const abs = (path) => new URL(path, location.href).href;
+    out.push(section('posts', 'POSTS', posts.error
+      ? p(h('span', { class: 'dim' }, 'Could not load the post list (' + posts.error + '). See '), a(abs('/blog/')), '.')
+      : [h('ol', { class: 'hist posts' }, posts.list.map((x) => h('li', null, h('time', { datetime: x.date }, x.date),
+          h('span', null, h('a', { href: abs(x.url) }, b(x.title)), x.summary ? h('span', { class: 'dim sum' }, ' — ' + x.summary) : '')))),
+        p(h('span', { class: 'dim' }, 'All posts: '), a(abs('/blog/')), h('span', { class: 'dim' }, ' · RSS: '), a(abs('/feed.xml')))]));
+
     out.push(section('repositories', 'REPOSITORIES',
       p('Public repositories, most recently pushed first. ', h('span', { class: 'tag' }, '*'), ' marks the projects above.'),
       h('dl', null, own.filter((r) => r.name !== 'chrispan.me').map((r) => [
@@ -99,7 +107,7 @@
       p([...D.building, ...D.featured].map((x, i) => {
         const r = D.repos.find((y) => y.name === x.name);
         return [i ? ', ' : '', h('a', { href: (r && r.homepage) || x.homepage || x.url, class: 'bare' }, b(x.name), '(1)')];
-      }), ', ', h('a', { href: P.html_url, class: 'bare' }, b('github'), '(7)'), '.')));
+      }), ', ', h('a', { href: '/blog/', class: 'bare' }, b('blog'), '(7)'), ', ', h('a', { href: P.html_url, class: 'bare' }, b('github'), '(7)'), '.')));
 
     out.push(section('author', 'AUTHOR',
       p(P.name, ' <', a(P.html_url), '>.'),
@@ -109,6 +117,7 @@
     $('gen').textContent = D.generated_at.slice(0, 10);
     $('toc').replaceChildren(...[...man.querySelectorAll('section')].map((sct) => h('a', { href: '#' + sct.id }, sct.querySelector('h2').textContent)));
     if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
+    document.documentElement.dataset.ready = '1'; // scripts/pdf.mjs waits for this
   }
 
   // ---------- print: show collapsed sections ----------
@@ -245,10 +254,11 @@
     }
   });
 
-  fetch('../data.json')
-    .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then((d) => {
-      render(d);
+  // Same sources as the homepage terminal: /data.json and the blog build's /blog/posts.json.
+  const json = (url) => fetch(url).then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+  Promise.all([json('/data.json'), json('/blog/posts.json').then((x) => ({ list: x.posts }), (err) => ({ list: [], error: err.message }))])
+    .then(([d, posts]) => {
+      render(d, posts);
       less.hidden = false;
     })
     .catch((err) => {

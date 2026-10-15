@@ -300,6 +300,20 @@
     }));
   }
 
+  // ---------- posts (same list as the terminal's `blog` and /blog/) ----------
+  function renderPosts(P) {
+    if (P.error) {
+      $('posts').replaceChildren(h('p', { class: 'dim' }, 'could not load posts (' + P.error + ') — ', a('/blog/', 'chrispan.me/blog')));
+      return;
+    }
+    $('post-meta').textContent = ' · ' + P.list.length + ' on the blog';
+    $('posts').replaceChildren(
+      h('ol', { class: 'posts', 'aria-label': 'Blog posts' }, P.list.map((x) => h('li', null,
+        h('time', { datetime: x.date }, x.date),
+        h('a', { href: x.url, title: x.summary || null }, x.title)))),
+      h('p', { class: 'more dim' }, h('a', { href: '/blog/' }, 'all posts →'), ' · ', h('a', { href: '/feed.xml' }, 'rss')));
+  }
+
   // ---------- search / help ----------
   const fkeys = $('fkeys');
   const search = $('search');
@@ -372,7 +386,7 @@
   });
 
   // ---------- global keys ----------
-  const PANELS = ['p-prof', 'p-lang', 'p-graph', 'p-repo', 'p-det', 'p-act'];
+  const PANELS = ['p-prof', 'p-lang', 'p-graph', 'p-repo', 'p-det', 'p-act', 'p-post'];
   function focusPanel(n) {
     const id = PANELS[n - 1];
     if (!id) return;
@@ -381,6 +395,7 @@
       if (b) { b.focus(); return; }
     }
     if (id === 'p-act') { $('act').focus(); return; }
+    if (id === 'p-post') { const l = $('posts').querySelector('a'); if (l) { l.focus(); return; } }
     const el = $(id);
     if (getComputedStyle(el).display === 'none') return;
     el.focus();
@@ -416,17 +431,19 @@
       case '?': e.preventDefault(); openHelp(); break;
       case 'Escape': if (state.q) { state.q = ''; renderRepos(); } break;
       default:
-        if (/^[1-6]$/.test(e.key)) { e.preventDefault(); focusPanel(Number(e.key)); }
+        if (/^[1-7]$/.test(e.key)) { e.preventDefault(); focusPanel(Number(e.key)); }
     }
   });
 
   narrowMQ.addEventListener('change', () => { state.open = null; renderRepos(); });
 
   // ---------- boot ----------
-  fetch('../data.json')
-    .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then((d) => {
+  // Same sources as the homepage terminal: /data.json and the blog build's /blog/posts.json.
+  const json = (url) => fetch(url).then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+  Promise.all([json('/data.json'), json('/blog/posts.json').then((x) => ({ list: x.posts }), (err) => ({ list: [], error: err.message }))])
+    .then(([d, posts]) => {
       D = d;
+      renderPosts(posts);
       renderHead();
       renderProf();
       renderLang();

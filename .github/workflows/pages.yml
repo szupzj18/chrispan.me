@@ -23,6 +23,8 @@ jobs:
         with:
           node-version: 24
       - run: node scripts/build.mjs
+      # /v3/chrispan-resume.pdf, printed by the Google Chrome that ships with the runner image
+      - run: node scripts/pdf.mjs
       - uses: actions/upload-pages-artifact@v5
         with:
           path: _site
