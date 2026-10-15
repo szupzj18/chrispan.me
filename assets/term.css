@@ -125,11 +125,17 @@ button.run.cmdname { color: var(--green); }
 button.run.file { color: var(--fg); font-weight: 400; }
 
 .fetch { display: flex; flex-wrap: wrap; gap: 0 4ch; align-items: flex-start; }
-.logo { color: var(--green); line-height: 1; margin: 4px 0 10px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", monospace; }
-.logo .l2 { color: #5fd6a0; }
-.logo .l3 { color: #56d4dd; }
-.logo .l4 { color: #6cc4f0; }
-.logo .l5 { color: var(--blue); }
+/* the wordmark is wide: it gets a row of its own, system info goes underneath */
+.logo { flex: 1 0 100%; margin: 6px 0 16px; white-space: pre; line-height: 1; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", monospace; }
+.logo .sh { color: #2f5b52; }
+.logo .narrow { display: none; }
+/* 75 columns need ~680px; below that, chris / pan stacked (44 columns) */
+@media (max-width: 719px) {
+  .logo .wide { display: none; }
+  .logo .narrow { display: block; }
+  /* shrinks only under ~390px; whole pixels, or the block rows show hairline seams */
+  .logo { font-size: min(1em, calc((100vw - 32px) / 27)); font-size: round(down, min(1em, calc((100vw - 32px) / 27)), 1px); }
+}
 .swatch { letter-spacing: 0; }
 
 .heat .h0 { color: var(--h0); }

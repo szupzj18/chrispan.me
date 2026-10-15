@@ -211,13 +211,51 @@
     return str.length > n ? str.slice(0, n - 1) + '…' : str;
   }
 
-  const LOGO = [
-    ' ▄█████▄  ██████▄ ',
-    '██▀   ▀▀  ██    ██',
-    '██        ██████▀ ',
-    '██▄   ▄▄  ██      ',
-    ' ▀█████▀  ██      ',
+  // `chrispan` in the figlet font DOS Rebel; ░ is the drop shadow. Narrow screens get chris / pan stacked.
+  const LOGO_WIDE = [
+    '          █████                 ███',
+    '         ░░███                 ░░░',
+    '  ██████  ░███████   ████████  ████   █████  ████████   ██████   ████████',
+    ' ███░░███ ░███░░███ ░░███░░███░░███  ███░░  ░░███░░███ ░░░░░███ ░░███░░███',
+    '░███ ░░░  ░███ ░███  ░███ ░░░  ░███ ░░█████  ░███ ░███  ███████  ░███ ░███',
+    '░███  ███ ░███ ░███  ░███      ░███  ░░░░███ ░███ ░███ ███░░███  ░███ ░███',
+    '░░██████  ████ █████ █████     █████ ██████  ░███████ ░░████████ ████ █████',
+    ' ░░░░░░  ░░░░ ░░░░░ ░░░░░     ░░░░░ ░░░░░░   ░███░░░   ░░░░░░░░ ░░░░ ░░░░░',
+    '                                             ░███',
+    '                                             █████',
+    '                                            ░░░░░',
   ];
+  const LOGO_NARROW = [
+    '          █████                 ███',
+    '         ░░███                 ░░░',
+    '  ██████  ░███████   ████████  ████   █████',
+    ' ███░░███ ░███░░███ ░░███░░███░░███  ███░░',
+    '░███ ░░░  ░███ ░███  ░███ ░░░  ░███ ░░█████',
+    '░███  ███ ░███ ░███  ░███      ░███  ░░░░███',
+    '░░██████  ████ █████ █████     █████ ██████',
+    ' ░░░░░░  ░░░░ ░░░░░ ░░░░░     ░░░░░ ░░░░░░',
+    ' ████████   ██████   ████████',
+    '░░███░░███ ░░░░░███ ░░███░░███',
+    ' ░███ ░███  ███████  ░███ ░███',
+    ' ░███ ░███ ███░░███  ░███ ░███',
+    ' ░███████ ░░████████ ████ █████',
+    ' ░███░░░   ░░░░░░░░ ░░░░ ░░░░░',
+    ' ░███',
+    ' █████',
+    '░░░░░',
+  ];
+  const RAMP = [[0x7e, 0xe7, 0x87], [0x56, 0xd4, 0xdd], [0x79, 0xc0, 0xff]]; // green → cyan → blue, top to bottom
+
+  function ramp(t) {
+    const i = Math.min(Math.floor(t * 2), 1);
+    const u = t * 2 - i;
+    return 'rgb(' + RAMP[i].map((c, k) => Math.round(c + (RAMP[i + 1][k] - c) * u)).join(', ') + ')';
+  }
+
+  function logoArt(rows, cls) {
+    return h('div', { class: cls }, rows.map((row, i) => h('div', { style: 'color: ' + ramp(i / (rows.length - 1)) },
+      row.split(/(░+)/).filter(Boolean).map((part) => (part[0] === '░' ? s('sh', part) : part)))));
+  }
 
   function years(since) {
     const a0 = new Date(since);
@@ -229,7 +267,8 @@
 
   function neofetch() {
     const p = D.profile;
-    const logo = h('div', { class: 'logo', 'aria-hidden': 'true' }, LOGO.map((l, i) => h('div', { class: 'l' + i }, l)));
+    const logo = h('div', { class: 'logo', role: 'img', 'aria-label': 'chrispan, in block letters' },
+      logoArt(LOGO_WIDE, 'wide'), logoArt(LOGO_NARROW, 'narrow'));
     const info = h('div', { class: 'info' });
     const row = (k, v) => info.append(h('div', { class: 'ln' }, s('g b', k), s('dim', ': '), v));
     info.append(h('div', { class: 'ln' }, s('g b', 'chris'), '@', s('g b', p.domain)));
