@@ -64,7 +64,7 @@ kbd {
   padding-left: max(var(--gap), env(safe-area-inset-left));
   padding-right: max(var(--gap), env(safe-area-inset-right));
   grid-template-columns: minmax(0, 1fr);
-  grid-template-areas: "head" "prof" "graph" "lang" "repo" "act" "post" "keys";
+  grid-template-areas: "head" "prof" "graph" "lang" "repo" "post" "act" "keys";
 }
 
 #head { grid-area: head; }
