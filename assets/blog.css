@@ -1,0 +1,112 @@
+/* Static blog pages (/blog/, /blog/<slug>/). Same palette as the terminal (/assets/term.css). */
+:root {
+  --bg: #0b0e14;
+  --bg-2: #11151d;
+  --line: #262c36;
+  --fg: #d6dde6;
+  --dim: #8b949e;
+  --green: #7ee787;
+  --blue: #79c0ff;
+  --yellow: #e3b341;
+  --purple: #d2a8ff;
+  --cyan: #56d4dd;
+  --sel: #264f78;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--bg); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0 auto;
+  max-width: 78ch;
+  padding: 24px 24px 48px;
+  padding-left: max(24px, env(safe-area-inset-left));
+  padding-right: max(24px, env(safe-area-inset-right));
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px/1.7 "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-variant-ligatures: none;
+}
+
+::selection { background: var(--sel); color: #fff; }
+a { color: var(--cyan); text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--cyan) 45%, transparent); }
+a:hover { text-decoration-color: currentColor; }
+:focus-visible { outline: 2px solid var(--yellow); outline-offset: 2px; border-radius: 2px; }
+.dim { color: var(--dim); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+.top { color: var(--fg); overflow-wrap: anywhere; }
+.ps1 { font-weight: 700; white-space: nowrap; }
+.ps1 a { text-decoration: none; }
+.ps1 .u { color: var(--green); }
+.ps1 .p { color: var(--blue); }
+.ps1 a:hover { text-decoration: underline; }
+
+main { margin-top: 1.6em; }
+
+h1 { margin: 0; font-size: 1.6em; line-height: 1.3; color: var(--yellow); }
+h1::before { content: "# "; color: var(--dim); font-weight: 400; }
+.meta { margin: .4em 0 1.8em; color: var(--dim); }
+.tag { color: var(--purple); white-space: nowrap; }
+
+.bottom { margin-top: 3em; padding-top: 1em; border-top: 1px solid var(--line); }
+.bottom .ps1 { color: var(--green); }
+
+/* index */
+.posts { list-style: none; margin: 1em 0 0; padding: 0; }
+.posts li { display: grid; grid-template-columns: 11ch minmax(0, 1fr); column-gap: 2ch; padding: .6em 0; border-top: 1px solid var(--line); }
+.posts li:last-child { border-bottom: 1px solid var(--line); }
+.posts time { color: var(--dim); }
+.posts .title { color: var(--blue); font-weight: 700; text-decoration: none; }
+.posts .title:hover { text-decoration: underline; }
+.posts p { margin: .2em 0 0; color: var(--dim); }
+
+/* article body — shared look with the terminal's `read` output */
+.post { overflow-wrap: break-word; }
+.post code, .post pre, .post kbd { font-family: inherit; } /* UA default is plain monospace */
+.post > :first-child { margin-top: 0; }
+.post p, .post ul, .post ol, .post blockquote, .post pre { margin: 0 0 1em; }
+.post h2, .post h3, .post h4, .post h5, .post h6 { margin: 1.6em 0 .6em; font-size: 1em; line-height: 1.4; color: var(--yellow); }
+.post h2::before { content: "## "; color: var(--dim); }
+.post h3::before { content: "### "; color: var(--dim); }
+.post h4::before, .post h5::before, .post h6::before { content: "#### "; color: var(--dim); }
+.post ul, .post ol { padding-left: 3ch; }
+.post li::marker { color: var(--dim); }
+.post blockquote { padding-left: 2ch; border-left: 2px solid var(--line); color: var(--dim); }
+.post hr { border: 0; border-top: 1px dashed var(--line); margin: 2em 0; }
+.post img { max-width: 100%; height: auto; }
+.post code { padding: .1em .35em; border-radius: 4px; background: var(--bg-2); color: var(--green); font-size: .95em; }
+.post pre.code {
+  position: relative;
+  padding: 12px 14px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--bg-2);
+  line-height: 1.55;
+}
+.post pre.code code { padding: 0; background: none; color: var(--fg); font-size: .93em; }
+.post pre.code[data-lang]::before { content: attr(data-lang); position: absolute; top: 4px; right: 10px; color: var(--dim); font-size: .8em; }
+
+.tok-kw { color: #ff7b72; }
+.tok-str { color: #a5d6ff; }
+.tok-com { color: var(--dim); font-style: italic; }
+.tok-num, .tok-lit { color: #79c0ff; }
+.tok-fn { color: var(--purple); }
+.tok-var { color: #ffa657; }
+.tok-prompt { color: var(--green); font-weight: 700; user-select: none; }
+
+@media (max-width: 640px) {
+  body { font-size: 14px; padding: 16px 16px 40px; }
+  .ps1 .host { display: none; }
+  .posts li { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media print {
+  :root { --bg: #fff; --bg-2: #f4f4f4; --fg: #000; --dim: #555; --line: #ccc; --yellow: #000; --blue: #000; --green: #000; --cyan: #000; --purple: #333; }
+  body { max-width: none; font-size: 10.5pt; }
+  .top, .bottom { display: none; }
+  .post a[href^="http"]::after { content: " <" attr(href) ">"; color: #555; font-size: .9em; word-break: break-all; }
+}
