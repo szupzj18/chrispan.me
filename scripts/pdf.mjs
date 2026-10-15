@@ -55,9 +55,7 @@ function findChrome() {
 function launch(bin) {
   profile = fs.mkdtempSync(path.join(os.tmpdir(), 'pdf-chrome-'));
   const args = ['--headless=new', '--remote-debugging-port=0', '--user-data-dir=' + profile, '--no-first-run',
-    '--no-default-browser-check', '--disable-gpu', '--hide-scrollbars', '--mute-audio',
-    // Han characters in an lang="en" page fall back by browser locale; prefer Simplified Chinese shapes (Noto Sans CJK SC)
-    '--lang=zh-CN', 'about:blank'];
+    '--no-default-browser-check', '--disable-gpu', '--hide-scrollbars', '--mute-audio', 'about:blank'];
   // GitHub's Ubuntu runners block Chrome's user-namespace sandbox; the page rendered here is our own build output.
   if (process.platform === 'linux' && process.env.CI) args.unshift('--no-sandbox');
   chrome = spawn(bin, args, { stdio: ['ignore', 'ignore', 'pipe'] });
@@ -143,8 +141,13 @@ async function main() {
   if (st.error || st.posts !== expectedPosts) fail(`page did not render as expected (posts ${st.posts}/${expectedPosts}, error ${st.error})`);
 
   // Ask Chrome which system fonts drew each piece of CJK text; without a CJK font they come out as boxes.
+  // The page is lang="en", so Han text would fall back to whichever CJK face sorts first (Noto Sans CJK JP
+  // on the runner); mark it zh-CN so the PDF uses Simplified Chinese glyphs.
   await send('Runtime.evaluate', { expression: `for (const el of document.querySelectorAll('#man *'))
-    if ([...el.childNodes].some((n) => n.nodeType === 3 && /[\\u3400-\\u9fff\\uf900-\\ufaff]/.test(n.nodeValue))) el.dataset.cjk = '';` });
+    if ([...el.childNodes].some((n) => n.nodeType === 3 && /[\\u3400-\\u9fff\\uf900-\\ufaff]/.test(n.nodeValue))) {
+      el.dataset.cjk = '';
+      if (!el.closest('[lang]:not(html)')) el.lang = 'zh-CN';
+    }` });
   await send('DOM.enable');
   await send('CSS.enable');
   const { root } = await send('DOM.getDocument', { depth: -1 });
