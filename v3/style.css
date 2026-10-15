@@ -1,0 +1,128 @@
+:root {
+  --bg: #1d2021;
+  --bg-2: #282828;
+  --fg: #ebdbb2;
+  --bold: #fbf1c7;
+  --dim: #a89984;
+  --head: #fabd2f;
+  --link: #83a598;
+  --arg: #8ec07c;
+  --accent: #fe8019;
+  --sel: #504945;
+  --ind: 7ch;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html { background: var(--bg); -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 15px/1.6 "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+::selection { background: var(--sel); color: var(--bold); }
+
+.page {
+  max-width: 88ch;
+  margin: 0 auto;
+  padding: 28px 24px 72px;
+}
+
+a { color: var(--link); text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--link) 50%, transparent); }
+a:hover { text-decoration-color: currentColor; }
+:focus-visible { outline: 2px solid var(--head); outline-offset: 2px; }
+
+b, strong, .b { color: var(--bold); font-weight: 600; }
+u, .u { color: var(--arg); text-decoration: underline; text-underline-offset: 3px; }
+.dim { color: var(--dim); }
+
+.mh { display: flex; justify-content: space-between; gap: 2ch; color: var(--fg); }
+.mh .mid { color: var(--dim); text-align: center; }
+.mf { margin-top: 2.5em; }
+
+.toc { display: flex; flex-wrap: wrap; gap: 0 1.6ch; margin: 1.2em 0 0; color: var(--dim); }
+.toc a { color: var(--dim); text-decoration: none; white-space: nowrap; }
+.toc a:hover { color: var(--head); }
+
+main { margin-top: 1.2em; }
+section { margin: 0 0 1.4em; scroll-margin-top: 16px; }
+h2 { margin: 0; font: inherit; font-weight: 600; color: var(--head); letter-spacing: .02em; }
+h2 a { color: inherit; text-decoration: none; }
+h3 { margin: 1em 0 0; padding-left: calc(var(--ind) / 2); font: inherit; font-weight: 600; color: var(--bold); }
+
+p { margin: 0 0 .9em; }
+p:last-child { margin-bottom: 0; }
+.ind { padding-left: var(--ind); }
+
+.syn { padding-left: var(--ind); text-indent: -9ch; margin-left: 9ch; }
+.syn b, .syn u { white-space: nowrap; }
+
+dl { margin: 0; }
+dt { padding-left: var(--ind); margin-top: .7em; }
+dt:first-child { margin-top: 0; }
+dd { margin: 0; padding-left: calc(var(--ind) * 2); }
+dt .meta { color: var(--dim); font-weight: 400; }
+dt .tag { color: var(--accent); }
+.ind .tag { color: var(--accent); }
+
+.hist { padding-left: var(--ind); margin: 0; list-style: none; }
+.hist li { display: grid; grid-template-columns: 11ch minmax(0, 1fr); column-gap: 1ch; }
+.hist time { color: var(--dim); }
+
+details { padding-left: var(--ind); }
+summary { cursor: pointer; color: var(--dim); }
+summary:hover { color: var(--fg); }
+details[open] summary { margin-bottom: .4em; }
+.forks { color: var(--dim); }
+.forks a { color: var(--fg); }
+
+/* less(1) status line */
+.less {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 12px calc(3px + env(safe-area-inset-bottom));
+  background: var(--fg);
+  color: var(--bg);
+  font-size: 13px;
+}
+.less kbd { font: inherit; font-weight: 600; }
+.less form { display: flex; flex: 1; }
+.less input { flex: 1; min-width: 0; padding: 0; border: 0; outline: 0; background: transparent; color: var(--bg); font: inherit; }
+
+mark { background: var(--head); color: var(--bg); }
+
+@media (max-width: 640px) {
+  :root { --ind: 3ch; }
+  body { font-size: 14px; }
+  .page { padding: 16px 16px 40px; }
+  .mh .mid { display: none; }
+  .syn { text-indent: 0; margin-left: 0; }
+  .hist li { grid-template-columns: minmax(0, 1fr); }
+  .hist li { margin-bottom: .4em; }
+}
+
+@media (hover: none), (max-width: 640px) {
+  .less { display: none !important; }
+}
+
+@media print {
+  :root { --bg: #fff; --fg: #000; --bold: #000; --dim: #444; --head: #000; --link: #000; --arg: #000; --accent: #000; }
+  body { font-size: 10.5pt; line-height: 1.45; }
+  .page { max-width: none; padding: 0; }
+  .toc, .less, summary { display: none !important; }
+  details > *:not(summary) { display: block !important; }
+  a { text-decoration: none; }
+  a[href^="http"]:not(.bare)::after { content: " <" attr(href) ">"; color: #444; font-size: .9em; word-break: break-all; }
+  section { break-inside: avoid-page; }
+  h2 { break-after: avoid; }
+}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Chris Pan — top</title>
+  <meta name="description" content="Chris Pan (szupzj18) — software engineer building small, sharp tools around coding agents. A keyboard-driven dashboard of public GitHub work.">
+  <meta name="theme-color" content="#11111b">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2311111b'/%3E%3Crect x='6' y='18' width='4' height='8' fill='%23a6e3a1'/%3E%3Crect x='14' y='10' width='4' height='16' fill='%2389b4fa'/%3E%3Crect x='22' y='14' width='4' height='12' fill='%23cba6f7'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div id="app" class="loading">
+    <header class="bar top" id="head">
+      <span class="brand"><b>chrispan.me</b> <span class="dim">tty2</span></span>
+      <span id="tasks" class="dim"></span>
+      <span id="load" class="dim"></span>
+    </header>
+
+    <section class="panel" id="p-prof" tabindex="-1" aria-labelledby="t-prof">
+      <h2 id="t-prof"><span class="k">1</span>whoami</h2>
+      <div class="body" id="prof"></div>
+    </section>
+
+    <section class="panel" id="p-lang" tabindex="-1" aria-labelledby="t-lang">
+      <h2 id="t-lang"><span class="k">2</span>langs<span class="dim"> · env</span></h2>
+      <div class="body" id="lang"></div>
+    </section>
+
+    <section class="panel" id="p-graph" tabindex="-1" aria-labelledby="t-graph">
+      <h2 id="t-graph"><span class="k">3</span>contribs<span class="dim"> · weekly</span></h2>
+      <div class="body" id="graph"></div>
+    </section>
+
+    <section class="panel" id="p-repo" tabindex="-1" aria-labelledby="t-repo">
+      <h2 id="t-repo"><span class="k">4</span>repos<span class="dim" id="repo-meta"></span></h2>
+      <div class="thead" aria-hidden="true">
+        <span class="c-st">S</span><span class="c-name">NAME</span><span class="c-lang">LANG</span><span class="c-star">★</span><span class="c-age">PUSHED</span><span class="c-desc">DESCRIPTION</span>
+      </div>
+      <ul class="body rows" id="repos" aria-label="Repositories"></ul>
+    </section>
+
+    <section class="panel" id="p-det" tabindex="-1" aria-labelledby="t-det" aria-live="polite">
+      <h2 id="t-det"><span class="k">5</span>detail</h2>
+      <div class="body" id="det"></div>
+    </section>
+
+    <section class="panel" id="p-act" tabindex="-1" aria-labelledby="t-act">
+      <h2 id="t-act"><span class="k">6</span>activity<span class="dim"> · public events</span></h2>
+      <ol class="body" id="act" tabindex="0" aria-label="Recent public activity"></ol>
+    </section>
+
+    <footer class="bar keys" id="keys">
+      <div class="fkeys" id="fkeys">
+        <button type="button" data-act="help"><kbd>?</kbd>Help</button>
+        <button type="button" data-act="search"><kbd>/</kbd>Search</button>
+        <button type="button" data-act="sort"><kbd>s</kbd>Sort</button>
+        <button type="button" data-act="forks"><kbd>f</kbd>Forks</button>
+        <button type="button" data-act="open" class="wide"><kbd>↵</kbd>Open</button>
+        <button type="button" data-act="web" class="wide"><kbd>w</kbd>Web</button>
+        <span class="hint wide dim"><kbd>j</kbd><kbd>k</kbd> move · <kbd>1</kbd>–<kbd>6</kbd> panels</span>
+      </div>
+      <form id="search" class="search" hidden role="search">
+        <label for="q"><kbd>/</kbd>Search:</label>
+        <input id="q" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" placeholder="name, language, topic…">
+        <button type="button" data-act="search-close" aria-label="Close search"><kbd>Esc</kbd></button>
+      </form>
+    </footer>
+  </div>
+
+  <dialog id="help" aria-labelledby="help-title">
+    <h2 id="help-title">keys</h2>
+    <table>
+      <tbody>
+        <tr><td><kbd>j</kbd> <kbd>k</kbd> / <kbd>↓</kbd> <kbd>↑</kbd></td><td>move through repos</td></tr>
+        <tr><td><kbd>g</kbd> <kbd>G</kbd></td><td>first / last repo</td></tr>
+        <tr><td><kbd>↵</kbd> <kbd>o</kbd></td><td>open repo on GitHub</td></tr>
+        <tr><td><kbd>w</kbd></td><td>open the project's website, if it has one</td></tr>
+        <tr><td><kbd>s</kbd></td><td>cycle sort: pushed → name → stars → lang</td></tr>
+        <tr><td><kbd>f</kbd></td><td>show / hide forks</td></tr>
+        <tr><td><kbd>/</kbd></td><td>filter repos · <kbd>Esc</kbd> clears</td></tr>
+        <tr><td><kbd>1</kbd>–<kbd>6</kbd> · <kbd>Tab</kbd></td><td>jump between panels</td></tr>
+        <tr><td><kbd>?</kbd> <kbd>q</kbd></td><td>this help · close</td></tr>
+      </tbody>
+    </table>
+    <p class="dim">S column, htop style: <b class="st-R">R</b> pushed in the last 30 days · <b class="st-S">S</b> this year · <b class="st-I">I</b> idle</p>
+    <form method="dialog"><button type="submit" class="close">close <kbd>q</kbd></button></form>
+  </dialog>
+
+  <noscript>
+    <p style="padding:16px">This dashboard needs JavaScript. Chris Pan — software engineer interested in AI infra and agents. GitHub: <a href="https://github.com/szupzj18">github.com/szupzj18</a></p>
+  </noscript>
+</body>
+</html>

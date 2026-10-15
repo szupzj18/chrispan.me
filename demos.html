@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>chrispan.me — demos</title>
+  <meta name="description" content="Three shell-flavoured takes on chrispan.me.">
+  <meta name="theme-color" content="#0b0e14">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="noindex">
+  <style>
+    :root { --bg: #0b0e14; --fg: #d6dde6; --dim: #8b949e; --g: #7ee787; --b: #79c0ff; --line: #262c36; color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    main { max-width: 760px; margin: 0 auto; padding: 48px 20px; }
+    .ps1 { color: var(--g); font-weight: 700; }
+    .ps1 i { color: var(--b); font-style: normal; }
+    h1 { font: inherit; margin: 0 0 1.2em; }
+    ul { list-style: none; margin: 0; padding: 0; }
+    li { padding: 14px 0; border-top: 1px solid var(--line); }
+    li:last-child { border-bottom: 1px solid var(--line); }
+    a { color: var(--b); font-weight: 700; text-underline-offset: 3px; }
+    a:focus-visible { outline: 2px solid #e3b341; outline-offset: 2px; }
+    p { margin: .25em 0 0; color: var(--dim); }
+    .note { margin-top: 1.6em; color: var(--dim); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1><span class="ps1">chris@chrispan.me:<i>~</i>$</span> ls -1 demos/</h1>
+    <ul>
+      <li><a href="v1/">v1/</a>  interactive terminal
+        <p>Type <code>help</code>, <code>ls repos</code>, <code>cat about.txt</code>, <code>open &lt;repo&gt;</code>. Tab completes, ↑/↓ history; tappable commands on phones.</p></li>
+      <li><a href="v2/">v2/</a>  TUI dashboard
+        <p>htop / btop-style panels: profile, language meters, weekly contributions, repo list, activity. <code>j</code>/<code>k</code> to move, <code>/</code> to filter, <code>?</code> for keys.</p></li>
+      <li><a href="v3/">v3/</a>  man page
+        <p><code>chrispan(1)</code> as a plain-text manual page. Fast, readable, prints cleanly; less-style keys on desktop.</p></li>
+    </ul>
+    <p class="note">All three read the same <a href="data.json">data.json</a>, built from public GitHub data for <a href="https://github.com/szupzj18">@szupzj18</a>.</p>
+  </main>
+</body>
+</html>
