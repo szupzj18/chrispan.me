@@ -138,12 +138,14 @@ button.run.file { color: var(--fg); font-weight: 400; }
 }
 .swatch { letter-spacing: 0; }
 
-.heat .h0 { color: var(--h0); }
-.heat .h1 { color: var(--h1); }
-.heat .h2 { color: var(--h2); }
-.heat .h3 { color: var(--h3); }
-.heat .h4 { color: var(--h4); }
-.heat { line-height: 1.25; }
+.heat svg { display: block; overflow: visible; }
+.heat svg text { fill: var(--dim); }
+.heat .h0 { fill: var(--h0); }
+.heat .h1 { fill: var(--h1); }
+.heat .h2 { fill: var(--h2); }
+.heat .h3 { fill: var(--h3); }
+.heat .h4 { fill: var(--h4); }
+span.heat svg.key { display: inline-block; vertical-align: -1px; overflow: visible; }
 
 /* quick commands */
 #chips {

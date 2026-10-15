@@ -216,21 +216,17 @@ kbd {
 /* graph */
 .graph { --h: 84px; }
 .bars {
-  display: flex;
-  align-items: flex-end;
-  gap: 1px;
   height: var(--h);
   padding-bottom: 1px;
   border-bottom: 1px solid var(--s1);
 }
-.bars span {
-  flex: 1 1 0;
-  min-width: 2px;
-  height: max(1px, calc(var(--v) * 100%));
-  background: linear-gradient(to top, var(--green), var(--yellow) 65%, var(--peach)) bottom / 100% var(--h) no-repeat;
-  border-radius: 1px 1px 0 0;
-}
-.bars span.zero { background: var(--s1); }
+.bars, .axis { width: var(--gw, auto); max-width: 100%; }
+.bars svg { display: block; }
+.bars rect { fill: url(#bars-grad); }
+.bars rect.zero { fill: var(--s1); }
+.bars stop.g { stop-color: var(--green); }
+.bars stop.y { stop-color: var(--yellow); }
+.bars stop.p { stop-color: var(--peach); }
 .axis { display: flex; justify-content: space-between; color: var(--dim); }
 .stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2ch; margin-top: .4em; }
 .stats b { color: var(--green); }

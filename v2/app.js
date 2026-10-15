@@ -26,6 +26,12 @@
     return el;
   }
   const s = (cls, ...k) => h('span', { class: cls }, ...k);
+  function svg(tag, attrs, ...kids) {
+    const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    for (const [k, v] of Object.entries(attrs || {})) el.setAttribute(k, v);
+    for (const c of kids.flat()) if (c != null) el.append(c);
+    return el;
+  }
   const pretty = (url) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
   const a = (url, text, cls) => h('a', { href: url, target: '_blank', rel: 'noopener', class: cls }, text || pretty(url));
   const langCls = (l) => 'lang-' + (l ? l.toLowerCase().replace(/[^a-z]+/g, '') : 'none');
@@ -107,8 +113,7 @@
     for (let i = 0; i < cd.length; i += 7) weeks.push(cd.slice(i, i + 7));
     const sums = weeks.map((w) => w.reduce((t, d) => t + d.count, 0));
     const max = Math.max(1, ...sums);
-    const bars = h('div', { class: 'bars', role: 'img', 'aria-label': 'Weekly contributions over the last year, peak ' + max + ' in a week' },
-      weeks.map((w, i) => h('span', { class: sums[i] ? '' : 'zero', style: '--v:' + (sums[i] / max).toFixed(3), title: 'week of ' + w[0].date + ': ' + sums[i] })));
+    const bars = h('div', { class: 'bars', role: 'img', 'aria-label': 'Weekly contributions over the last year, peak ' + max + ' in a week' });
     const fmt = (d) => new Date(d + 'T00:00:00').toLocaleDateString('en', { month: 'short', year: '2-digit' }).replace(' ', " '");
     const mid = weeks[Math.floor(weeks.length / 2)][0].date;
     const axis = h('div', { class: 'axis', 'aria-hidden': 'true' }, s('', fmt(cd[0].date)), s('', fmt(mid)), s('', 'now'));
@@ -132,7 +137,39 @@
       h('div', null, 'this week ', h('b', null, thisWeek)),
       h('div', null, 'streak ', h('b', null, current + 'd'), s('dim', ' (best ' + longest + 'd)')),
       h('div', null, a(D.profile.html_url, 'github →')));
-    $('graph').replaceChildren(h('div', { class: 'graph' }, bars, axis, stats));
+    const graph = h('div', { class: 'graph' }, bars, axis, stats);
+    $('graph').replaceChildren(graph);
+
+    // SVG bars on whole pixels (integer width + gap, crispEdges). Flex items of fractional
+    // width blurred at 1x. Re-laid out only when the panel's width actually changes.
+    let lastW = -1;
+    const draw = () => {
+      const W = Math.floor(graph.getBoundingClientRect().width);
+      if (W === lastW) return;
+      lastW = W;
+      const n = sums.length;
+      let fit = { gap: 1, bw: 2 };
+      let spare = Infinity;
+      for (const gap of [1, 2]) {
+        const bw = Math.floor((W + gap) / n) - gap;
+        const left = W - (n * (bw + gap) - gap);
+        if (bw >= 2 && left < spare) { fit = { gap, bw }; spare = left; }
+      }
+      const { gap, bw } = fit;
+      const total = n * (bw + gap) - gap;
+      const H = parseInt(getComputedStyle(graph).getPropertyValue('--h'), 10) - 2;
+      const art = svg('svg', { width: total, height: H, viewBox: `0 0 ${total} ${H}`, 'shape-rendering': 'crispEdges', 'aria-hidden': 'true', focusable: 'false' },
+        svg('defs', null, svg('linearGradient', { id: 'bars-grad', gradientUnits: 'userSpaceOnUse', x1: 0, y1: H, x2: 0, y2: 0 },
+          svg('stop', { offset: 0, class: 'g' }), svg('stop', { offset: 0.65, class: 'y' }), svg('stop', { offset: 1, class: 'p' }))),
+        weeks.map((w, i) => {
+          const bh = sums[i] ? Math.max(1, Math.round((sums[i] / max) * H)) : 1;
+          return svg('rect', { x: i * (bw + gap), y: H - bh, width: bw, height: bh, class: sums[i] ? '' : 'zero' }, svg('title', null, 'week of ' + w[0].date + ': ' + sums[i]));
+        }));
+      graph.style.setProperty('--gw', total + 'px');
+      bars.replaceChildren(art);
+    };
+    if ('ResizeObserver' in window) new ResizeObserver(draw).observe(graph);
+    else draw();
   }
 
   // ---------- repos ----------

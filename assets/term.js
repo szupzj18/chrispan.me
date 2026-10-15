@@ -44,12 +44,20 @@
   const shortRepo = (full) => full.startsWith(D.profile.login + '/') ? full.slice(D.profile.login.length + 1) : full;
   const narrow = () => out.clientWidth < 600;
 
-  function cols() {
+  function charWidth() {
     const probe = s('', 'MMMMMMMMMM');
     out.append(probe);
     const w = probe.getBoundingClientRect().width / 10;
     probe.remove();
-    return Math.floor(out.clientWidth / (w || 8.4));
+    return w || 8.4;
+  }
+  const cols = () => Math.floor(out.clientWidth / charWidth());
+
+  function svg(tag, attrs, ...kids) {
+    const el = document.createElementNS('http://www.w3.org/2000/svg', tag);
+    for (const [k, v] of Object.entries(attrs || {})) el.setAttribute(k, v);
+    for (const c of kids.flat()) if (c != null) el.append(c);
+    return el;
   }
 
   // ---------- history ----------
@@ -310,35 +318,44 @@
     print(s('dim', '(public events · '), a(D.profile.html_url + '?tab=overview', 'full activity'), s('dim', ')'));
   }
 
+  // Drawn as SVG on whole pixels (cell + 2px gap, crispEdges) so the squares stay sharp at 1x and 2x;
+  // text glyphs (■) sat on a fractional 8.4 x 17.5px grid and blurred into stripes.
   function heatmap() {
     const days = D.contributions.days;
     const weeks = [];
     for (let i = 0; i < days.length; i += 7) weeks.push(days.slice(i, i + 7));
-    const n = Math.max(8, Math.min(weeks.length, cols() - 5));
-    const shown = weeks.slice(-n);
-    const months = ' '.repeat(shown.length).split('');
-    let last = '';
+    const ch = charWidth();
+    const label = Math.ceil(ch * 4);
+    const avail = out.clientWidth - label;
+    let pitch = 12; // 10px squares; shrink to 8px before dropping weeks
+    while (pitch > 10 && weeks.length * pitch > avail) pitch--;
+    const cell = pitch - 2;
+    const shown = weeks.slice(-Math.max(8, Math.min(weeks.length, Math.floor(avail / pitch))));
+    const top = Math.round(ch * 2.4);
+    const width = label + shown.length * pitch - 2;
+    const height = top + 7 * pitch - 2;
+
+    const art = svg('svg', { width, height, viewBox: `0 0 ${width} ${height}`, 'shape-rendering': 'crispEdges', 'aria-hidden': 'true', focusable: 'false' });
+    let lastEnd = -Infinity;
+    let lastMonth = '';
     shown.forEach((w, i) => {
       const m = new Date(w[0].date + 'T00:00:00').toLocaleString('en', { month: 'short' });
-      if (m !== last) {
-        if (i + 3 <= shown.length) for (let j = 0; j < 3; j++) months[i + j] = m[j];
-        last = m;
+      const x = label + i * pitch;
+      if (m !== lastMonth && x >= lastEnd && x + ch * 3 <= width) {
+        art.append(svg('text', { x, y: top - Math.round(ch * 0.7) }, m));
+        lastEnd = x + ch * 4;
       }
+      lastMonth = m;
     });
-    const wrap = h('div', { class: 'heat', role: 'img', 'aria-label': D.contributions.total_last_year + ' contributions in the last year' });
-    wrap.append(h('div', { class: 'ln dim' }, '    ' + months.join('')));
-    const labels = ['   ', 'Mon', '   ', 'Wed', '   ', 'Fri', '   '];
-    for (let r = 0; r < 7; r++) {
-      const line = h('div', { class: 'ln' }, s('dim', labels[r] + ' '));
-      for (const w of shown) {
-        const d = w[r];
-        line.append(d ? h('span', { class: 'h' + d.level, title: d.count + ' on ' + d.date }, '■') : ' ');
-      }
-      wrap.append(line);
-    }
-    block.append(wrap);
+    ['Mon', 'Wed', 'Fri'].forEach((d, k) => art.append(svg('text', { x: 0, y: top + (2 * k + 1) * pitch + cell / 2, 'dominant-baseline': 'central' }, d)));
+    shown.forEach((w, i) => w.forEach((d, r) => art.append(
+      svg('rect', { x: label + i * pitch, y: top + r * pitch, width: cell, height: cell, class: 'h' + d.level }, svg('title', null, d.count + ' on ' + d.date)))));
+    block.append(h('div', { class: 'heat', role: 'img', 'aria-label': D.contributions.total_last_year + ' contributions in the last year' }, art));
+
+    const key = svg('svg', { width: 5 * pitch - 2, height: cell, viewBox: `0 0 ${5 * pitch - 2} ${cell}`, 'shape-rendering': 'crispEdges', class: 'key', 'aria-hidden': 'true', focusable: 'false' },
+      [0, 1, 2, 3, 4].map((l) => svg('rect', { x: l * pitch, y: 0, width: cell, height: cell, class: 'h' + l })));
     print('');
-    print(s('dim', '    less '), ['h0', 'h1', 'h2', 'h3', 'h4'].map((c) => h('span', { class: 'heat' }, s(c, '■'))), s('dim', ' more   '),
+    print(s('dim', '    less '), h('span', { class: 'heat' }, key), s('dim', ' more   '),
       s('g b', String(D.contributions.total_last_year)), s('dim', ' contributions in the last year'));
   }
 
