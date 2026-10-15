@@ -13,6 +13,7 @@
   let cwd = '~';
   let block = null;
   let cancelBoot = null;
+  let wantHash = ''; // URL hash that reflects the last command (#read/<slug>, #blog)
 
   // ---------- dom helpers ----------
   function h(tag, props, ...kids) {
@@ -72,7 +73,10 @@
     'links.txt': () => catLinks(),
     '.plan': () => catNow(),
   };
-  const DIRS = { repos: () => D.own, forks: () => D.forks };
+  const DIRS = {
+    repos: () => D.repos.map((r) => ({ name: r.name, kind: 'repo' })),
+    posts: () => D.posts.map((p) => ({ name: p.slug, kind: 'post' })),
+  };
 
   function resolve(path) {
     let parts = cwd === '~' ? [] : cwd.slice(2).split('/');
@@ -89,9 +93,13 @@
     if (parts.length === 0) return { type: 'dir', path: '~' };
     if (parts.length === 1 && FILES[parts[0]]) return { type: 'file', path: '~/' + parts[0], name: parts[0] };
     if (parts.length === 1 && DIRS[parts[0]]) return { type: 'dir', path: '~/' + parts[0], name: parts[0] };
-    if (parts.length === 2 && DIRS[parts[0]]) {
-      const repo = DIRS[parts[0]]().find((r) => r.name.toLowerCase() === parts[1].toLowerCase());
-      if (repo) return { type: 'repo', path: '~/' + parts[0] + '/' + repo.name, repo };
+    if (parts.length === 2 && parts[0] === 'repos') {
+      const repo = findRepo(parts[1]);
+      if (repo) return { type: 'repo', path: '~/repos/' + repo.name, repo };
+    }
+    if (parts.length === 2 && parts[0] === 'posts') {
+      const post = findPost(parts[1]);
+      if (post) return { type: 'post', path: '~/posts/' + post.slug, post };
     }
     return null;
   }
@@ -101,8 +109,7 @@
       const names = Object.keys(FILES).filter((n) => all || !n.startsWith('.'));
       return [...names.map((n) => ({ name: n, kind: 'file' })), ...Object.keys(DIRS).map((n) => ({ name: n + '/', kind: 'dir' }))];
     }
-    const key = dirPath.slice(2);
-    return DIRS[key]().map((r) => ({ name: r.name, kind: 'repo' }));
+    return DIRS[dirPath.slice(2)]();
   }
 
   function findRepo(name) {
@@ -111,7 +118,14 @@
     return D.repos.find((r) => r.name.toLowerCase() === n) || null;
   }
 
-  function repoPath(r) { return (r.fork ? '~/forks/' : '~/repos/') + r.name; }
+  // accepts hello-world, hello-world.md, 2026-10-15-hello-world.md, posts/hello-world
+  function findPost(name) {
+    if (!name) return null;
+    const n = name.replace(/\/$/, '').split('/').pop().toLowerCase().replace(/\.md$/, '').replace(/^\d{4}-\d{2}-\d{2}-/, '');
+    return D.posts.find((p) => p.slug === n) || null;
+  }
+
+  function repoPath(r) { return '~/repos/' + r.name; }
 
   // ---------- renderers ----------
   function catAbout() {
@@ -161,7 +175,7 @@
 
   function repoCard(r) {
     const feat = [...D.building, ...D.featured].find((f) => f.name === r.name);
-    print(s('bl b', r.name), r.fork ? s('dim', ' (fork)') : '', '  ',
+    print(s('bl b', r.name), '  ',
       s(langCls(r.language), r.language || '—'), s('dim', '  ★ ' + r.stars + '  pushed ' + r.pushed_at.slice(0, 10)));
     const desc = (feat && feat.summary) || r.description;
     if (desc) printi(desc);
@@ -224,11 +238,12 @@
     row('Role', 'Software Engineer');
     row('Focus', 'AI infra & coding agents');
     row('Uptime', years(p.created_at) + ' on GitHub');
-    row('Packages', D.own.length + ' repos, ' + D.forks.length + ' forks');
+    row('Packages', D.repos.length + ' repos, ' + D.posts.length + (D.posts.length === 1 ? ' post' : ' posts'));
     row('Langs', D.languages.slice(0, 5).map((l) => l.name).join(', '));
     row('Building', D.building.map((b) => b.name).join(', '));
     row('Featured', D.featured.map((f) => f.name).join(', '));
     row('Contribs', D.contributions.total_last_year + ' contributions / last year');
+    if (D.posts[0]) row('Blog', D.posts[0].title + ' (' + D.posts[0].date + ')');
     row('Social', p.followers + ' followers · ' + p.following + ' following');
     info.append(h('div', { class: 'ln' }, ''));
     info.append(h('div', { class: 'ln swatch', 'aria-hidden': 'true' },
@@ -242,9 +257,6 @@
       case 'pr': return [s('pu', e.action.padEnd(9)), repo + ' ', a(e.url, '#' + e.number), ' ', e.title];
       case 'push': return [s('g', 'pushed'.padEnd(9)), repo + ' ', s('dim', e.count + '× to ' + e.branch)];
       case 'release': return [s('y', 'released'.padEnd(9)), repo + ' ', a(e.url, e.tag)];
-      case 'comment': return [s('c', 'comment'.padEnd(9)), repo + ' ', a(e.url, '#' + e.number), ' ', e.title];
-      case 'fork': return [s('o', 'forked'.padEnd(9)), a(e.url, repo)];
-      case 'star': return [s('y', 'starred'.padEnd(9)), a(e.url, repo)];
       default: return [e.kind, ' ', repo];
     }
   }
@@ -291,6 +303,51 @@
       s('g b', String(D.contributions.total_last_year)), s('dim', ' contributions in the last year'));
   }
 
+  // ---------- blog ----------
+  function lsPosts() {
+    if (D.postsError) return print(s('r', 'blog: could not load posts (' + D.postsError + ')'), s('dim', ' · try '), a('/blog/', 'chrispan.me/blog'));
+    if (!D.posts.length) return print(s('dim', 'no posts yet'));
+    print(s('dim', 'total ' + D.posts.length + ' · newest first'));
+    for (const p of D.posts) {
+      const tags = p.tags.map((t) => '#' + t).join(' ');
+      print(s('dim', p.date), '  ', run('read ' + p.slug, p.title), tags ? ['  ', s('pu', tags)] : '');
+      if (p.summary) block.append(h('div', { class: 'ln ind12 dim' }, p.summary));
+    }
+    blank();
+    print(s('dim', 'web '), a('/blog/', 'chrispan.me/blog'), s('dim', ' · rss '), a('/feed.xml', 'feed.xml'));
+  }
+
+  function readPost(p) {
+    print(s('y b', '# ' + p.title));
+    print(s('dim', p.date), p.tags.length ? [s('dim', ' · '), s('pu', p.tags.map((t) => '#' + t).join(' '))] : '', s('dim', ' · ' + p.minutes + ' min read'));
+    const body = h('div', { class: 'post' });
+    body.innerHTML = p.html; // built from posts/*.md by scripts/build.mjs, which escapes raw HTML
+    for (const link of body.querySelectorAll('a[href]')) { link.target = '_blank'; link.rel = 'noopener'; }
+    block.append(body);
+    print(s('dim', '── permalink '), a(p.url, 'chrispan.me' + p.url), s('dim', ' · '), run('blog', '← all posts'));
+    wantHash = '#read/' + p.slug;
+  }
+
+  function read(args) {
+    if (!args.length) { print(s('dim', 'usage: read <slug>')); blank(); return lsPosts(); }
+    const p = findPost(args[0]);
+    if (!p) return print(s('r', 'read: ' + args[0] + ': no such post'), s('dim', ' · try '), run('blog'));
+    readPost(p);
+  }
+
+  function mark(text, q) {
+    const parts = [];
+    const lower = text.toLowerCase();
+    let i = 0;
+    let j;
+    while ((j = lower.indexOf(q, i)) >= 0) {
+      parts.push(text.slice(i, j), h('mark', null, text.slice(j, j + q.length)));
+      i = j + q.length;
+    }
+    parts.push(text.slice(i));
+    return parts;
+  }
+
   // ---------- commands ----------
   const CMDS = {
     help: { d: 'list commands', fn: help },
@@ -298,17 +355,23 @@
       print(s('g b', D.profile.name), s('dim', ' · '), D.profile.tagline);
       print(s('dim', 'try '), run('cat about.txt'), s('dim', ', '), run('ls repos'), s('dim', ' or '), run('neofetch'));
     } },
+    blog: { d: 'list blog posts, newest first', usage: 'blog [slug]', complete: () => D.posts.map((p) => p.slug), fn: (args) => {
+      if (args[0]) return read(args);
+      lsPosts();
+      wantHash = '#blog';
+    } },
+    read: { d: 'read a post right here', usage: 'read <slug>', complete: () => D.posts.map((p) => p.slug), fn: read },
     neofetch: { d: 'system info, but it is a person', fn: neofetch },
-    ls: { d: 'list files · ls repos · ls forks', usage: 'ls [-a] [dir]', complete: (cur) => pathCands(cur), fn: ls },
+    ls: { d: 'list files · ls repos · ls posts', usage: 'ls [-a] [dir]', complete: (cur) => pathCands(cur), fn: ls },
     cd: { d: 'change directory', usage: 'cd <dir>', complete: (cur) => pathCands(cur, true), fn: cd },
-    cat: { d: 'print a file or a repo card', usage: 'cat <file|repo>', complete: (cur) => pathCands(cur), fn: cat },
-    open: { d: 'open a repo or link in a new tab', usage: 'open <repo|github> [--web]', complete: () => ['github', ...D.repos.map((r) => r.name)], fn: open },
+    cat: { d: 'print a file, a repo card or a post', usage: 'cat <file|repo|post>', complete: (cur) => pathCands(cur), fn: cat },
+    open: { d: 'open a repo, post or link in a new tab', usage: 'open <repo|post|blog|rss|github> [--web]', complete: () => ['github', 'blog', 'rss', ...D.repos.map((r) => r.name), ...D.posts.map((p) => p.slug)], fn: open },
     log: { d: 'recent public activity (git log style)', usage: 'log [-n N]', fn: (args) => {
       const i = args.indexOf('-n');
       gitLog(i >= 0 ? Math.max(1, parseInt(args[i + 1], 10) || 10) : 12);
     } },
     contrib: { d: 'contribution heatmap', fn: heatmap },
-    grep: { d: 'search repos by name, description, topic', usage: 'grep <pattern>', fn: grep },
+    grep: { d: 'search repos and posts', usage: 'grep <pattern>', fn: grep },
     pwd: { d: 'print working directory', fn: () => print(cwd.replace('~', '/home/chris')) },
     history: { d: 'command history', fn: () => hist.forEach((l, i) => print(s('dim', String(i + 1).padStart(4) + '  '), run(l, l, 'file'))) },
     clear: { d: 'clear the screen (Ctrl+L)', fn: () => { out.textContent = ''; } },
@@ -324,24 +387,27 @@
       print(s('dim', 'only '), run('git log'), s('dim', ' is wired up here'));
     } },
   };
-  const ALIASES = { '?': 'help', about: 'cat about.txt', skills: 'cat skills.txt', links: 'cat links.txt', contact: 'cat links.txt', now: 'cat now.txt', repos: 'ls repos', forks: 'ls forks', ll: 'ls -a', dir: 'ls', cls: 'clear', fetch: 'neofetch' };
+  const ALIASES = { '?': 'help', about: 'cat about.txt', skills: 'cat skills.txt', links: 'cat links.txt', contact: 'cat links.txt', now: 'cat now.txt', repos: 'ls repos', posts: 'blog', ll: 'ls -a', dir: 'ls', cls: 'clear', fetch: 'neofetch' };
 
   function help() {
     print(s('dim', 'commands — type them, or tap them. Tab completes, ↑/↓ walks history.'));
     blank();
     const list = Object.entries(CMDS).filter(([, c]) => !c.hidden);
     const w = Math.max(...list.map(([n, c]) => (c.usage || n).length)) + 3;
+    // what tapping each entry runs: a working example rather than a usage error
+    const example = { ls: 'ls repos', cd: 'cd repos', cat: 'cat about.txt', grep: 'grep agent', open: 'open github',
+      read: D.posts[0] ? 'read ' + D.posts[0].slug : 'blog' };
     for (const [n, c] of list) {
       const u = c.usage || n;
       if (narrow()) {
-        print(run(n === 'ls' ? 'ls repos' : n === 'cat' ? 'cat about.txt' : n, u, 'cmdname'));
+        print(run(example[n] || n, u, 'cmdname'));
         printi(s('dim', c.d));
       } else {
-        print(run(n === 'ls' ? 'ls repos' : n === 'cat' ? 'cat about.txt' : n, u, 'cmdname'), pad(u, w), s('dim', c.d));
+        print(run(example[n] || n, u, 'cmdname'), pad(u, w), s('dim', c.d));
       }
     }
     blank();
-    print(s('dim', 'shortcuts: '), ['about', 'now', 'skills', 'links', 'repos'].map((x, i) => [i ? s('dim', ' · ') : '', run(x, x, 'cmdname')]));
+    print(s('dim', 'shortcuts: '), ['about', 'blog', 'now', 'skills', 'links', 'repos'].map((x, i) => [i ? s('dim', ' · ') : '', run(x, x, 'cmdname')]));
   }
 
   function ls(args) {
@@ -351,8 +417,9 @@
     if (!node) return print(s('r', 'ls: ' + target + ': No such file or directory'));
     if (node.type === 'file') return print(run('cat ' + node.path, node.name, 'file'));
     if (node.type === 'repo') return repoCard(node.repo);
-    if (node.path === '~/repos') return lsRepos(D.own, 'my repos');
-    if (node.path === '~/forks') return lsRepos(D.forks, 'forks');
+    if (node.type === 'post') return print(run('read ' + node.post.slug, node.post.slug + '.md', 'file'));
+    if (node.path === '~/repos') return lsRepos(D.repos, 'my repos');
+    if (node.path === '~/posts') return lsPosts();
     const items = entriesOf(node.path, all);
     print(items.map((e, i) => [i ? '  ' : '',
       e.kind === 'dir' ? run('ls ~/' + e.name.slice(0, -1), e.name) : run('cat ~/' + e.name, e.name, 'file')]));
@@ -370,10 +437,11 @@
   function cat(args) {
     if (!args.length) return print(s('dim', 'usage: cat <file|repo>  ·  try '), run('cat about.txt'));
     for (const arg of args) {
-      const node = resolve(arg) || (findRepo(arg) && { type: 'repo', repo: findRepo(arg) });
+      const node = resolve(arg) || (findRepo(arg) && { type: 'repo', repo: findRepo(arg) }) || (findPost(arg) && { type: 'post', post: findPost(arg) });
       if (!node) print(s('r', 'cat: ' + arg + ': No such file or directory'));
       else if (node.type === 'dir') print(s('r', 'cat: ' + arg + ': Is a directory'), s('dim', ' · try '), run('ls ' + arg));
       else if (node.type === 'repo') repoCard(node.repo);
+      else if (node.type === 'post') readPost(node.post);
       else FILES[node.name]();
     }
   }
@@ -382,16 +450,18 @@
     const target = args.find((x) => !x.startsWith('-'));
     const web = args.includes('--web') || args.includes('-w');
     let url = null;
-    if (!target) return print(s('dim', 'usage: open <repo|github> [--web]'));
+    if (!target) return print(s('dim', 'usage: open <repo|post|blog|rss|github> [--web]'));
     const t = target.toLowerCase();
     if (t === 'github' || t === 'gh') url = D.profile.html_url;
+    else if (t === 'blog') url = '/blog/';
+    else if (t === 'rss' || t === 'feed') url = '/feed.xml';
     else {
       const r = findRepo(t);
+      const p = r ? null : findPost(t);
+      const l = D.links.find((x) => x.label.toLowerCase() === t);
       if (r) url = web && r.homepage ? r.homepage : r.url;
-      else {
-        const l = D.links.find((x) => x.label.toLowerCase() === t);
-        if (l) url = l.url;
-      }
+      else if (p) url = p.url;
+      else if (l) url = l.url;
     }
     if (!url) return print(s('r', 'open: ' + target + ': not found'), s('dim', ' · try '), run('ls repos'));
     window.open(url, '_blank', 'noopener');
@@ -399,11 +469,27 @@
   }
 
   function grep(args) {
-    const q = args.join(' ').toLowerCase();
+    const raw = args.join(' ');
+    const q = raw.toLowerCase();
     if (!q) return print(s('dim', 'usage: grep <pattern>  ·  e.g. '), run('grep agent'));
     const hits = D.repos.filter((r) => [r.name, r.description, r.language || '', ...r.topics].join(' ').toLowerCase().includes(q));
-    if (!hits.length) return print(s('dim', 'no matches for "' + q + '"'));
-    lsRepos(hits, 'matching "' + q + '"');
+    const postHits = [];
+    for (const p of D.posts) {
+      const lines = [];
+      p.source.split('\n').forEach((l, i) => { if (l.toLowerCase().includes(q)) lines.push([i + 1, l.trim()]); });
+      const meta = [p.title, p.summary, ...p.tags].join(' ').toLowerCase().includes(q);
+      if (meta || lines.length) postHits.push([p, lines]);
+    }
+    if (!hits.length && !postHits.length) return print(s('dim', 'no matches for "' + raw + '"'));
+    if (hits.length) lsRepos(hits, 'repos matching "' + raw + '"');
+    if (!postHits.length) return;
+    if (hits.length) blank();
+    print(s('dim', postHits.length + (postHits.length === 1 ? ' post' : ' posts') + ' matching "' + raw + '"'));
+    for (const [p, lines] of postHits) {
+      print(run('read ' + p.slug, 'posts/' + p.slug + '.md'), s('dim', '  ' + p.title));
+      for (const [n, l] of lines.slice(0, 5)) printi(s('g', String(n)), s('dim', ': '), mark(l, q));
+      if (lines.length > 5) printi(s('dim', '… ' + (lines.length - 5) + ' more'));
+    }
   }
 
   // ---------- completion ----------
@@ -466,6 +552,7 @@
 
   function exec(raw) {
     if (cancelBoot) cancelBoot();
+    wantHash = '';
     const line = raw.trim();
     const entry = newEntry(raw);
     block = entry.blk;
@@ -481,8 +568,15 @@
         print(s('r', 'command not found: ' + name), guess ? [s('dim', ' · did you mean '), run(guess), s('dim', '?')] : [s('dim', ' · try '), run('help')]);
       }
     }
+    syncHash();
     if (name === 'clear') return;
     scrollAfter(entry.el);
+  }
+
+  // keeps the address bar shareable: /#read/<slug> reopens that post
+  function syncHash() {
+    if (location.hash === wantHash) return;
+    try { history.replaceState(null, '', location.pathname + location.search + wantHash); } catch { /* ignore */ }
   }
 
   function scrollAfter(el) {
@@ -569,7 +663,7 @@
     input.focus({ preventScroll: true });
   });
 
-  const CHIPS = ['help', 'whoami', 'about', 'now', 'ls repos', 'log', 'neofetch', 'contrib', 'skills', 'links', 'clear'];
+  const CHIPS = ['help', 'whoami', 'about', 'blog', 'now', 'ls repos', 'log', 'neofetch', 'contrib', 'skills', 'links', 'clear'];
   function buildChips() {
     chips.replaceChildren(...CHIPS.map((c) => h('button', { type: 'button', 'data-cmd': c }, c)));
     chips.hidden = false;
@@ -593,9 +687,13 @@
     const stamp = now.toLocaleString('en', { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }).replace(/,/g, '');
     print(s('dim', 'Last login: ' + stamp + ' on ttys001'));
     if (last) print(s('dim', 'Last push:  ' + shortRepo(last.repo) + ' · ' + last.at.slice(0, 10)));
+    if (D.posts[0]) print(s('dim', 'New post:   '), run('read ' + D.posts[0].slug, D.posts[0].title), s('dim', ' · ' + D.posts[0].date + ' · '), run('blog', 'blog', 'cmdname'));
     print(s('dim', 'Type '), run('help', 'help', 'cmdname'), s('dim', coarse ? ' or tap a command below.' : ', or press Tab to complete.'));
     if (!coarse) input.focus({ preventScroll: true });
-    typeThen('neofetch');
+    const deep = /^#read\/([\w-]+)$/.exec(location.hash);
+    if (deep && findPost(deep[1])) exec('read ' + deep[1]);
+    else if (location.hash === '#blog') exec('blog');
+    else typeThen('neofetch');
   }
 
   // types one command at boot: a short, finite effect (skipped for reduced motion).
@@ -619,11 +717,14 @@
     timer = setTimeout(step, 250);
   }
 
-  fetch('../data.json')
-    .then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-    .then((d) => {
-      d.own = d.repos.filter((r) => !r.fork);
-      d.forks = d.repos.filter((r) => r.fork);
+  const json = (url) => fetch(url).then((r) => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); });
+  Promise.all([
+    json('/data.json'),
+    json('/blog/posts.json').catch((err) => ({ posts: [], error: err.message })),
+  ])
+    .then(([d, blog]) => {
+      d.posts = blog.posts || [];
+      d.postsError = blog.error || null;
       D = d;
       boot();
     })
