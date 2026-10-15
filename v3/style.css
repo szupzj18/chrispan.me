@@ -78,8 +78,6 @@ details { padding-left: var(--ind); }
 summary { cursor: pointer; color: var(--dim); }
 summary:hover { color: var(--fg); }
 details[open] summary { margin-bottom: .4em; }
-.forks { color: var(--dim); }
-.forks a { color: var(--fg); }
 
 /* less(1) status line */
 .less {

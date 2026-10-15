@@ -304,9 +304,6 @@ kbd {
 #act .k-pr { color: var(--mauve); }
 #act .k-push { color: var(--green); }
 #act .k-release { color: var(--yellow); }
-#act .k-comment { color: var(--teal); }
-#act .k-fork { color: var(--peach); }
-#act .k-star { color: var(--yellow); }
 #act .line { overflow-wrap: anywhere; }
 #act .repo { color: var(--text); }
 

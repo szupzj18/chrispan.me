@@ -31,8 +31,7 @@
 
   function render(D) {
     const P = D.profile;
-    const own = D.repos.filter((r) => !r.fork);
-    const forks = D.repos.filter((r) => r.fork);
+    const own = D.repos;
     const highlighted = new Set([...D.building, ...D.featured].map((x) => x.name));
     const out = [];
 
@@ -46,7 +45,7 @@
 
     out.push(section('description', 'DESCRIPTION',
       p(b(P.name), ' (', a(P.html_url, '@' + P.login), ') is currently ', P.now.charAt(0).toLowerCase() + P.now.slice(1)),
-      p('The public record: ', b(String(own.length)), ' repositories and ', b(String(forks.length)), ' forks on GitHub, ',
+      p('The public record: ', b(String(own.length)), ' repositories on GitHub, ',
         b(String(D.contributions.total_last_year)), ' contributions in the last year, ', P.followers, ' followers.')));
 
     const optFlags = { Languages: ['-l', '--languages'], Mobile: ['-m', '--mobile'], 'AI / Agents': ['-a', '--agents'], 'Dev Tools': ['-t', '--tools'] };
@@ -70,15 +69,12 @@
     out.push(section('featured', 'FEATURED', projDl(D.featured)));
 
     out.push(section('repositories', 'REPOSITORIES',
-      p('Public, non-fork repositories, most recently pushed first. ', h('span', { class: 'tag' }, '*'), ' marks the projects above.'),
+      p('Public repositories, most recently pushed first. ', h('span', { class: 'tag' }, '*'), ' marks the projects above.'),
       h('dl', null, own.filter((r) => r.name !== 'chrispan.me').map((r) => [
         h('dt', null, h('a', { href: r.url, class: 'bare' }, b(r.name)), highlighted.has(r.name) ? h('span', { class: 'tag' }, ' *') : '',
           h('span', { class: 'meta' }, '  ' + [r.language, r.stars ? '★' + r.stars : null, r.pushed_at.slice(0, 10)].filter(Boolean).join(' · '))),
         r.description ? h('dd', null, r.description) : null,
-      ])),
-      h('details', null,
-        h('summary', null, 'Forks (' + forks.length + ') — upstream projects, listed for completeness'),
-        h('p', { class: 'forks' }, forks.map((r, i) => [i ? ', ' : '', h('a', { href: r.url, class: 'bare' }, r.name)]), '.'))));
+      ]))));
 
     const verb = (e) => {
       const repo = shortRepo(D, e.repo);
@@ -86,9 +82,6 @@
         case 'pr': return [b(repo), ' ', a(e.url, '#' + e.number), ' ', e.action, ': ', e.title];
         case 'push': return [b(repo), ' pushed ', e.count + '× to ', u(e.branch)];
         case 'release': return [b(repo), ' released ', a(e.url, e.tag)];
-        case 'comment': return [b(repo), ' commented on ', a(e.url, '#' + e.number), ': ', e.title];
-        case 'fork': return ['forked ', a(e.url, repo)];
-        case 'star': return ['starred ', a(e.url, repo)];
         default: return [e.kind, ' ', repo];
       }
     };

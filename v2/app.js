@@ -5,7 +5,7 @@
   const DAY = 86400000;
   const NOW = Date.now();
   const SORTS = ['pushed', 'name', 'stars', 'lang'];
-  const state = { sort: 'pushed', forks: false, q: '', sel: 0, open: null, list: [] };
+  const state = { sort: 'pushed', q: '', sel: 0, open: null, list: [] };
   let D = null;
 
   // ---------- helpers ----------
@@ -51,9 +51,8 @@
 
   // ---------- header ----------
   function renderHead() {
-    const own = D.repos.filter((r) => !r.fork);
-    const running = own.filter((r) => stOf(r) === 'R').length;
-    $('tasks').replaceChildren('Tasks: ', h('b', null, own.length), ' repos, ', h('b', null, D.repos.length - own.length), ' forks; ', h('b', null, running), ' running');
+    const running = D.repos.filter((r) => stOf(r) === 'R').length;
+    $('tasks').replaceChildren('Tasks: ', h('b', null, D.repos.length), ' repos; ', h('b', null, running), ' running');
     const cd = D.contributions.days;
     const sum = (n) => cd.slice(-n).reduce((t, d) => t + d.count, 0);
     const created = new Date(D.profile.created_at);
@@ -139,7 +138,7 @@
   // ---------- repos ----------
   function computeList() {
     const q = state.q.trim().toLowerCase();
-    let list = D.repos.filter((r) => state.forks || !r.fork);
+    let list = D.repos;
     if (q) list = list.filter((r) => [r.name, r.description, r.language || '', ...r.topics].join(' ').toLowerCase().includes(q));
     const by = {
       pushed: (x, y) => y.pushed_at.localeCompare(x.pushed_at),
@@ -172,7 +171,7 @@
           'aria-current': !narrow && i === state.sel ? 'true' : null,
         },
         s('c-st st-' + st, st),
-        s('c-name', r.name, tag ? s('tag', ' ' + tag) : '', r.fork ? s('tag dim', ' fork') : ''),
+        s('c-name', r.name, tag ? s('tag', ' ' + tag) : ''),
         s('c-lang ' + langCls(r.language), r.language || '—'),
         s('c-star', r.stars ? String(r.stars) : ''),
         s('c-age', agoShort(r.pushed_at)),
@@ -182,10 +181,9 @@
         return li;
       }));
     }
-    const meta = ' · sort: ' + state.sort + ' · ' + state.list.length + (state.forks ? ' incl. forks' : '') + (state.q ? ' · /' + state.q : '');
+    const meta = ' · sort: ' + state.sort + ' · ' + state.list.length + (state.q ? ' · /' + state.q : '');
     $('repo-meta').textContent = meta;
     document.querySelector('[data-act="sort"]').lastChild.textContent = narrowMQ.matches ? 'Sort' : 'Sort:' + state.sort;
-    document.querySelector('[data-act="forks"]').setAttribute('aria-pressed', String(state.forks));
     renderDetail();
   }
 
@@ -223,7 +221,7 @@
     kv.push(h('dt', null, 'repo'), h('dd', null, a(r.url)));
     if (r.homepage) kv.push(h('dt', null, 'web'), h('dd', null, a(r.homepage)));
     return [
-      h('h3', null, r.name, r.fork ? s('dim', ' (fork)') : ''),
+      h('h3', null, r.name),
       h('div', { class: 'meta' }, s('st-' + st, st), ' · ', s(langCls(r.language), r.language || 'no language'), ' · ★ ' + r.stars),
       desc ? h('p', null, desc) : h('p', { class: 'dim' }, 'no description'),
       h('dl', { class: 'kv' }, kv),
@@ -249,7 +247,7 @@
 
   // ---------- activity ----------
   function renderAct() {
-    const label = { pr: null, push: 'pushed', release: 'release', comment: 'comment', fork: 'forked', star: 'starred' };
+    const label = { pr: null, push: 'pushed', release: 'release' };
     $('act').replaceChildren(...D.activity.map((e) => {
       const when = new Date(e.at);
       const repo = s('repo', shortRepo(e.repo));
@@ -257,7 +255,6 @@
       if (e.kind === 'pr') line = [repo, ' ', a(e.url, '#' + e.number), ' ', e.title];
       else if (e.kind === 'push') line = [repo, s('dim', ' ' + e.count + '× → ' + e.branch)];
       else if (e.kind === 'release') line = [repo, ' ', a(e.url, e.tag)];
-      else if (e.kind === 'comment') line = [repo, ' ', a(e.url, '#' + e.number), ' ', e.title];
       else line = [a(e.url, shortRepo(e.repo))];
       return h('li', null,
         h('time', { class: 'when', datetime: e.at, title: when.toString() }, e.at.slice(5, 10)),
@@ -304,17 +301,12 @@
     renderRepos();
     $('repos').children[state.sel]?.scrollIntoView({ block: 'nearest' });
   }
-  function toggleForks() {
-    state.forks = !state.forks;
-    renderRepos();
-  }
 
   const ACTIONS = {
     help: openHelp,
     search: openSearch,
     'search-close': () => closeSearch(true),
     sort: cycleSort,
-    forks: toggleForks,
     open: () => openSel(false),
     web: () => openSel(true),
   };
@@ -383,7 +375,6 @@
         e.preventDefault(); openSel(false); break;
       case 'w': e.preventDefault(); openSel(true); break;
       case 's': e.preventDefault(); cycleSort(); break;
-      case 'f': e.preventDefault(); toggleForks(); break;
       case '/': e.preventDefault(); openSearch(); break;
       case '?': e.preventDefault(); openHelp(); break;
       case 'Escape': if (state.q) { state.q = ''; renderRepos(); } break;
