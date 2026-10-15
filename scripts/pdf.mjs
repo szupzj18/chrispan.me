@@ -55,7 +55,9 @@ function findChrome() {
 function launch(bin) {
   profile = fs.mkdtempSync(path.join(os.tmpdir(), 'pdf-chrome-'));
   const args = ['--headless=new', '--remote-debugging-port=0', '--user-data-dir=' + profile, '--no-first-run',
-    '--no-default-browser-check', '--disable-gpu', '--hide-scrollbars', '--mute-audio', 'about:blank'];
+    '--no-default-browser-check', '--disable-gpu', '--hide-scrollbars', '--mute-audio',
+    // Han characters in an lang="en" page fall back by browser locale; prefer Simplified Chinese shapes (Noto Sans CJK SC)
+    '--lang=zh-CN', 'about:blank'];
   // GitHub's Ubuntu runners block Chrome's user-namespace sandbox; the page rendered here is our own build output.
   if (process.platform === 'linux' && process.env.CI) args.unshift('--no-sandbox');
   chrome = spawn(bin, args, { stdio: ['ignore', 'ignore', 'pipe'] });
