@@ -1,0 +1,3078 @@
+{
+ "generated_at": "2026-10-15T06:46:03Z",
+ "source": "Public GitHub data for github.com/szupzj18 (profile, public repos, profile README, public events, public contribution calendar).",
+ "profile": {
+  "login": "szupzj18",
+  "name": "Chris Pan",
+  "avatar_url": "https://avatars.githubusercontent.com/u/39005916?v=4",
+  "html_url": "https://github.com/szupzj18",
+  "location": null,
+  "bio": null,
+  "tagline": "Software Engineer interested in AI infra and agents.",
+  "now": "Building small, sharp tools around coding agents — session memory, multi-account, simulator control.",
+  "followers": 10,
+  "following": 14,
+  "public_repos": 63,
+  "created_at": "2018-05-05T12:34:19Z",
+  "domain": "chrispan.me"
+ },
+ "links": [
+  {
+   "label": "GitHub",
+   "url": "https://github.com/szupzj18"
+  },
+  {
+   "label": "Mnemo",
+   "url": "https://szupzj18.github.io/mnemo/"
+  },
+  {
+   "label": "Zorua",
+   "url": "https://szupzj18.github.io/zorua/"
+  }
+ ],
+ "skills": [
+  {
+   "area": "Languages",
+   "items": [
+    "Python",
+    "TypeScript",
+    "Swift",
+    "Kotlin",
+    "Rust",
+    "Go",
+    "Shell"
+   ]
+  },
+  {
+   "area": "Mobile",
+   "items": [
+    "iOS (SwiftUI)",
+    "Android (Kotlin)",
+    "Kotlin Multiplatform"
+   ]
+  },
+  {
+   "area": "AI / Agents",
+   "items": [
+    "Claude Code",
+    "Codex",
+    "MCP",
+    "agent tooling"
+   ]
+  },
+  {
+   "area": "Dev Tools",
+   "items": [
+    "Git",
+    "Docker",
+    "Homebrew",
+    "Raycast",
+    "idb"
+   ]
+  }
+ ],
+ "building": [
+  {
+   "name": "zorua",
+   "summary": "Run several Codex and Claude Code accounts side by side — one per terminal. Each account keeps its own sign-in, sessions, settings and quota.",
+   "stack": [
+    "TypeScript",
+    "zsh / bash / fish"
+   ],
+   "url": "https://szupzj18.github.io/zorua/"
+  }
+ ],
+ "featured": [
+  {
+   "name": "mnemo",
+   "summary": "One memory for all your coding agents. Full-text search across local Claude Code, Codex, OpenCode and Pi sessions, plus remote devboxes.",
+   "stack": [
+    "Python",
+    "zero dependencies"
+   ],
+   "url": "https://github.com/szupzj18/mnemo",
+   "homepage": "https://szupzj18.github.io/mnemo/"
+  },
+  {
+   "name": "flick",
+   "summary": "Fast iOS simulator agent with a dynamic, indexed action space. A sub-second reflex layer for parent coding agents driving mobile UIs — 593 ms per decision cycle, no screenshots in the loop.",
+   "stack": [
+    "Python",
+    "idb"
+   ],
+   "url": "https://github.com/szupzj18/flick"
+  }
+ ],
+ "learning": "GPT from scratch, a toy browser engine and a tsc clone — small builds to understand how things work.",
+ "hello": "Open to interesting problems — say hi anytime.",
+ "pinned": [
+  "mnemo"
+ ],
+ "languages": [
+  {
+   "name": "Python",
+   "repos": 6
+  },
+  {
+   "name": "Rust",
+   "repos": 4
+  },
+  {
+   "name": "TypeScript",
+   "repos": 4
+  },
+  {
+   "name": "Swift",
+   "repos": 3
+  },
+  {
+   "name": "Go",
+   "repos": 2
+  },
+  {
+   "name": "HTML",
+   "repos": 2
+  },
+  {
+   "name": "JavaScript",
+   "repos": 1
+  },
+  {
+   "name": "Kotlin",
+   "repos": 1
+  },
+  {
+   "name": "Ruby",
+   "repos": 1
+  }
+ ],
+ "repos": [
+  {
+   "name": "chrispan.me",
+   "description": "Hello world at chrispan.me",
+   "language": "HTML",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/chrispan.me",
+   "created_at": "2026-10-15T06:35:52Z",
+   "pushed_at": "2026-10-15T06:36:05Z"
+  },
+  {
+   "name": "mnemo",
+   "description": "Full-text search across local coding-agent sessions (Claude Code, Codex, Pi) and remote devices",
+   "language": "HTML",
+   "stars": 2,
+   "forks": 1,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://szupzj18.github.io/mnemo/",
+   "url": "https://github.com/szupzj18/mnemo",
+   "created_at": "2026-09-24T08:05:01Z",
+   "pushed_at": "2026-10-14T06:31:53Z"
+  },
+  {
+   "name": "zorua",
+   "description": "Run several Codex and Claude Code accounts side by side — one per terminal. Each account keeps its own sign-in, sessions, settings and quota.",
+   "language": "TypeScript",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://szupzj18.github.io/zorua/",
+   "url": "https://github.com/szupzj18/zorua",
+   "created_at": "2026-09-30T15:26:44Z",
+   "pushed_at": "2026-10-13T09:42:33Z"
+  },
+  {
+   "name": "xiaohongshu-cli",
+   "description": "A CLI for Xiaohongshu (小红书) — search, read, interact via reverse-engineered API",
+   "language": "Python",
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/xiaohongshu-cli",
+   "created_at": "2026-10-12T15:58:47Z",
+   "pushed_at": "2026-10-13T05:33:04Z"
+  },
+  {
+   "name": "tinycast",
+   "description": "Tinycast — a tiny, fully native macOS launcher, hotkeys, and clipboard history.",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://tinycast.dev",
+   "url": "https://github.com/szupzj18/tinycast",
+   "created_at": "2026-10-10T02:55:36Z",
+   "pushed_at": "2026-10-10T14:41:32Z"
+  },
+  {
+   "name": "extensions",
+   "description": "Everything you need to extend Raycast.",
+   "language": "TypeScript",
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://developers.raycast.com",
+   "url": "https://github.com/szupzj18/extensions",
+   "created_at": "2024-02-27T08:16:34Z",
+   "pushed_at": "2026-10-01T04:12:41Z"
+  },
+  {
+   "name": "cline",
+   "description": "Autonomous coding agent as an SDK, IDE extension, or CLI assistant.",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://cline.bot",
+   "url": "https://github.com/szupzj18/cline",
+   "created_at": "2026-08-19T08:43:49Z",
+   "pushed_at": "2026-09-28T13:45:10Z"
+  },
+  {
+   "name": "flick",
+   "description": "A fast iOS simulator agent with a dynamic, indexed action space. Powered by TypeSafe Jev & Facebook idb.",
+   "language": "Python",
+   "stars": 1,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [
+    "agent",
+    "automation",
+    "computer-use",
+    "idb",
+    "ios",
+    "jev",
+    "simulator",
+    "typesafe"
+   ],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/flick",
+   "created_at": "2026-09-23T03:10:56Z",
+   "pushed_at": "2026-09-23T06:38:25Z"
+  },
+  {
+   "name": "cc-switch",
+   "description": "A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Grok Build & Hermes Agent. Only official website: ccswitch.io",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://ccswitch.io",
+   "url": "https://github.com/szupzj18/cc-switch",
+   "created_at": "2026-08-16T16:29:33Z",
+   "pushed_at": "2026-09-16T07:48:51Z"
+  },
+  {
+   "name": "react-router",
+   "description": "Declarative routing for React",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://reactrouter.com",
+   "url": "https://github.com/szupzj18/react-router",
+   "created_at": "2026-09-05T08:00:10Z",
+   "pushed_at": "2026-09-08T21:17:47Z"
+  },
+  {
+   "name": "openai-agents-js",
+   "description": "A lightweight, powerful framework for multi-agent workflows and voice agents",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://openai.github.io/openai-agents-js/",
+   "url": "https://github.com/szupzj18/openai-agents-js",
+   "created_at": "2026-08-28T18:00:23Z",
+   "pushed_at": "2026-08-28T18:29:11Z"
+  },
+  {
+   "name": "dify",
+   "description": "Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://dify.ai",
+   "url": "https://github.com/szupzj18/dify",
+   "created_at": "2026-08-28T08:19:43Z",
+   "pushed_at": "2026-08-28T08:37:46Z"
+  },
+  {
+   "name": "openclaw",
+   "description": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞",
+   "language": "TypeScript",
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://openclaw.ai",
+   "url": "https://github.com/szupzj18/openclaw",
+   "created_at": "2026-02-28T03:25:31Z",
+   "pushed_at": "2026-08-28T04:57:19Z"
+  },
+  {
+   "name": "vite",
+   "description": "Next generation frontend tooling. It's fast!",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "http://vite.dev",
+   "url": "https://github.com/szupzj18/vite",
+   "created_at": "2026-08-17T12:36:35Z",
+   "pushed_at": "2026-08-27T11:34:24Z"
+  },
+  {
+   "name": "go-ethereum",
+   "description": "Go implementation of the Ethereum protocol",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://geth.ethereum.org",
+   "url": "https://github.com/szupzj18/go-ethereum",
+   "created_at": "2026-08-12T15:50:09Z",
+   "pushed_at": "2026-08-24T04:24:45Z"
+  },
+  {
+   "name": "openai-agents-python",
+   "description": "A lightweight, powerful framework for multi-agent workflows",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://openai.github.io/openai-agents-python/",
+   "url": "https://github.com/szupzj18/openai-agents-python",
+   "created_at": "2026-08-24T00:12:33Z",
+   "pushed_at": "2026-08-24T01:56:30Z"
+  },
+  {
+   "name": "desloppify",
+   "description": "Agent harness to make your slop code well-engineered and beautiful.",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/desloppify",
+   "created_at": "2026-02-28T10:21:02Z",
+   "pushed_at": "2026-08-24T01:46:23Z"
+  },
+  {
+   "name": "core",
+   "description": "This monorepo is a collection of packages used across multiple MetaMask clients",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/core",
+   "created_at": "2026-08-20T03:01:45Z",
+   "pushed_at": "2026-08-24T01:13:20Z"
+  },
+  {
+   "name": "codex-pooler",
+   "description": "The full featured self-hosted Codex gateway, for teams, agents and you",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://docs.codex-pooler.com/",
+   "url": "https://github.com/szupzj18/codex-pooler",
+   "created_at": "2026-08-03T12:44:27Z",
+   "pushed_at": "2026-08-14T04:46:42Z"
+  },
+  {
+   "name": "graph-node",
+   "description": "Graph Node indexes data from blockchains such as Ethereum and serves it over GraphQL",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://thegraph.com",
+   "url": "https://github.com/szupzj18/graph-node",
+   "created_at": "2026-08-12T20:18:24Z",
+   "pushed_at": "2026-08-12T20:18:43Z"
+  },
+  {
+   "name": "codex",
+   "description": "Lightweight coding agent that runs in your terminal",
+   "language": "Rust",
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/codex",
+   "created_at": "2026-03-09T03:10:56Z",
+   "pushed_at": "2026-04-25T23:45:23Z"
+  },
+  {
+   "name": "claude-code",
+   "description": "Claude Code Source - Buildable Research Fork. Reverse-engineered build system, runnable with Bun.",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/claude-code",
+   "created_at": "2026-03-31T14:09:50Z",
+   "pushed_at": "2026-03-31T13:33:35Z"
+  },
+  {
+   "name": "skill-runner",
+   "description": "",
+   "language": "Go",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/skill-runner",
+   "created_at": "2026-03-15T11:07:57Z",
+   "pushed_at": "2026-03-15T14:45:11Z"
+  },
+  {
+   "name": "magpie",
+   "description": "Multi-AI adversarial PR review tool",
+   "language": "TypeScript",
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/magpie",
+   "created_at": "2026-02-25T17:36:56Z",
+   "pushed_at": "2026-02-26T15:40:06Z"
+  },
+  {
+   "name": "multi-agent-chat",
+   "description": "Chat with multiple AI models simultaneously in a group-chat CLI. Concurrent streaming, @model targeting, /verify cross-validation.",
+   "language": "Python",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/multi-agent-chat",
+   "created_at": "2026-02-24T18:32:08Z",
+   "pushed_at": "2026-02-24T18:32:11Z"
+  },
+  {
+   "name": "LLM-NewsLetter",
+   "description": "",
+   "language": "Python",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/LLM-NewsLetter",
+   "created_at": "2025-11-26T10:47:31Z",
+   "pushed_at": "2026-02-23T15:45:46Z"
+  },
+  {
+   "name": "notebook-open",
+   "description": "Local NotebookLM clone - AI-first note and research assistant with RAG, multi-provider LLM support, and modern UI",
+   "language": "TypeScript",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/notebook-open",
+   "created_at": "2026-02-16T16:43:41Z",
+   "pushed_at": "2026-02-17T08:07:07Z"
+  },
+  {
+   "name": "heatmap",
+   "description": "",
+   "language": "JavaScript",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/heatmap",
+   "created_at": "2025-03-07T07:36:41Z",
+   "pushed_at": "2026-02-15T15:36:17Z"
+  },
+  {
+   "name": "DoNotNotify",
+   "description": "DoNotNotify app",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/DoNotNotify",
+   "created_at": "2026-02-15T05:19:57Z",
+   "pushed_at": "2026-02-12T05:16:38Z"
+  },
+  {
+   "name": "terminal_words",
+   "description": "",
+   "language": "Rust",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/terminal_words",
+   "created_at": "2025-07-29T07:33:43Z",
+   "pushed_at": "2026-02-11T17:29:08Z"
+  },
+  {
+   "name": "homebrew-tap",
+   "description": "",
+   "language": "Ruby",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/homebrew-tap",
+   "created_at": "2025-07-29T07:48:11Z",
+   "pushed_at": "2025-12-08T15:46:03Z"
+  },
+  {
+   "name": "Pomo",
+   "description": "Pomodoro for Mac",
+   "language": "Swift",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/Pomo",
+   "created_at": "2025-11-21T03:55:28Z",
+   "pushed_at": "2025-11-25T17:45:07Z"
+  },
+  {
+   "name": "mini-tsc",
+   "description": "a tsc complier build by ts",
+   "language": "TypeScript",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/mini-tsc",
+   "created_at": "2025-05-28T18:31:39Z",
+   "pushed_at": "2025-11-19T08:37:28Z"
+  },
+  {
+   "name": "code-editing-agent",
+   "description": "Coding agent demo",
+   "language": "Go",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/code-editing-agent",
+   "created_at": "2025-08-01T05:57:57Z",
+   "pushed_at": "2025-08-03T15:57:43Z"
+  },
+  {
+   "name": "zero2prod",
+   "description": "practice",
+   "language": "Rust",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/zero2prod",
+   "created_at": "2024-05-31T03:28:00Z",
+   "pushed_at": "2025-07-28T07:48:38Z"
+  },
+  {
+   "name": "make-more",
+   "description": "",
+   "language": "Python",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/make-more",
+   "created_at": "2025-04-26T18:04:54Z",
+   "pushed_at": "2025-06-29T08:36:56Z"
+  },
+  {
+   "name": "HNSwift",
+   "description": "HN Clinet using Swift UI.",
+   "language": "Swift",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/HNSwift",
+   "created_at": "2024-11-01T07:13:50Z",
+   "pushed_at": "2025-06-28T10:19:24Z"
+  },
+  {
+   "name": "MVIDemo",
+   "description": "",
+   "language": "Kotlin",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/MVIDemo",
+   "created_at": "2025-05-17T05:02:29Z",
+   "pushed_at": "2025-05-18T05:40:31Z"
+  },
+  {
+   "name": "GPT-from-scratch",
+   "description": "nano gpt lecture",
+   "language": "Python",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/GPT-from-scratch",
+   "created_at": "2025-03-02T15:03:27Z",
+   "pushed_at": "2025-04-20T17:42:14Z"
+  },
+  {
+   "name": "toy-web-render",
+   "description": "a rust toy web render.",
+   "language": "Rust",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/toy-web-render",
+   "created_at": "2025-03-29T07:16:11Z",
+   "pushed_at": "2025-04-01T17:04:16Z"
+  },
+  {
+   "name": "robinson",
+   "description": "A toy web rendering engine",
+   "language": "Rust",
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "http://limpet.net/mbrubeck/2014/08/08/toy-layout-engine-1.html",
+   "url": "https://github.com/szupzj18/robinson",
+   "created_at": "2024-02-06T04:07:58Z",
+   "pushed_at": "2025-03-21T06:57:55Z"
+  },
+  {
+   "name": "Swift-Components",
+   "description": "",
+   "language": "Swift",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/Swift-Components",
+   "created_at": "2025-03-06T15:00:15Z",
+   "pushed_at": "2025-03-07T12:30:49Z"
+  },
+  {
+   "name": "hugo-theme-nostyleplease",
+   "description": "a (nearly) no-CSS, fast, minimalist Hugo theme ported from riggraz/no-style-please.",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/hugo-theme-nostyleplease",
+   "created_at": "2025-01-14T13:24:09Z",
+   "pushed_at": "2025-01-14T13:47:03Z"
+  },
+  {
+   "name": "buildGPT",
+   "description": "building a simple GPT model.",
+   "language": "Python",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/buildGPT",
+   "created_at": "2024-10-12T18:41:35Z",
+   "pushed_at": "2024-10-12T18:41:45Z"
+  },
+  {
+   "name": "bert",
+   "description": "TensorFlow code and pre-trained models for BERT",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://arxiv.org/abs/1810.04805",
+   "url": "https://github.com/szupzj18/bert",
+   "created_at": "2024-09-22T07:59:39Z",
+   "pushed_at": "2024-07-23T23:39:41Z"
+  },
+  {
+   "name": "water-reminder",
+   "description": "logging your daily water consuming using raycast extension",
+   "language": "TypeScript",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/water-reminder",
+   "created_at": "2024-06-20T11:51:29Z",
+   "pushed_at": "2024-06-21T09:26:46Z"
+  },
+  {
+   "name": "mini-redis",
+   "description": "Incomplete Redis client and server implementation using Tokio - for learning purposes only",
+   "language": "Rust",
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/mini-redis",
+   "created_at": "2024-03-01T08:18:06Z",
+   "pushed_at": "2024-04-28T14:53:09Z"
+  },
+  {
+   "name": "ripgrep",
+   "description": "ripgrep recursively searches directories for a regex pattern while respecting your gitignore",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/ripgrep",
+   "created_at": "2024-02-04T04:02:31Z",
+   "pushed_at": "2024-02-02T11:49:37Z"
+  },
+  {
+   "name": "lifetimekata",
+   "description": "An exploration of lifetimes in Rust.",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://tfpk.github.io/lifetimekata",
+   "url": "https://github.com/szupzj18/lifetimekata",
+   "created_at": "2024-01-04T09:50:44Z",
+   "pushed_at": "2023-12-03T08:53:45Z"
+  },
+  {
+   "name": "rCore-Tutorial-v3",
+   "description": "Let's write an OS which can run on RISC-V in Rust from scratch!",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://rcore-os.github.io/rCore-Tutorial-Book-v3/index.html",
+   "url": "https://github.com/szupzj18/rCore-Tutorial-v3",
+   "created_at": "2023-10-26T13:44:28Z",
+   "pushed_at": "2023-10-25T14:00:06Z"
+  },
+  {
+   "name": "boilerplate-project-timestamp",
+   "description": "A boilerplate for a freeCodeCamp project.",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/boilerplate-project-timestamp",
+   "created_at": "2023-07-24T08:35:31Z",
+   "pushed_at": "2023-08-02T10:09:35Z"
+  },
+  {
+   "name": "boilerplate-mongomongoose",
+   "description": "A boilerplate for the freeCodeCamp curriculum.",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/boilerplate-mongomongoose",
+   "created_at": "2023-07-21T10:13:57Z",
+   "pushed_at": "2023-07-24T07:49:55Z"
+  },
+  {
+   "name": "rustlings",
+   "description": ":crab: Small exercises to get you used to reading and writing Rust code!",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://rustlings.cool",
+   "url": "https://github.com/szupzj18/rustlings",
+   "created_at": "2023-06-21T05:39:34Z",
+   "pushed_at": "2023-06-26T13:39:59Z"
+  },
+  {
+   "name": "minigrep",
+   "description": "rust learning demo project",
+   "language": "Rust",
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/minigrep",
+   "created_at": "2023-06-22T14:09:40Z",
+   "pushed_at": "2023-06-23T04:14:22Z"
+  },
+  {
+   "name": "chatgpt-vercel",
+   "description": "Elegant and Powerfull. Powered by OpenAI and Vercel.",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://vercel-chatgpt-github.vercel.app/",
+   "url": "https://github.com/szupzj18/chatgpt-vercel",
+   "created_at": "2023-05-18T06:03:10Z",
+   "pushed_at": "2023-05-15T15:48:59Z"
+  },
+  {
+   "name": "MZTimerLabel",
+   "description": "A handy class for iOS to use UILabel as a countdown timer or stopwatch just like in Apple Clock App.",
+   "language": "Objective-C",
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/MZTimerLabel",
+   "created_at": "2023-05-15T14:53:14Z",
+   "pushed_at": "2023-05-15T15:36:03Z"
+  },
+  {
+   "name": "first-contributions",
+   "description": "🚀✨ Help beginners to contribute to open source projects",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://firstcontributions.github.io",
+   "url": "https://github.com/szupzj18/first-contributions",
+   "created_at": "2023-05-13T14:14:17Z",
+   "pushed_at": "2023-05-13T14:54:35Z"
+  },
+  {
+   "name": "mini-lsm",
+   "description": "A tutorial of building an LSM-Tree storage engine in a week! (WIP)",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://skyzh.github.io/mini-lsm",
+   "url": "https://github.com/szupzj18/mini-lsm",
+   "created_at": "2023-06-17T04:15:12Z",
+   "pushed_at": "2023-02-27T03:14:47Z"
+  },
+  {
+   "name": "talent-plan",
+   "description": "open source training courses about distributed database and distributed systems",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://tidb.io/talent-plan",
+   "url": "https://github.com/szupzj18/talent-plan",
+   "created_at": "2023-06-17T09:24:55Z",
+   "pushed_at": "2023-02-26T08:31:48Z"
+  },
+  {
+   "name": "FengNiao",
+   "description": "A command line tool for cleaning unused resources in Xcode.",
+   "language": "Swift",
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/FengNiao",
+   "created_at": "2020-10-13T11:54:49Z",
+   "pushed_at": "2020-11-03T03:08:21Z"
+  },
+  {
+   "name": "SDWebImageYYPlugin",
+   "description": "A SDWebImage plugin to integrate YYImage & YYCache for image rendering & caching",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": true,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/SDWebImageYYPlugin",
+   "created_at": "2020-10-28T07:18:40Z",
+   "pushed_at": "2020-09-18T06:30:37Z"
+  },
+  {
+   "name": "szupzj18.github.io",
+   "description": "",
+   "language": null,
+   "stars": 0,
+   "forks": 0,
+   "fork": false,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/szupzj18.github.io",
+   "created_at": "2020-05-25T02:34:59Z",
+   "pushed_at": "2020-05-25T02:55:06Z"
+  }
+ ],
+ "activity": [
+  {
+   "at": "2026-10-14T06:31:52Z",
+   "kind": "push",
+   "repo": "szupzj18/mnemo",
+   "branch": "main",
+   "count": 1,
+   "url": "https://github.com/szupzj18/mnemo/commits/main"
+  },
+  {
+   "at": "2026-10-14T06:31:50Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/mnemo",
+   "number": 48,
+   "title": "Shorten $HOME to ~ only as a whole path prefix",
+   "url": "https://github.com/szupzj18/mnemo/pull/48"
+  },
+  {
+   "at": "2026-10-13T10:41:29Z",
+   "kind": "star",
+   "repo": "pi-pod/pipod",
+   "url": "https://github.com/pi-pod/pipod"
+  },
+  {
+   "at": "2026-10-13T09:42:35Z",
+   "kind": "push",
+   "repo": "szupzj18/zorua",
+   "branch": "main",
+   "count": 1,
+   "url": "https://github.com/szupzj18/zorua/commits/main"
+  },
+  {
+   "at": "2026-10-13T09:42:33Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/zorua",
+   "number": 48,
+   "title": "feat: provider check with no name checks every provider; empty balance is a fail",
+   "url": "https://github.com/szupzj18/zorua/pull/48"
+  },
+  {
+   "at": "2026-10-13T05:34:29Z",
+   "kind": "release",
+   "repo": "szupzj18/mnemo",
+   "tag": "v0.5.0",
+   "title": "mnemo 0.5.0",
+   "url": "https://github.com/szupzj18/mnemo/releases/tag/v0.5.0"
+  },
+  {
+   "at": "2026-10-13T05:34:20Z",
+   "kind": "push",
+   "repo": "szupzj18/mnemo",
+   "branch": "main",
+   "count": 2,
+   "url": "https://github.com/szupzj18/mnemo/commits/main"
+  },
+  {
+   "at": "2026-10-13T05:34:18Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/mnemo",
+   "number": 46,
+   "title": "Release 0.5.0",
+   "url": "https://github.com/szupzj18/mnemo/pull/46"
+  },
+  {
+   "at": "2026-10-13T05:33:05Z",
+   "kind": "push",
+   "repo": "szupzj18/xiaohongshu-cli",
+   "branch": "main",
+   "count": 1,
+   "url": "https://github.com/szupzj18/xiaohongshu-cli/commits/main"
+  },
+  {
+   "at": "2026-10-13T05:31:40Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/mnemo",
+   "number": 47,
+   "title": "Keep the dashboard's last-sync mask a fixed width",
+   "url": "https://github.com/szupzj18/mnemo/pull/47"
+  },
+  {
+   "at": "2026-10-12T16:03:29Z",
+   "kind": "pr",
+   "action": "opened",
+   "repo": "jackwener/xiaohongshu-cli",
+   "number": 87,
+   "title": "fix: send xsec_token with sub-comments requests to avoid 461 captcha",
+   "url": "https://github.com/jackwener/xiaohongshu-cli/pull/87"
+  },
+  {
+   "at": "2026-10-12T15:58:47Z",
+   "kind": "fork",
+   "repo": "jackwener/xiaohongshu-cli",
+   "url": "https://github.com/jackwener/xiaohongshu-cli"
+  },
+  {
+   "at": "2026-10-12T09:01:45Z",
+   "kind": "comment",
+   "repo": "jackwener/xiaohongshu-cli",
+   "number": 62,
+   "title": "xhs sub-comments不可用",
+   "url": "https://github.com/jackwener/xiaohongshu-cli/issues/62"
+  },
+  {
+   "at": "2026-10-10T14:42:09Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "abue-ammar/tinycast",
+   "number": 1489,
+   "title": "Load bundled extension dependencies",
+   "url": "https://github.com/abue-ammar/tinycast/pull/1489"
+  },
+  {
+   "at": "2026-10-10T06:10:27Z",
+   "kind": "push",
+   "repo": "szupzj18/szupzj18",
+   "branch": "main",
+   "count": 4,
+   "url": "https://github.com/szupzj18/szupzj18/commits/main"
+  },
+  {
+   "at": "2026-10-10T04:56:15Z",
+   "kind": "push",
+   "repo": "szupzj18/zorua",
+   "branch": "main",
+   "count": 10,
+   "url": "https://github.com/szupzj18/zorua/commits/main"
+  },
+  {
+   "at": "2026-10-10T04:56:14Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/zorua",
+   "number": 47,
+   "title": "ci: fail when docs/demo is older than the dashboard",
+   "url": "https://github.com/szupzj18/zorua/pull/47"
+  },
+  {
+   "at": "2026-10-10T04:22:28Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/zorua",
+   "number": 46,
+   "title": "fix(web): the smallest text size was 10.5px, not 12px",
+   "url": "https://github.com/szupzj18/zorua/pull/46"
+  },
+  {
+   "at": "2026-10-10T04:10:15Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/zorua",
+   "number": 45,
+   "title": "docs: landing page accessibility and share preview, README screenshot, rebuilt demo",
+   "url": "https://github.com/szupzj18/zorua/pull/45"
+  },
+  {
+   "at": "2026-10-10T04:01:56Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/zorua",
+   "number": 44,
+   "title": "chore(web): frame-ancestors and friends, safer demo build, CI lint and freshness warning",
+   "url": "https://github.com/szupzj18/zorua/pull/44"
+  },
+  {
+   "at": "2026-10-10T02:41:36Z",
+   "kind": "release",
+   "repo": "szupzj18/zorua",
+   "tag": "v0.7.1",
+   "title": "Zorua 0.7.1",
+   "url": "https://github.com/szupzj18/zorua/releases/tag/v0.7.1"
+  },
+  {
+   "at": "2026-10-09T16:44:51Z",
+   "kind": "push",
+   "repo": "szupzj18/zorua",
+   "branch": "main",
+   "count": 7,
+   "url": "https://github.com/szupzj18/zorua/commits/main"
+  },
+  {
+   "at": "2026-10-09T15:25:56Z",
+   "kind": "release",
+   "repo": "szupzj18/zorua",
+   "tag": "v0.7.0",
+   "title": "Zorua 0.7.0",
+   "url": "https://github.com/szupzj18/zorua/releases/tag/v0.7.0"
+  },
+  {
+   "at": "2026-10-09T03:50:03Z",
+   "kind": "release",
+   "repo": "szupzj18/zorua",
+   "tag": "v0.6.0",
+   "title": "Zorua 0.6.0",
+   "url": "https://github.com/szupzj18/zorua/releases/tag/v0.6.0"
+  }
+ ],
+ "contributions": {
+  "total_last_year": 915,
+  "days": [
+   {
+    "date": "2025-10-12",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-13",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-14",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-15",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-16",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-17",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-18",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-19",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-20",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-21",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-22",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-23",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-24",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-25",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-26",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-27",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-28",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-29",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-30",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-10-31",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-01",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-02",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-03",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-04",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-05",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-06",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-07",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-08",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-09",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-10",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-11",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-12",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-13",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-14",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-15",
+    "count": 4,
+    "level": 1
+   },
+   {
+    "date": "2025-11-16",
+    "count": 9,
+    "level": 1
+   },
+   {
+    "date": "2025-11-17",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2025-11-18",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-19",
+    "count": 12,
+    "level": 1
+   },
+   {
+    "date": "2025-11-20",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-21",
+    "count": 4,
+    "level": 1
+   },
+   {
+    "date": "2025-11-22",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-11-23",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2025-11-24",
+    "count": 11,
+    "level": 1
+   },
+   {
+    "date": "2025-11-25",
+    "count": 13,
+    "level": 1
+   },
+   {
+    "date": "2025-11-26",
+    "count": 4,
+    "level": 1
+   },
+   {
+    "date": "2025-11-27",
+    "count": 10,
+    "level": 1
+   },
+   {
+    "date": "2025-11-28",
+    "count": 20,
+    "level": 1
+   },
+   {
+    "date": "2025-11-29",
+    "count": 4,
+    "level": 1
+   },
+   {
+    "date": "2025-11-30",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-12-01",
+    "count": 6,
+    "level": 1
+   },
+   {
+    "date": "2025-12-02",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-12-03",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2025-12-04",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2025-12-05",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-12-06",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-12-07",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2025-12-08",
+    "count": 12,
+    "level": 1
+   },
+   {
+    "date": "2025-12-09",
+    "count": 10,
+    "level": 1
+   },
+   {
+    "date": "2025-12-10",
+    "count": 6,
+    "level": 1
+   },
+   {
+    "date": "2025-12-11",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2025-12-12",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2025-12-13",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-12-14",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-12-15",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2025-12-16",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2025-12-17",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2025-12-18",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2025-12-19",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2025-12-20",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-12-21",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-12-22",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2025-12-23",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-12-24",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2025-12-25",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2025-12-26",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-12-27",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2025-12-28",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-12-29",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2025-12-30",
+    "count": 4,
+    "level": 1
+   },
+   {
+    "date": "2025-12-31",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-01",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-02",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-03",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-04",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-05",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-01-06",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-01-07",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2026-01-08",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-09",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-10",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2026-01-11",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-12",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-01-13",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-14",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-15",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-16",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-17",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-18",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-19",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-20",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-21",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-22",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-23",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-24",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-25",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-26",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-27",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-28",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-29",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-30",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-01-31",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-02-01",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-02-02",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-02-03",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-02-04",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-02-05",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-02-06",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-02-07",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-02-08",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-02-09",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-02-10",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2026-02-11",
+    "count": 13,
+    "level": 1
+   },
+   {
+    "date": "2026-02-12",
+    "count": 12,
+    "level": 1
+   },
+   {
+    "date": "2026-02-13",
+    "count": 13,
+    "level": 1
+   },
+   {
+    "date": "2026-02-14",
+    "count": 10,
+    "level": 1
+   },
+   {
+    "date": "2026-02-15",
+    "count": 31,
+    "level": 2
+   },
+   {
+    "date": "2026-02-16",
+    "count": 13,
+    "level": 1
+   },
+   {
+    "date": "2026-02-17",
+    "count": 8,
+    "level": 1
+   },
+   {
+    "date": "2026-02-18",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-02-19",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-02-20",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-02-21",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-02-22",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-02-23",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2026-02-24",
+    "count": 4,
+    "level": 1
+   },
+   {
+    "date": "2026-02-25",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-02-26",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-02-27",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-02-28",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-03-01",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2026-03-02",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-03-03",
+    "count": 4,
+    "level": 1
+   },
+   {
+    "date": "2026-03-04",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-05",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-06",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-07",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-08",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-03-09",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2026-03-10",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-03-11",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-03-12",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-03-13",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-03-14",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-15",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2026-03-16",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-03-17",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-03-18",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-19",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-03-20",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-21",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-22",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-23",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-24",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-25",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-26",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-27",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-28",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-29",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-30",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-03-31",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-04-01",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-02",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-03",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-04",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-05",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-06",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-07",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-08",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-09",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-10",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-11",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2026-04-12",
+    "count": 8,
+    "level": 1
+   },
+   {
+    "date": "2026-04-13",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-04-14",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-15",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-04-16",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-17",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-18",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-19",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-20",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-21",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-22",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-23",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-24",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-25",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-04-26",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-04-27",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-04-28",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-04-29",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-04-30",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-01",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-02",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-03",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-04",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-05",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-06",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-07",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-08",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-05-09",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-10",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-11",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-12",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-13",
+    "count": 17,
+    "level": 1
+   },
+   {
+    "date": "2026-05-14",
+    "count": 12,
+    "level": 1
+   },
+   {
+    "date": "2026-05-15",
+    "count": 6,
+    "level": 1
+   },
+   {
+    "date": "2026-05-16",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-17",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-18",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-19",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-20",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-21",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-22",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-23",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-24",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-25",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-26",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-27",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-28",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-29",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-30",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-05-31",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-01",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-02",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-03",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-04",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-05",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-06",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-07",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-08",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-09",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-10",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-11",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-12",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-13",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-14",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-15",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-16",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-17",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-18",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-19",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-20",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-21",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-22",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-23",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-24",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-25",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-26",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-27",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-28",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-29",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-06-30",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-01",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-02",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-03",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-04",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-05",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-06",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-07",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-08",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-09",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-10",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-11",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-12",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-13",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-14",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-15",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-16",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-17",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-18",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-19",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-20",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-21",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-22",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-23",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-24",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-25",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-26",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-27",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-28",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-29",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-30",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-07-31",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-08-01",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-08-02",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-08-03",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-08-04",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-08-05",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-08-06",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-08-07",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-08-08",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-08-09",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-08-10",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-08-11",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-08-12",
+    "count": 6,
+    "level": 1
+   },
+   {
+    "date": "2026-08-13",
+    "count": 6,
+    "level": 1
+   },
+   {
+    "date": "2026-08-14",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-08-15",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-08-16",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-08-17",
+    "count": 6,
+    "level": 1
+   },
+   {
+    "date": "2026-08-18",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-08-19",
+    "count": 5,
+    "level": 1
+   },
+   {
+    "date": "2026-08-20",
+    "count": 6,
+    "level": 1
+   },
+   {
+    "date": "2026-08-21",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-08-22",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-08-23",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-08-24",
+    "count": 12,
+    "level": 1
+   },
+   {
+    "date": "2026-08-25",
+    "count": 5,
+    "level": 1
+   },
+   {
+    "date": "2026-08-26",
+    "count": 4,
+    "level": 1
+   },
+   {
+    "date": "2026-08-27",
+    "count": 8,
+    "level": 1
+   },
+   {
+    "date": "2026-08-28",
+    "count": 12,
+    "level": 1
+   },
+   {
+    "date": "2026-08-29",
+    "count": 7,
+    "level": 1
+   },
+   {
+    "date": "2026-08-30",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-08-31",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-09-01",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2026-09-02",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-09-03",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-09-04",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2026-09-05",
+    "count": 4,
+    "level": 1
+   },
+   {
+    "date": "2026-09-06",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-09-07",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-09-08",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-09-09",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-09-10",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-09-11",
+    "count": 4,
+    "level": 1
+   },
+   {
+    "date": "2026-09-12",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-09-13",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-09-14",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-09-15",
+    "count": 3,
+    "level": 1
+   },
+   {
+    "date": "2026-09-16",
+    "count": 2,
+    "level": 1
+   },
+   {
+    "date": "2026-09-17",
+    "count": 8,
+    "level": 1
+   },
+   {
+    "date": "2026-09-18",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-09-19",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-09-20",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-09-21",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-09-22",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-09-23",
+    "count": 9,
+    "level": 1
+   },
+   {
+    "date": "2026-09-24",
+    "count": 15,
+    "level": 1
+   },
+   {
+    "date": "2026-09-25",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-09-26",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-09-27",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-09-28",
+    "count": 30,
+    "level": 2
+   },
+   {
+    "date": "2026-09-29",
+    "count": 31,
+    "level": 2
+   },
+   {
+    "date": "2026-09-30",
+    "count": 24,
+    "level": 2
+   },
+   {
+    "date": "2026-10-01",
+    "count": 21,
+    "level": 2
+   },
+   {
+    "date": "2026-10-02",
+    "count": 1,
+    "level": 1
+   },
+   {
+    "date": "2026-10-03",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-10-04",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-10-05",
+    "count": 9,
+    "level": 1
+   },
+   {
+    "date": "2026-10-06",
+    "count": 6,
+    "level": 1
+   },
+   {
+    "date": "2026-10-07",
+    "count": 0,
+    "level": 0
+   },
+   {
+    "date": "2026-10-08",
+    "count": 18,
+    "level": 1
+   },
+   {
+    "date": "2026-10-09",
+    "count": 40,
+    "level": 2
+   },
+   {
+    "date": "2026-10-10",
+    "count": 82,
+    "level": 4
+   },
+   {
+    "date": "2026-10-11",
+    "count": 20,
+    "level": 1
+   },
+   {
+    "date": "2026-10-12",
+    "count": 56,
+    "level": 3
+   },
+   {
+    "date": "2026-10-13",
+    "count": 27,
+    "level": 2
+   },
+   {
+    "date": "2026-10-14",
+    "count": 17,
+    "level": 1
+   },
+   {
+    "date": "2026-10-15",
+    "count": 7,
+    "level": 1
+   }
+  ]
+ }
+}
