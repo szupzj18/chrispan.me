@@ -19,6 +19,8 @@ const PAGE = '/v3/';
 const PDF = path.join(OUT, 'v3', 'chrispan-resume.pdf');
 const MAX_PAGES = 2;
 const TIMEOUT_MS = 60000;
+// fonts that actually carry CJK glyphs (post titles can be Chinese); anything else prints as empty boxes
+const CJK_FONT = /CJK|PingFang|Hiragino|Hei|Song|Ming|Kai|WenQuanYi|Source Han|Noto (Sans|Serif) (SC|TC|JP|KR)|YaHei|SimSun|Droid Sans Fallback/i;
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json',
   '.xml': 'application/xml', '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.pdf': 'application/pdf',
@@ -138,6 +140,24 @@ async function main() {
   const st = state.result.value;
   if (st.error || st.posts !== expectedPosts) fail(`page did not render as expected (posts ${st.posts}/${expectedPosts}, error ${st.error})`);
 
+  // Ask Chrome which system fonts drew each piece of CJK text; without a CJK font they come out as boxes.
+  await send('Runtime.evaluate', { expression: `for (const el of document.querySelectorAll('#man *'))
+    if ([...el.childNodes].some((n) => n.nodeType === 3 && /[\\u3400-\\u9fff\\uf900-\\ufaff]/.test(n.nodeValue))) el.dataset.cjk = '';` });
+  await send('DOM.enable');
+  await send('CSS.enable');
+  const { root } = await send('DOM.getDocument', { depth: -1 });
+  const { nodeIds } = await send('DOM.querySelectorAll', { nodeId: root.nodeId, selector: '[data-cjk]' });
+  const hasCjk = await send('Runtime.evaluate', { returnByValue: true, expression: `/[\\u3400-\\u9fff\\uf900-\\ufaff]/.test(document.getElementById('man').textContent)` });
+  if (hasCjk.result.value && !nodeIds.length) fail('found CJK text but no element to check its font');
+  const cjkFonts = new Set();
+  for (const nodeId of nodeIds) {
+    const { fonts } = await send('CSS.getPlatformFontsForNode', { nodeId });
+    if (!fonts.some((f) => CJK_FONT.test(f.familyName + ' ' + (f.postScriptName || '')))) {
+      fail('CJK text would print without a CJK font (used: ' + fonts.map((f) => f.familyName).join(', ') + '); install one, e.g. fonts-noto-cjk');
+    }
+    fonts.filter((f) => CJK_FONT.test(f.familyName + ' ' + (f.postScriptName || ''))).forEach((f) => cjkFonts.add(f.familyName));
+  }
+
   const { data } = await send('Page.printToPDF', { preferCSSPageSize: true, printBackground: false, displayHeaderFooter: false, generateTaggedPDF: true });
   const pdf = Buffer.from(data, 'base64');
   const text = pdf.toString('latin1');
@@ -153,7 +173,8 @@ async function main() {
   await c.send('Browser.close').catch(() => {});
   c.close();
   cleanup();
-  console.log(`pdf: ${PAGE} → ${path.relative(ROOT, PDF)} (${pages} page${pages === 1 ? '' : 's'}, ${Math.round(pdf.length / 1024)} KB, ${links} links)`);
+  const cjk = nodeIds.length ? `, CJK in ${nodeIds.length} element${nodeIds.length === 1 ? '' : 's'} via ${[...cjkFonts].join(', ')}` : '';
+  console.log(`pdf: ${PAGE} → ${path.relative(ROOT, PDF)} (${pages} page${pages === 1 ? '' : 's'}, ${Math.round(pdf.length / 1024)} KB, ${links} links${cjk})`);
 }
 
 main().catch((err) => fail(err.stack || String(err)));
