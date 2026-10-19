@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-17T02:51:45Z",
+ "generated_at": "2026-10-19T06:10:05Z",
  "source": "Public GitHub data for github.com/szupzj18 (profile, public repos, profile README, public events, public contribution calendar).",
  "profile": {
   "login": "szupzj18",
@@ -10,7 +10,7 @@
   "bio": null,
   "tagline": "Software Engineer interested in AI infra and agents.",
   "now": "Building small, sharp tools around coding agents — session memory, multi-account, simulator control.",
-  "followers": 10,
+  "followers": 11,
   "following": 14,
   "created_at": "2018-05-05T12:34:19Z",
   "domain": "chrispan.me"
@@ -110,18 +110,18 @@
  "languages": [
   {
    "name": "Python",
-   "repos": 6
+   "repos": 8
   },
   {
    "name": "Rust",
    "repos": 4
   },
   {
-   "name": "TypeScript",
-   "repos": 4
+   "name": "Swift",
+   "repos": 3
   },
   {
-   "name": "Swift",
+   "name": "TypeScript",
    "repos": 3
   },
   {
@@ -131,10 +131,6 @@
   {
    "name": "JavaScript",
    "repos": 2
-  },
-  {
-   "name": "HTML",
-   "repos": 1
   },
   {
    "name": "Kotlin",
@@ -147,6 +143,30 @@
  ],
  "repos": [
   {
+   "name": "mnemo",
+   "description": "Full-text search across local coding-agent sessions (Claude Code, Codex, Pi) and remote devices",
+   "language": "Python",
+   "stars": 2,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://szupzj18.github.io/mnemo/",
+   "url": "https://github.com/szupzj18/mnemo",
+   "created_at": "2026-09-24T08:05:01Z",
+   "pushed_at": "2026-10-19T03:33:50Z"
+  },
+  {
+   "name": "zorua",
+   "description": "Run several Codex and Claude Code accounts side by side — one per terminal. Each account keeps its own sign-in, sessions, settings and quota.",
+   "language": "Python",
+   "stars": 0,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://szupzj18.github.io/zorua/",
+   "url": "https://github.com/szupzj18/zorua",
+   "created_at": "2026-09-30T15:26:44Z",
+   "pushed_at": "2026-10-18T02:23:49Z"
+  },
+  {
    "name": "chrispan.me",
    "description": "Hello world at chrispan.me",
    "language": "JavaScript",
@@ -156,31 +176,7 @@
    "homepage": null,
    "url": "https://github.com/szupzj18/chrispan.me",
    "created_at": "2026-10-15T06:35:52Z",
-   "pushed_at": "2026-10-17T02:50:23Z"
-  },
-  {
-   "name": "mnemo",
-   "description": "Full-text search across local coding-agent sessions (Claude Code, Codex, Pi) and remote devices",
-   "language": "HTML",
-   "stars": 2,
-   "archived": false,
-   "topics": [],
-   "homepage": "https://szupzj18.github.io/mnemo/",
-   "url": "https://github.com/szupzj18/mnemo",
-   "created_at": "2026-09-24T08:05:01Z",
-   "pushed_at": "2026-10-15T11:31:40Z"
-  },
-  {
-   "name": "zorua",
-   "description": "Run several Codex and Claude Code accounts side by side — one per terminal. Each account keeps its own sign-in, sessions, settings and quota.",
-   "language": "TypeScript",
-   "stars": 0,
-   "archived": false,
-   "topics": [],
-   "homepage": "https://szupzj18.github.io/zorua/",
-   "url": "https://github.com/szupzj18/zorua",
-   "created_at": "2026-09-30T15:26:44Z",
-   "pushed_at": "2026-10-13T09:42:33Z"
+   "pushed_at": "2026-10-17T02:51:45Z"
   },
   {
    "name": "flick",
@@ -458,6 +454,160 @@
  ],
  "activity": [
   {
+   "at": "2026-10-19T03:33:49Z",
+   "kind": "push",
+   "repo": "szupzj18/mnemo",
+   "branch": "main",
+   "count": 1,
+   "url": "https://github.com/szupzj18/mnemo/commits/main"
+  },
+  {
+   "at": "2026-10-19T03:33:48Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/mnemo",
+   "number": 53,
+   "title": "Index Antigravity CLI (agy) conversations",
+   "url": "https://github.com/szupzj18/mnemo/pull/53"
+  },
+  {
+   "at": "2026-10-18T17:52:00Z",
+   "kind": "push",
+   "repo": "szupzj18/mnemo",
+   "branch": "main",
+   "count": 1,
+   "url": "https://github.com/szupzj18/mnemo/commits/main"
+  },
+  {
+   "at": "2026-10-18T17:51:59Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/mnemo",
+   "number": 52,
+   "title": "Index every account's sessions and keep them after the agent deletes them",
+   "url": "https://github.com/szupzj18/mnemo/pull/52"
+  },
+  {
+   "at": "2026-10-18T02:23:50Z",
+   "kind": "push",
+   "repo": "szupzj18/zorua",
+   "branch": "main",
+   "count": 1,
+   "url": "https://github.com/szupzj18/zorua/commits/main"
+  },
+  {
+   "at": "2026-10-18T02:23:49Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/zorua",
+   "number": 54,
+   "title": "fix: keep provider keys out of the security command line",
+   "url": "https://github.com/szupzj18/zorua/pull/54"
+  },
+  {
+   "at": "2026-10-17T10:14:36Z",
+   "kind": "push",
+   "repo": "szupzj18/zorua",
+   "branch": "main",
+   "count": 5,
+   "url": "https://github.com/szupzj18/zorua/commits/main"
+  },
+  {
+   "at": "2026-10-17T10:14:35Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/zorua",
+   "number": 53,
+   "title": "docs: list zorua model [--save] on the landing page",
+   "url": "https://github.com/szupzj18/zorua/pull/53"
+  },
+  {
+   "at": "2026-10-17T09:54:30Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/zorua",
+   "number": 52,
+   "title": "feat: set a provider's default model and pass provider-level Claude settings",
+   "url": "https://github.com/szupzj18/zorua/pull/52"
+  },
+  {
+   "at": "2026-10-17T08:48:16Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/zorua",
+   "number": 51,
+   "title": "feat: add read-only account environment doctor",
+   "url": "https://github.com/szupzj18/zorua/pull/51"
+  },
+  {
+   "at": "2026-10-17T08:44:36Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/zorua",
+   "number": 50,
+   "title": "feat: add tag-based account recommendations with shared usage caching",
+   "url": "https://github.com/szupzj18/zorua/pull/50"
+  },
+  {
+   "at": "2026-10-17T08:39:55Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/zorua",
+   "number": 49,
+   "title": "feat: protect provider keys with Keychain and add key rotation",
+   "url": "https://github.com/szupzj18/zorua/pull/49"
+  },
+  {
+   "at": "2026-10-17T05:29:22Z",
+   "kind": "release",
+   "repo": "szupzj18/mnemo",
+   "tag": "v0.6.0",
+   "title": "mnemo 0.6.0",
+   "url": "https://github.com/szupzj18/mnemo/releases/tag/v0.6.0"
+  },
+  {
+   "at": "2026-10-17T05:29:14Z",
+   "kind": "push",
+   "repo": "szupzj18/mnemo",
+   "branch": "main",
+   "count": 2,
+   "url": "https://github.com/szupzj18/mnemo/commits/main"
+  },
+  {
+   "at": "2026-10-17T05:29:12Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/mnemo",
+   "number": 51,
+   "title": "Release 0.6.0",
+   "url": "https://github.com/szupzj18/mnemo/pull/51"
+  },
+  {
+   "at": "2026-10-17T05:21:26Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/mnemo",
+   "number": 50,
+   "title": "Clip context bodies at 2,000 characters by default",
+   "url": "https://github.com/szupzj18/mnemo/pull/50"
+  },
+  {
+   "at": "2026-10-17T02:50:24Z",
+   "kind": "push",
+   "repo": "szupzj18/chrispan.me",
+   "branch": "main",
+   "count": 1,
+   "url": "https://github.com/szupzj18/chrispan.me/commits/main"
+  },
+  {
+   "at": "2026-10-16T07:42:58Z",
+   "kind": "push",
+   "repo": "szupzj18/szupzj18",
+   "branch": "main",
+   "count": 2,
+   "url": "https://github.com/szupzj18/szupzj18/commits/main"
+  },
+  {
    "at": "2026-10-15T12:28:16Z",
    "kind": "push",
    "repo": "szupzj18/chrispan.me",
@@ -506,185 +656,11 @@
    "branch": "main",
    "count": 1,
    "url": "https://github.com/szupzj18/zorua/commits/main"
-  },
-  {
-   "at": "2026-10-13T09:42:33Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/zorua",
-   "number": 48,
-   "title": "feat: provider check with no name checks every provider; empty balance is a fail",
-   "url": "https://github.com/szupzj18/zorua/pull/48"
-  },
-  {
-   "at": "2026-10-13T05:34:29Z",
-   "kind": "release",
-   "repo": "szupzj18/mnemo",
-   "tag": "v0.5.0",
-   "title": "mnemo 0.5.0",
-   "url": "https://github.com/szupzj18/mnemo/releases/tag/v0.5.0"
-  },
-  {
-   "at": "2026-10-13T05:34:20Z",
-   "kind": "push",
-   "repo": "szupzj18/mnemo",
-   "branch": "main",
-   "count": 2,
-   "url": "https://github.com/szupzj18/mnemo/commits/main"
-  },
-  {
-   "at": "2026-10-13T05:34:18Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/mnemo",
-   "number": 46,
-   "title": "Release 0.5.0",
-   "url": "https://github.com/szupzj18/mnemo/pull/46"
-  },
-  {
-   "at": "2026-10-13T05:31:40Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/mnemo",
-   "number": 47,
-   "title": "Keep the dashboard's last-sync mask a fixed width",
-   "url": "https://github.com/szupzj18/mnemo/pull/47"
-  },
-  {
-   "at": "2026-10-10T06:10:27Z",
-   "kind": "push",
-   "repo": "szupzj18/szupzj18",
-   "branch": "main",
-   "count": 3,
-   "url": "https://github.com/szupzj18/szupzj18/commits/main"
-  },
-  {
-   "at": "2026-10-10T04:56:15Z",
-   "kind": "push",
-   "repo": "szupzj18/zorua",
-   "branch": "main",
-   "count": 9,
-   "url": "https://github.com/szupzj18/zorua/commits/main"
-  },
-  {
-   "at": "2026-10-10T02:41:36Z",
-   "kind": "release",
-   "repo": "szupzj18/zorua",
-   "tag": "v0.7.1",
-   "title": "Zorua 0.7.1",
-   "url": "https://github.com/szupzj18/zorua/releases/tag/v0.7.1"
-  },
-  {
-   "at": "2026-10-09T16:44:51Z",
-   "kind": "push",
-   "repo": "szupzj18/zorua",
-   "branch": "main",
-   "count": 5,
-   "url": "https://github.com/szupzj18/zorua/commits/main"
-  },
-  {
-   "at": "2026-10-09T15:25:56Z",
-   "kind": "release",
-   "repo": "szupzj18/zorua",
-   "tag": "v0.7.0",
-   "title": "Zorua 0.7.0",
-   "url": "https://github.com/szupzj18/zorua/releases/tag/v0.7.0"
-  },
-  {
-   "at": "2026-10-09T03:50:03Z",
-   "kind": "release",
-   "repo": "szupzj18/zorua",
-   "tag": "v0.6.0",
-   "title": "Zorua 0.6.0",
-   "url": "https://github.com/szupzj18/zorua/releases/tag/v0.6.0"
-  },
-  {
-   "at": "2026-10-08T06:11:06Z",
-   "kind": "release",
-   "repo": "szupzj18/zorua",
-   "tag": "v0.5.0",
-   "title": "Zorua 0.5.0",
-   "url": "https://github.com/szupzj18/zorua/releases/tag/v0.5.0"
-  },
-  {
-   "at": "2026-09-30T08:56:59Z",
-   "kind": "release",
-   "repo": "szupzj18/mnemo",
-   "tag": "v0.4.1",
-   "title": "mnemo 0.4.1",
-   "url": "https://github.com/szupzj18/mnemo/releases/tag/v0.4.1"
-  },
-  {
-   "at": "2026-09-30T04:34:11Z",
-   "kind": "release",
-   "repo": "szupzj18/mnemo",
-   "tag": "v0.4.0",
-   "title": "mnemo 0.4.0",
-   "url": "https://github.com/szupzj18/mnemo/releases/tag/v0.4.0"
-  },
-  {
-   "at": "2026-09-29T05:45:52Z",
-   "kind": "release",
-   "repo": "szupzj18/mnemo",
-   "tag": "v0.3.0",
-   "title": "mnemo 0.3.0",
-   "url": "https://github.com/szupzj18/mnemo/releases/tag/v0.3.0"
-  },
-  {
-   "at": "2026-09-29T05:23:36Z",
-   "kind": "release",
-   "repo": "szupzj18/mnemo",
-   "tag": "v0.2.0",
-   "title": "mnemo 0.2.0: any topology",
-   "url": "https://github.com/szupzj18/mnemo/releases/tag/v0.2.0"
-  },
-  {
-   "at": "2026-09-29T05:23:35Z",
-   "kind": "release",
-   "repo": "szupzj18/mnemo",
-   "tag": "v0.1.0",
-   "title": "mnemo 0.1.0",
-   "url": "https://github.com/szupzj18/mnemo/releases/tag/v0.1.0"
   }
  ],
  "contributions": {
-  "total_last_year": 949,
+  "total_last_year": 984,
   "days": [
-   {
-    "date": "2025-10-12",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-13",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-14",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-15",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-16",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-17",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-18",
-    "count": 0,
-    "level": 0
-   },
    {
     "date": "2025-10-19",
     "count": 0,
@@ -2502,7 +2478,17 @@
    },
    {
     "date": "2026-10-17",
-    "count": 1,
+    "count": 20,
+    "level": 2
+   },
+   {
+    "date": "2026-10-18",
+    "count": 7,
+    "level": 1
+   },
+   {
+    "date": "2026-10-19",
+    "count": 9,
     "level": 1
    }
   ]
