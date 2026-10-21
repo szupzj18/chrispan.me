@@ -44,6 +44,7 @@
       h('p', { class: 'syn' }, b('chrispan'), ' ', b('--say-hi'))));
 
     out.push(section('description', 'DESCRIPTION',
+      P.intro ? p(b(P.intro)) : null,
       p(b(P.name), ' (', a(P.html_url, '@' + P.login), ') is currently ', P.now.charAt(0).toLowerCase() + P.now.slice(1)),
       p('The public record: ', b(String(own.length)), ' repositories on GitHub, ',
         b(String(D.contributions.total_last_year)), ' contributions in the last year, ', P.followers, ' followers.')));

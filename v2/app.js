@@ -79,6 +79,7 @@
         h('div', null,
           h('h3', null, p.name, s('dim', ' @' + p.login)),
           h('p', null, p.tagline),
+          p.intro ? h('p', { class: 'intro' }, p.intro) : null,
           h('p', { class: 'dim' }, D.hello))),
       h('dl', { class: 'kv' },
         h('dt', null, 'now'), h('dd', null, p.now),

@@ -9,6 +9,12 @@
   "location": null,
   "bio": null,
   "tagline": "Software Engineer interested in AI infra and agents.",
+  "intro": "100x engineering with agents — shipping with quality and taste.",
+  "proof": {
+   "text": "Running a fleet of coding agents",
+   "link": "see how it works →",
+   "url": null
+  },
   "now": "Building small, sharp tools around coding agents — session memory, multi-account, simulator control.",
   "followers": 11,
   "following": 14,

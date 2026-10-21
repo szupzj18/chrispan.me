@@ -136,6 +136,10 @@ button.run.file { color: var(--fg); font-weight: 400; }
   /* shrinks only under ~390px; whole pixels, or the block rows show hairline seams */
   .logo { font-size: min(1em, calc((100vw - 32px) / 27)); font-size: round(down, min(1em, calc((100vw - 32px) / 27)), 1px); }
 }
+/* intro line under the wordmark (plus the proof line, once it has a link) */
+.motto { flex: 1 0 100%; margin: -4px 0 16px; }
+.motto .h { text-wrap: balance; }
+.motto .proof a { white-space: nowrap; }
 .swatch { letter-spacing: 0; }
 
 .heat svg { display: block; overflow: visible; }

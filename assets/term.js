@@ -140,6 +140,7 @@
     const p = D.profile;
     print(s('h', p.name), s('dim', ' (@' + p.login + ')'));
     print(p.tagline);
+    if (p.intro) print(p.intro);
     blank();
     print(p.now);
     blank();
@@ -273,6 +274,14 @@
     return Math.floor(m / 12) + ' years, ' + (m % 12) + ' months';
   }
 
+  // the line under the wordmark; the proof line stays hidden until profile.proof.url is set in data.json
+  function motto(p) {
+    if (!p.intro) return null;
+    const el = h('div', { class: 'motto' }, h('div', { class: 'ln h' }, p.intro));
+    if (p.proof && p.proof.url) el.append(h('div', { class: 'ln proof' }, s('dim', p.proof.text + ' — '), a(p.proof.url, p.proof.link)));
+    return el;
+  }
+
   function neofetch() {
     const p = D.profile;
     const logo = h('div', { class: 'logo', role: 'img', 'aria-label': 'chrispan, in block letters' },
@@ -295,7 +304,7 @@
     info.append(h('div', { class: 'ln' }, ''));
     info.append(h('div', { class: 'ln swatch', 'aria-hidden': 'true' },
       ['r', 'o', 'y', 'g', 'c', 'bl', 'pu', 'h'].map((c) => s(c, '███'))));
-    block.append(h('div', { class: 'fetch' }, logo, info));
+    block.append(h('div', { class: 'fetch' }, logo, motto(p), info));
   }
 
   function activityLine(e) {
@@ -409,6 +418,7 @@
     help: { d: 'list commands', fn: help },
     whoami: { d: 'who is this', fn: () => {
       print(s('g b', D.profile.name), s('dim', ' · '), D.profile.tagline);
+      if (D.profile.intro) print(D.profile.intro);
       print(s('dim', 'try '), run('cat about.txt'), s('dim', ', '), run('ls repos'), s('dim', ' or '), run('neofetch'));
     } },
     blog: { d: 'list blog posts, newest first', usage: 'blog [slug]', complete: () => D.posts.map((p) => p.slug), fn: (args) => {

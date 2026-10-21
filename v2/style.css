@@ -106,7 +106,8 @@ kbd {
       "post  post  act"
       "keys  keys  keys";
   }
-  #p-repo .rows, #act { overflow: auto; }
+  /* #prof: on short screens whoami scrolls instead of cutting off its last rows */
+  #p-repo .rows, #act, #prof { overflow: auto; }
 }
 
 /* ---------- bars ---------- */
@@ -197,6 +198,7 @@ kbd {
 }
 .who h3 { margin: 0; font: inherit; font-weight: 700; color: var(--green); }
 .who p { margin: 0; }
+.who .intro { font-weight: 700; }
 .kv { display: grid; grid-template-columns: 8ch minmax(0, 1fr); column-gap: 1ch; margin-top: .5em; }
 .kv dt { color: var(--mauve); }
 .kv dd { margin: 0; }
