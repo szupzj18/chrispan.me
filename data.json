@@ -108,6 +108,31 @@
    "url": "https://github.com/szupzj18/flick"
   }
  ],
+ "projects_without_repo": [
+  {
+   "name": "agent-system",
+   "man": 7,
+   "section": "featured",
+   "meta": "Python · in Chinese",
+   "summary": "A fleet of coding agents, mapped: who decides, who dispatches, who does the work, how reports close the loop and how the system improves itself.",
+   "points": [
+    "From the skills library and a system model: 67 nodes, 15 views.",
+    "Animated data flow, zoom, minimap, ⌘K search, light and dark."
+   ],
+   "stack": [
+    "Python",
+    "SVG",
+    "one self-contained HTML page"
+   ],
+   "url": "https://chrispan.me/skills/",
+   "credit": {
+    "text": "Map viewer adapted from",
+    "link": "EricTechPro/super-board",
+    "url": "https://github.com/EricTechPro/super-board",
+    "license": "MIT"
+   }
+  }
+ ],
  "learning": "GPT from scratch, a toy browser engine and a tsc clone — small builds to understand how things work.",
  "hello": "Open to interesting problems — say hi anytime.",
  "pinned": [

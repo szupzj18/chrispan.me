@@ -56,18 +56,26 @@
         return [h('dt', null, f[0] ? [b(f[0]), ', '] : '', b(f[1])), h('dd', null, k.items.join(', ') + '.')];
       }))));
 
+    // hand-written projects with no public repo (e.g. a page on this site), listed first in their section
+    const noRepo = (sect) => (D.projects_without_repo || []).filter((x) => x.section === sect);
+    const building = [...noRepo('building'), ...D.building];
+    const featured = [...noRepo('featured'), ...D.featured];
     const projDl = (list) => h('dl', null, list.map((x) => {
       const r = D.repos.find((y) => y.name === x.name);
       const links = [a(r ? r.url : x.url)];
       if (x.homepage || (r && r.homepage)) links.push(' · ', a(x.homepage || r.homepage));
       else if (x.url && r && x.url !== r.url) links.push(' · ', a(x.url));
+      const meta = r ? (r.language || '') + (r.stars ? ' · ★' + r.stars : '') : x.meta;
       return [
-        h('dt', null, b(x.name), '(1)', r ? h('span', { class: 'meta' }, '  ' + (r.language || '') + (r.stars ? ' · ★' + r.stars : '')) : ''),
-        h('dd', null, h('p', null, x.summary), h('p', null, h('span', { class: 'dim' }, 'Stack: '), x.stack.join(', '), '. ', links)),
+        h('dt', null, b(x.name), '(' + (x.man || 1) + ')', meta ? h('span', { class: 'meta' }, '  ' + meta) : ''),
+        h('dd', null, h('p', null, x.summary),
+          x.points ? h('ul', { class: 'pts' }, x.points.map((t) => h('li', null, t))) : null,
+          h('p', null, h('span', { class: 'dim' }, 'Stack: '), x.stack.join(', '), '. ', links),
+          x.credit ? h('p', null, h('span', { class: 'dim' }, x.credit.text + ' '), h('a', { href: x.credit.url, class: 'bare' }, x.credit.link), h('span', { class: 'dim' }, ' (' + x.credit.license + ').')) : null),
       ];
     }));
-    out.push(section('building', 'CURRENTLY BUILDING', projDl(D.building)));
-    out.push(section('featured', 'FEATURED', projDl(D.featured)));
+    out.push(section('building', 'CURRENTLY BUILDING', projDl(building)));
+    out.push(section('featured', 'FEATURED', projDl(featured)));
 
     // same list as the terminal's `blog` and /blog/ (built from posts/*.md)
     const abs = (path) => new URL(path, location.href).href;
@@ -105,9 +113,9 @@
       p(D.hello, ' Report at ', a(P.html_url), '.')));
 
     out.push(section('see-also', 'SEE ALSO',
-      p([...D.building, ...D.featured].map((x, i) => {
+      p([...building, ...featured].map((x, i) => {
         const r = D.repos.find((y) => y.name === x.name);
-        return [i ? ', ' : '', h('a', { href: (r && r.homepage) || x.homepage || x.url, class: 'bare' }, b(x.name), '(1)')];
+        return [i ? ', ' : '', h('a', { href: (r && r.homepage) || x.homepage || x.url, class: 'bare' }, b(x.name), '(' + (x.man || 1) + ')')];
       }), ', ', h('a', { href: '/blog/', class: 'bare' }, b('blog'), '(7)'), ', ', h('a', { href: P.html_url, class: 'bare' }, b('github'), '(7)'), '.')));
 
     out.push(section('author', 'AUTHOR',

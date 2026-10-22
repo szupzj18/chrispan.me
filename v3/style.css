@@ -70,6 +70,9 @@ dt:first-child { margin-top: 0; }
 dd { margin: 0; padding-left: calc(var(--ind) * 2); }
 dt .meta { color: var(--dim); font-weight: 400; }
 dt .tag { color: var(--accent); }
+.pts { margin: 0 0 .9em; padding: 0; list-style: none; }
+.pts li { padding-left: 2ch; text-indent: -2ch; }
+.pts li::before { content: "- "; color: var(--dim); }
 .ind .tag { color: var(--accent); }
 
 .hist { padding-left: var(--ind); margin: 0; list-style: none; }
@@ -132,7 +135,7 @@ mark { background: var(--head); color: var(--bg); }
   body { font-size: 9.5pt; line-height: 1.38; }
   .mf { margin-top: 1.2em; }
   section { margin-bottom: .75em; }
-  p { margin-bottom: .45em; }
+  p, .pts { margin-bottom: .45em; }
   dt { margin-top: .35em; }
   #history, #posts .sum, #repositories dd { display: none !important; }
   #repositories dl { columns: 2; column-gap: 3ch; padding-left: var(--ind); }
