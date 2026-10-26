@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-19T06:10:05Z",
+ "generated_at": "2026-10-26T06:09:13Z",
  "source": "Public GitHub data for github.com/szupzj18 (profile, public repos, profile README, public events, public contribution calendar).",
  "profile": {
   "login": "szupzj18",
@@ -16,7 +16,7 @@
    "url": "/skills/"
   },
   "now": "Building small, sharp tools around coding agents — session memory, multi-account, simulator control.",
-  "followers": 11,
+  "followers": 12,
   "following": 14,
   "created_at": "2018-05-05T12:34:19Z",
   "domain": "chrispan.me"
@@ -149,7 +149,7 @@
   },
   {
    "name": "Swift",
-   "repos": 3
+   "repos": 4
   },
   {
    "name": "TypeScript",
@@ -160,8 +160,12 @@
    "repos": 2
   },
   {
+   "name": "HTML",
+   "repos": 1
+  },
+  {
    "name": "JavaScript",
-   "repos": 2
+   "repos": 1
   },
   {
    "name": "Kotlin",
@@ -174,6 +178,18 @@
  ],
  "repos": [
   {
+   "name": "snap",
+   "description": "Open-source screenshot tool for macOS, in the spirit of CleanShot X",
+   "language": "Swift",
+   "stars": 2,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/snap",
+   "created_at": "2026-10-22T08:42:11Z",
+   "pushed_at": "2026-10-25T15:12:18Z"
+  },
+  {
    "name": "mnemo",
    "description": "Full-text search across local coding-agent sessions (Claude Code, Codex, Pi) and remote devices",
    "language": "Python",
@@ -183,7 +199,7 @@
    "homepage": "https://szupzj18.github.io/mnemo/",
    "url": "https://github.com/szupzj18/mnemo",
    "created_at": "2026-09-24T08:05:01Z",
-   "pushed_at": "2026-10-19T03:33:50Z"
+   "pushed_at": "2026-10-25T05:48:01Z"
   },
   {
    "name": "zorua",
@@ -195,19 +211,19 @@
    "homepage": "https://szupzj18.github.io/zorua/",
    "url": "https://github.com/szupzj18/zorua",
    "created_at": "2026-09-30T15:26:44Z",
-   "pushed_at": "2026-10-18T02:23:49Z"
+   "pushed_at": "2026-10-23T02:09:17Z"
   },
   {
    "name": "chrispan.me",
    "description": "Hello world at chrispan.me",
-   "language": "JavaScript",
+   "language": "HTML",
    "stars": 0,
    "archived": false,
    "topics": [],
    "homepage": null,
    "url": "https://github.com/szupzj18/chrispan.me",
    "created_at": "2026-10-15T06:35:52Z",
-   "pushed_at": "2026-10-17T02:51:45Z"
+   "pushed_at": "2026-10-22T08:43:55Z"
   },
   {
    "name": "flick",
@@ -485,7 +501,24 @@
  ],
  "activity": [
   {
-   "at": "2026-10-19T03:33:49Z",
+   "at": "2026-10-25T15:12:18Z",
+   "kind": "push",
+   "repo": "szupzj18/snap",
+   "branch": "main",
+   "count": 1,
+   "url": "https://github.com/szupzj18/snap/commits/main"
+  },
+  {
+   "at": "2026-10-25T15:12:17Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/snap",
+   "number": 13,
+   "title": "Editor background: window and browser frames",
+   "url": "https://github.com/szupzj18/snap/pull/13"
+  },
+  {
+   "at": "2026-10-25T05:48:01Z",
    "kind": "push",
    "repo": "szupzj18/mnemo",
    "branch": "main",
@@ -493,16 +526,16 @@
    "url": "https://github.com/szupzj18/mnemo/commits/main"
   },
   {
-   "at": "2026-10-19T03:33:48Z",
+   "at": "2026-10-25T05:47:59Z",
    "kind": "pr",
    "action": "merged",
    "repo": "szupzj18/mnemo",
-   "number": 53,
-   "title": "Index Antigravity CLI (agy) conversations",
-   "url": "https://github.com/szupzj18/mnemo/pull/53"
+   "number": 57,
+   "title": "Skills across devices and agents, phase 3: sync by manifest",
+   "url": "https://github.com/szupzj18/mnemo/pull/57"
   },
   {
-   "at": "2026-10-18T17:52:00Z",
+   "at": "2026-10-24T16:35:11Z",
    "kind": "push",
    "repo": "szupzj18/mnemo",
    "branch": "main",
@@ -510,223 +543,178 @@
    "url": "https://github.com/szupzj18/mnemo/commits/main"
   },
   {
-   "at": "2026-10-18T17:51:59Z",
+   "at": "2026-10-24T16:35:10Z",
    "kind": "pr",
    "action": "merged",
    "repo": "szupzj18/mnemo",
-   "number": 52,
-   "title": "Index every account's sessions and keep them after the agent deletes them",
-   "url": "https://github.com/szupzj18/mnemo/pull/52"
+   "number": 56,
+   "title": "Replace multi-device federation Mermaid with Pele PNGs",
+   "url": "https://github.com/szupzj18/mnemo/pull/56"
   },
   {
-   "at": "2026-10-18T02:23:50Z",
-   "kind": "push",
-   "repo": "szupzj18/zorua",
-   "branch": "main",
-   "count": 1,
-   "url": "https://github.com/szupzj18/zorua/commits/main"
-  },
-  {
-   "at": "2026-10-18T02:23:49Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/zorua",
-   "number": 54,
-   "title": "fix: keep provider keys out of the security command line",
-   "url": "https://github.com/szupzj18/zorua/pull/54"
-  },
-  {
-   "at": "2026-10-17T10:14:36Z",
-   "kind": "push",
-   "repo": "szupzj18/zorua",
-   "branch": "main",
-   "count": 5,
-   "url": "https://github.com/szupzj18/zorua/commits/main"
-  },
-  {
-   "at": "2026-10-17T10:14:35Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/zorua",
-   "number": 53,
-   "title": "docs: list zorua model [--save] on the landing page",
-   "url": "https://github.com/szupzj18/zorua/pull/53"
-  },
-  {
-   "at": "2026-10-17T09:54:30Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/zorua",
-   "number": 52,
-   "title": "feat: set a provider's default model and pass provider-level Claude settings",
-   "url": "https://github.com/szupzj18/zorua/pull/52"
-  },
-  {
-   "at": "2026-10-17T08:48:16Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/zorua",
-   "number": 51,
-   "title": "feat: add read-only account environment doctor",
-   "url": "https://github.com/szupzj18/zorua/pull/51"
-  },
-  {
-   "at": "2026-10-17T08:44:36Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/zorua",
-   "number": 50,
-   "title": "feat: add tag-based account recommendations with shared usage caching",
-   "url": "https://github.com/szupzj18/zorua/pull/50"
-  },
-  {
-   "at": "2026-10-17T08:39:55Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/zorua",
-   "number": 49,
-   "title": "feat: protect provider keys with Keychain and add key rotation",
-   "url": "https://github.com/szupzj18/zorua/pull/49"
-  },
-  {
-   "at": "2026-10-17T05:29:22Z",
-   "kind": "release",
-   "repo": "szupzj18/mnemo",
-   "tag": "v0.6.0",
-   "title": "mnemo 0.6.0",
-   "url": "https://github.com/szupzj18/mnemo/releases/tag/v0.6.0"
-  },
-  {
-   "at": "2026-10-17T05:29:14Z",
-   "kind": "push",
-   "repo": "szupzj18/mnemo",
-   "branch": "main",
-   "count": 2,
-   "url": "https://github.com/szupzj18/mnemo/commits/main"
-  },
-  {
-   "at": "2026-10-17T05:29:12Z",
+   "at": "2026-10-23T07:24:24Z",
    "kind": "pr",
    "action": "merged",
    "repo": "szupzj18/mnemo",
-   "number": 51,
-   "title": "Release 0.6.0",
-   "url": "https://github.com/szupzj18/mnemo/pull/51"
+   "number": 55,
+   "title": "Skills across devices and agents, phase 1: search and usage stats",
+   "url": "https://github.com/szupzj18/mnemo/pull/55"
   },
   {
-   "at": "2026-10-17T05:21:26Z",
+   "at": "2026-10-23T07:03:51Z",
    "kind": "pr",
    "action": "merged",
-   "repo": "szupzj18/mnemo",
-   "number": 50,
-   "title": "Clip context bodies at 2,000 characters by default",
-   "url": "https://github.com/szupzj18/mnemo/pull/50"
+   "repo": "szupzj18/snap",
+   "number": 12,
+   "title": "Editor: zoom and pan",
+   "url": "https://github.com/szupzj18/snap/pull/12"
   },
   {
-   "at": "2026-10-17T02:50:24Z",
+   "at": "2026-10-23T06:54:34Z",
    "kind": "push",
-   "repo": "szupzj18/chrispan.me",
-   "branch": "main",
-   "count": 1,
-   "url": "https://github.com/szupzj18/chrispan.me/commits/main"
-  },
-  {
-   "at": "2026-10-16T07:42:58Z",
-   "kind": "push",
-   "repo": "szupzj18/szupzj18",
-   "branch": "main",
-   "count": 2,
-   "url": "https://github.com/szupzj18/szupzj18/commits/main"
-  },
-  {
-   "at": "2026-10-15T12:28:16Z",
-   "kind": "push",
-   "repo": "szupzj18/chrispan.me",
+   "repo": "szupzj18/snap",
    "branch": "main",
    "count": 12,
-   "url": "https://github.com/szupzj18/chrispan.me/commits/main"
+   "url": "https://github.com/szupzj18/snap/commits/main"
   },
   {
-   "at": "2026-10-15T11:31:38Z",
-   "kind": "push",
-   "repo": "szupzj18/mnemo",
-   "branch": "main",
-   "count": 1,
-   "url": "https://github.com/szupzj18/mnemo/commits/main"
-  },
-  {
-   "at": "2026-10-15T11:31:37Z",
+   "at": "2026-10-23T06:54:33Z",
    "kind": "pr",
    "action": "merged",
-   "repo": "szupzj18/mnemo",
-   "number": 49,
-   "title": "Leave the caller's own session out of searches; clip context bodies on request",
-   "url": "https://github.com/szupzj18/mnemo/pull/49"
+   "repo": "szupzj18/snap",
+   "number": 11,
+   "title": "Annotate and pin existing images",
+   "url": "https://github.com/szupzj18/snap/pull/11"
   },
   {
-   "at": "2026-10-14T06:31:52Z",
-   "kind": "push",
-   "repo": "szupzj18/mnemo",
-   "branch": "main",
-   "count": 1,
-   "url": "https://github.com/szupzj18/mnemo/commits/main"
-  },
-  {
-   "at": "2026-10-14T06:31:50Z",
+   "at": "2026-10-23T06:47:52Z",
    "kind": "pr",
    "action": "merged",
-   "repo": "szupzj18/mnemo",
-   "number": 48,
-   "title": "Shorten $HOME to ~ only as a whole path prefix",
-   "url": "https://github.com/szupzj18/mnemo/pull/48"
+   "repo": "szupzj18/snap",
+   "number": 10,
+   "title": "Editor: ellipse, line, pen, spotlight",
+   "url": "https://github.com/szupzj18/snap/pull/10"
   },
   {
-   "at": "2026-10-13T09:42:35Z",
-   "kind": "push",
+   "at": "2026-10-23T06:35:21Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/snap",
+   "number": 9,
+   "title": "Editor: background for sharing",
+   "url": "https://github.com/szupzj18/snap/pull/9"
+  },
+  {
+   "at": "2026-10-23T06:18:45Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/snap",
+   "number": 8,
+   "title": "Trim recordings",
+   "url": "https://github.com/szupzj18/snap/pull/8"
+  },
+  {
+   "at": "2026-10-23T06:13:09Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/snap",
+   "number": 7,
+   "title": "Recording: system audio, microphone, pause/resume",
+   "url": "https://github.com/szupzj18/snap/pull/7"
+  },
+  {
+   "at": "2026-10-23T06:01:18Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/snap",
+   "number": 6,
+   "title": "Release packaging: DMG, draft releases, update check",
+   "url": "https://github.com/szupzj18/snap/pull/6"
+  },
+  {
+   "at": "2026-10-23T05:45:41Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/snap",
+   "number": 5,
+   "title": "Add make ui-snapshots",
+   "url": "https://github.com/szupzj18/snap/pull/5"
+  },
+  {
+   "at": "2026-10-23T03:54:54Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/snap",
+   "number": 4,
+   "title": "Refine the Quick Access preview",
+   "url": "https://github.com/szupzj18/snap/pull/4"
+  },
+  {
+   "at": "2026-10-23T02:25:19Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/snap",
+   "number": 3,
+   "title": "Editor: crop, Shift/Option constraints, edit text by double-click",
+   "url": "https://github.com/szupzj18/snap/pull/3"
+  },
+  {
+   "at": "2026-10-23T02:18:13Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/snap",
+   "number": 2,
+   "title": "Feedback: capture sound, confirmations, open at login",
+   "url": "https://github.com/szupzj18/snap/pull/2"
+  },
+  {
+   "at": "2026-10-23T02:13:25Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/snap",
+   "number": 1,
+   "title": "Polish area selection: magnifier, Space to move or switch, Option from center",
+   "url": "https://github.com/szupzj18/snap/pull/1"
+  },
+  {
+   "at": "2026-10-23T02:09:15Z",
+   "kind": "pr",
+   "action": "merged",
    "repo": "szupzj18/zorua",
+   "number": 59,
+   "title": "feat: show the Antigravity CLI (agy) sign-in in ls and usage",
+   "url": "https://github.com/szupzj18/zorua/pull/59"
+  },
+  {
+   "at": "2026-10-22T12:32:18Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/zorua",
+   "number": 58,
+   "title": "ci: run the python 3.8 shells job on ubuntu-24.04",
+   "url": "https://github.com/szupzj18/zorua/pull/58"
+  },
+  {
+   "at": "2026-10-22T11:38:03Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/zorua",
+   "number": 57,
+   "title": "feat: zorua usage --remaining shows what is left, with a saved default (usage mode)",
+   "url": "https://github.com/szupzj18/zorua/pull/57"
+  },
+  {
+   "at": "2026-10-22T10:11:53Z",
+   "kind": "push",
+   "repo": "szupzj18/snap",
    "branch": "main",
-   "count": 1,
-   "url": "https://github.com/szupzj18/zorua/commits/main"
+   "count": 3,
+   "url": "https://github.com/szupzj18/snap/commits/main"
   }
  ],
  "contributions": {
-  "total_last_year": 984,
+  "total_last_year": 1151,
   "days": [
-   {
-    "date": "2025-10-19",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-20",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-21",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-22",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-23",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-24",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-25",
-    "count": 0,
-    "level": 0
-   },
    {
     "date": "2025-10-26",
     "count": 0,
@@ -2519,8 +2507,43 @@
    },
    {
     "date": "2026-10-19",
-    "count": 9,
+    "count": 28,
+    "level": 3
+   },
+   {
+    "date": "2026-10-20",
+    "count": 55,
+    "level": 4
+   },
+   {
+    "date": "2026-10-21",
+    "count": 12,
     "level": 1
+   },
+   {
+    "date": "2026-10-22",
+    "count": 31,
+    "level": 3
+   },
+   {
+    "date": "2026-10-23",
+    "count": 34,
+    "level": 3
+   },
+   {
+    "date": "2026-10-24",
+    "count": 11,
+    "level": 1
+   },
+   {
+    "date": "2026-10-25",
+    "count": 5,
+    "level": 1
+   },
+   {
+    "date": "2026-10-26",
+    "count": 0,
+    "level": 0
    }
   ]
  }
