@@ -19,6 +19,10 @@
 //   ---
 // Use absolute paths (/img/x.png) for images and internal links: the same HTML
 // is shown at /blog/<slug>/ and inside the terminal at /.
+//
+// A fenced code block (```rust demo=<name>) or an image (![alt](/img/x.svg "demo=<name>"))
+// can opt into an interactive demo. The post page then loads /assets/demos/<name>.js,
+// which enhances the block or image; the terminal and the feed show it as is.
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -141,7 +145,7 @@ function highlight(code, lang) {
 // (nested) lists, rules, images, links, autolinks, code spans, emphasis,
 // strikethrough. Raw HTML is escaped, never passed through.
 const LIST_RE = /^( {0,3})([-*+]|\d{1,9}[.)])( +)(.*)$/;
-const FENCE_RE = /^( {0,3})(`{3,}|~{3,})\s*([\w+#.-]*)[^`]*$/;
+const FENCE_RE = /^( {0,3})(`{3,}|~{3,})\s*([\w+#.-]*)([^`]*)$/;
 const HR_RE = /^ {0,3}([-*_])( *\1){2,} *$/;
 const HEAD_RE = /^ {0,3}(#{1,6})(?:\s+(.*?))?\s*#*\s*$/;
 const indentOf = (l) => l.search(/\S|$/);
@@ -158,8 +162,11 @@ function inline(text) {
   text = text.replace(/\\([\\`*_{}[\]()#+\-.!~>|])/g, (_, c) => hold(esc(c)));
   text = text.replace(/<(https?:\/\/[^\s<>]+)>/g, (_, u) => hold(`<a href="${esc(u)}">${esc(u)}</a>`));
   text = esc(text);
-  text = text.replace(/!\[([^\]]*)\]\(\s*([^\s)]+)(?:\s+&quot;(.*?)&quot;)?\s*\)/g, (all, alt, src, title) =>
-    safeUrl(src) ? hold(`<img src="${src}" alt="${alt}"${title ? ` title="${title}"` : ''} loading="lazy">`) : all);
+  text = text.replace(/!\[([^\]]*)\]\(\s*([^\s)]+)(?:\s+&quot;(.*?)&quot;)?\s*\)/g, (all, alt, src, title) => {
+    if (!safeUrl(src)) return all;
+    const demo = /^demo=([a-z0-9-]+)$/.exec(title || '')?.[1];
+    return hold(`<img src="${src}" alt="${alt}"${demo ? ` data-demo="${demo}"` : title ? ` title="${title}"` : ''} loading="lazy">`);
+  });
   text = text.replace(/\[([^\]]+)\]\(\s*([^\s)]+)(?:\s+&quot;(.*?)&quot;)?\s*\)/g, (all, label, href, title) =>
     safeUrl(href) ? hold(`<a href="${href}"${title ? ` title="${title}"` : ''}>${emphasis(label)}</a>`) : label);
   text = text.replace(/(^|[\s(])(https?:\/\/[^\s<]*[^\s<.,;:!?)'"\u0000])/g, (_, pre, u) => pre + hold(`<a href="${u}">${u}</a>`));
@@ -186,7 +193,8 @@ function renderBlocks(lines, ctx) {
     if (!line.trim()) { i++; continue; }
     let m;
     if ((m = FENCE_RE.exec(line))) {
-      const [, ind, fence, lang] = m;
+      const [, ind, fence, lang, info] = m;
+      const demo = /(?:^|\s)demo=([a-z0-9-]+)/.exec(info)?.[1];
       const close = new RegExp(`^ {0,3}${fence[0] === '`' ? '`' : '~'}{${fence.length},}\\s*$`);
       const body = [];
       i++;
@@ -196,7 +204,7 @@ function renderBlocks(lines, ctx) {
       }
       i++;
       const l = (lang || '').toLowerCase();
-      out.push(`<pre class="code"${l ? ` data-lang="${esc(l)}"` : ''}><code${l ? ` class="language-${esc(l)}"` : ''}>${highlight(body.join('\n'), l)}</code></pre>`);
+      out.push(`<pre class="code"${l ? ` data-lang="${esc(l)}"` : ''}${demo ? ` data-demo="${demo}"` : ''}><code${l ? ` class="language-${esc(l)}"` : ''}>${highlight(body.join('\n'), l)}</code></pre>`);
       continue;
     }
     if ((m = HEAD_RE.exec(line))) {
@@ -302,6 +310,9 @@ function loadPosts() {
       html: renderMarkdown(source),
       source,
     });
+    const p = posts[posts.length - 1];
+    p.demos = [...new Set([...p.html.matchAll(/ data-demo="([a-z0-9-]+)"/g)].map((d) => d[1]))];
+    for (const d of p.demos) if (!fs.existsSync(path.join(ROOT, 'assets/demos', d + '.js'))) fail(`posts/${file}: demo=${d} needs assets/demos/${d}.js`);
   }
   const seen = new Set();
   for (const p of posts) {
@@ -364,7 +375,8 @@ function postPage(p) {
     description: p.summary || p.title,
     canonical,
     type: 'article',
-    head: `\n  <meta property="article:published_time" content="${p.date}">\n  <script type="application/ld+json">${ld}</script>`,
+    head: `\n  <meta property="article:published_time" content="${p.date}">\n  <script type="application/ld+json">${ld}</script>` +
+      p.demos.map((d) => `\n  <script type="module" src="/assets/demos/${d}.js"></script>`).join(''),
     prompt: `cat ${p.slug}.md`,
     body: `  <main>
     <article>
