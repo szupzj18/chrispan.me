@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Bitter Lesson: excerpts and notes — Chris Pan</title>
+  <meta name="description" content="Short excerpts, Chinese translations and a link to Rich Sutton's essay The Bitter Lesson.">
+  <link rel="canonical" href="https://chrispan.me/bitterlesson/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="The Bitter Lesson: excerpts and notes — Chris Pan">
+  <meta property="og:url" content="https://chrispan.me/bitterlesson/">
+  <meta property="og:site_name" content="chrispan.me">
+  <meta name="theme-color" content="#0b0e14">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230b0e14'/%3E%3Ctext x='5' y='22' font-family='monospace' font-size='16' font-weight='700' fill='%237ee787'%3E%3E_%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.2.5/latin-400.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/jetbrains-mono@5.2.5/latin-700.css">
+  <link rel="stylesheet" href="/assets/blog.css">
+</head>
+<body>
+  <header class="top"><span class="ps1"><a class="u" href="/">chris<span class="host">@chrispan.me</span></a>:<a class="p" href="/bitterlesson/">~/bitterlesson</a>$</span> <span class="cmd">cat README.md</span></header>
+  <main>
+    <article>
+      <h1>The Bitter Lesson: excerpts and notes</h1>
+      <p class="meta">Rich Sutton, 2019-03-13 · <a href="http://www.incompleteideas.net/IncIdeas/BitterLesson.html">read the full essay at incompleteideas.net</a></p>
+      <div class="post">
+        <p>This page quotes three sentences from Rich Sutton's essay, with Chinese translations and a short summary of my own. The essay is Sutton's; read it in full at the link above.</p>
+
+        <h2>Three sentences</h2>
+
+        <blockquote>
+          <p>The biggest lesson that can be read from 70 years of AI research is that general methods that leverage computation are ultimately the most effective, and by a large margin.</p>
+        </blockquote>
+        <p>七十年 AI 研究中能读出的最大教训是：利用算力的通用方法最终是最有效的，而且领先幅度很大。</p>
+
+        <blockquote>
+          <p>One thing that should be learned from the bitter lesson is the great power of general purpose methods, of methods that continue to scale with increased computation even as the available computation becomes very great.</p>
+        </blockquote>
+        <p>从这条苦涩的教训中应当学到的一点是通用方法的巨大力量：即使可用算力变得非常庞大，这类方法仍能随算力增加而持续扩展。</p>
+
+        <blockquote>
+          <p>We want AI agents that can discover like we can, not which contain what we have discovered.</p>
+        </blockquote>
+        <p>我们想要的是像我们一样能够发现的 AI 智能体，而不是装着我们已有发现的 AI 智能体。</p>
+
+        <h2>The argument in my words</h2>
+        <ul>
+          <li>Researchers usually work as if the compute available to a system were fixed. Over a slightly longer horizon it is not.</li>
+          <li>Building in human knowledge helps in the short term and feels good, then plateaus and can get in the way of methods that use more compute.</li>
+          <li>Sutton walks through chess, Go, speech recognition and vision, where search and learning at scale overtook hand-built domain knowledge each time.</li>
+          <li>Search and learning are the two methods he sees as scaling without a ceiling.</li>
+          <li>His second point: build in meta-methods that discover structure, not the structure we think we have already found.</li>
+        </ul>
+
+        <h2>One caveat</h2>
+        <p>The lesson is often misread as "scale is all that matters". The better reading is that algorithms which keep scaling are what matter: accuracy is roughly efficiency times resources, and efficiency matters more as budgets grow.</p>
+      </div>
+    </article>
+  </main>
+  <footer class="bottom">
+    <span class="ps1">$</span> <a href="/blog/">cd blog</a> <span class="dim">·</span> <a href="/">~</a>
+  </footer>
+</body>
+</html>
