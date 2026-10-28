@@ -8,6 +8,7 @@
 //   /blog/index.html          post index
 //   /blog/posts.json          metadata + rendered HTML, read by the terminal (/)
 //   /feed.xml                 RSS 2.0
+//   /reading/index.html       card gallery of the reading-list post (scripts/reading.mjs)
 //
 // A post is posts/YYYY-MM-DD-slug.md with front matter:
 //   ---
@@ -27,6 +28,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { readingPage } from './reading.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, '_site');
@@ -449,11 +451,13 @@ for (const name of fs.readdirSync(ROOT)) {
   if (SKIP.has(name)) continue;
   fs.cpSync(path.join(ROOT, name), path.join(OUT, name), { recursive: true, filter: (src) => path.basename(src) !== '.DS_Store' });
 }
-if (fs.existsSync(path.join(OUT, 'blog')) || fs.existsSync(path.join(OUT, 'feed.xml'))) fail('blog/ and feed.xml are generated; remove them from the repo root');
+if (['blog', 'feed.xml', 'reading'].some((n) => fs.existsSync(path.join(OUT, n)))) fail('blog/, feed.xml and reading/ are generated; remove them from the repo root');
 
 const posts = loadPosts();
 for (const p of posts) write(`blog/${p.slug}/index.html`, postPage(p));
 write('blog/index.html', indexPage(posts));
 write('blog/posts.json', JSON.stringify({ posts: posts.map(({ file, ...p }) => ({ ...p, file: 'posts/' + file })) }) + '\n');
 write('feed.xml', feed(posts));
+const readingList = posts.find((p) => p.slug === 'reading-list');
+if (readingList) write('reading/index.html', readingPage(readingList.source, { root: ROOT, favicon: FAVICON, textUrl: readingList.url }));
 console.log(`build: ${posts.length} post(s) → ${path.relative(process.cwd(), OUT) || '.'}/ (${posts.map((p) => p.slug).join(', ') || 'none'})`);
