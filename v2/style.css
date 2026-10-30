@@ -109,8 +109,7 @@ kbd {
       "post  post  act"
       "keys  keys  keys";
   }
-  /* #prof: on short screens whoami scrolls instead of cutting off its last rows */
-  #p-repo .rows, #act, #prof { overflow: auto; }
+  .panel > .body { overflow: auto; }
 }
 
 /* ---------- bars ---------- */
