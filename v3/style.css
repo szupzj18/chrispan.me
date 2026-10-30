@@ -44,6 +44,9 @@ u, .u { color: var(--arg); text-decoration: underline; text-underline-offset: 3p
 .mh { display: flex; justify-content: space-between; gap: 2ch; color: var(--fg); }
 .mh .mid { color: var(--dim); text-align: center; }
 .mf { margin-top: 2.5em; }
+.languages { display: flex; justify-content: flex-end; gap: .6ch; margin-top: .7em; }
+.languages [aria-current="page"] { color: var(--head); text-decoration: none; }
+html:lang(zh) { --ind: 3ch; }
 
 .toc { display: flex; flex-wrap: wrap; gap: 0 1.6ch; margin: 1.2em 0 0; color: var(--dim); }
 .dl { margin: .5em 0 0; }
@@ -125,7 +128,7 @@ mark { background: var(--head); color: var(--bg); }
   :root { --bg: #fff; --fg: #000; --bold: #000; --dim: #444; --head: #000; --link: #000; --arg: #000; --accent: #000; }
   body { font-size: 10.5pt; line-height: 1.45; }
   .page { max-width: none; padding: 0; }
-  .toc, .dl, .less, summary { display: none !important; }
+  .toc, .dl, .less, .languages, summary { display: none !important; }
   details > *:not(summary) { display: block !important; }
   a { text-decoration: none; }
   a[href^="http"]:not(.bare)::after { content: " <" attr(href) ">"; color: #444; font-size: .9em; word-break: break-all; }

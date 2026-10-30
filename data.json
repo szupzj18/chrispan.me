@@ -79,15 +79,27 @@
  "selected_work": [
   {
    "title": "AI coding evaluation platform",
-   "summary": "Built a repeatable evaluation platform for coding agents, with versioned engineering tasks, layered scoring, batch execution, and run traces to assess changes to models, context, and tooling."
+   "summary": "Built a repeatable evaluation platform for coding agents, with versioned engineering tasks, layered scoring, batch execution, and run traces to assess changes to models, context, and tooling.",
+   "zh": {
+    "title": "AI Coding 评测平台",
+    "summary": "建设可重复运行的 coding-agent 评测平台，支持版本化工程任务、分层评分、批量执行与运行轨迹，帮助团队评估模型、上下文和工具链变更。"
+   }
   },
   {
    "title": "AI code review",
-   "summary": "Built and evolved a CI-integrated AI code-review workflow with repository-aware analysis, staged validation, controlled rule rollout, and feedback-driven evaluation."
+   "summary": "Built and evolved a CI-integrated AI code-review workflow with repository-aware analysis, staged validation, controlled rule rollout, and feedback-driven evaluation.",
+   "zh": {
+    "title": "AI 代码审查",
+    "summary": "建设并迭代接入 CI 的 AI 代码审查流程，结合仓库上下文分析、分阶段验证、规则灰度与反馈评估。"
+   }
   },
   {
    "title": "Video-feed logic with Kotlin Multiplatform",
-   "summary": "Migrated video-feed interaction logic to Kotlin Multiplatform while preserving native UI, using lifecycle isolation, platform adapters, fallback paths, and staged rollout checks."
+   "summary": "Migrated video-feed interaction logic to Kotlin Multiplatform while preserving native UI, using lifecycle isolation, platform adapters, fallback paths, and staged rollout checks.",
+   "zh": {
+    "title": "视频 KMP 共享逻辑",
+    "summary": "将视频信息流互动逻辑迁移至 Kotlin Multiplatform，保留原生 UI，通过生命周期隔离、平台适配、回退与分阶段验证支持落地。"
+   }
   }
  ],
  "building": [
@@ -149,6 +161,103 @@
  ],
  "learning": "GPT from scratch, a toy browser engine and a tsc clone — small builds to understand how things work.",
  "hello": "Open to interesting problems — say hi anytime.",
+ "locales": {
+  "zh": {
+   "profile": {
+    "tagline": "关注 AI 基础设施与 agent，开发围绕 coding-agent 的工具",
+    "intro": "用 agent 提高工程交付效率，兼顾质量与体验。",
+    "now": "正在开发围绕 coding-agent 的小工具，专注会话记忆、多账号管理与模拟器控制。"
+   },
+   "skills": {
+    "AI / Agents": ["Claude Code", "Codex", "MCP", "agent 工具开发"]
+   },
+   "projects": {
+    "zorua": {
+     "summary": "在不同终端并行使用多个 Codex 和 Claude Code 账号。每个账号独立保存登录状态、会话、配置与用量额度。"
+    },
+    "mnemo": {
+     "summary": "为 coding-agent 提供统一的会话记忆，支持全文检索本机 Claude Code、Codex、OpenCode、Pi 会话，以及远程开发机上的记录。",
+     "stack": ["Python", "零依赖"]
+    },
+    "flick": {
+     "summary": "通过动态索引动作空间控制 iOS 模拟器的 agent，为上层 coding-agent 提供快速的移动 UI 操作。单次决策周期约 593 ms，执行过程中无需截图。"
+    },
+    "agent-system": {
+     "meta": "Python · 中文",
+     "summary": "用一张交互图展示 coding-agent 系统中的决策、任务派发、执行、汇报与持续改进。",
+     "points": [
+      "从 skill 库与系统模型构建，包含 67 个节点、15 个视图。",
+      "支持动态数据流、缩放、小地图、⌘K 搜索和明暗主题。"
+     ],
+     "stack": ["Python", "SVG", "单文件 HTML 页面"],
+     "credit_text": "图形查看器改编自"
+    }
+   },
+   "learning": "从零实现 GPT、小型浏览器引擎和 tsc 克隆，通过动手理解系统如何运行。",
+   "hello": "愿意一起探索有趣的问题，欢迎交流。",
+   "repos": {
+    "snap": "受 CleanShot X 启发的 macOS 开源截图工具。",
+    "mnemo": "全文检索本机 coding-agent 会话（Claude Code、Codex、Pi）与远程设备上的记录。",
+    "zorua": "在不同终端并行使用多个 Codex 和 Claude Code 账号，分别保存登录状态、会话、配置与用量额度。",
+    "chrispan.me": "chrispan.me 个人站。",
+    "flick": "通过动态索引动作空间控制 iOS 模拟器的 agent，基于 TypeSafe Jev 与 Facebook idb。",
+    "multi-agent-chat": "在 CLI 群聊中同时与多个 AI 模型交流，支持并发流式输出、@model 定向提问和 /verify 交叉验证。",
+    "notebook-open": "本地 NotebookLM 克隆，提供基于 RAG 的笔记与研究助手，支持多家 LLM 服务。",
+    "Pomo": "Mac 上的番茄钟。",
+    "mini-tsc": "用 TypeScript 实现的小型 tsc 编译器。",
+    "code-editing-agent": "coding-agent 示例项目。",
+    "zero2prod": "编程练习项目。",
+    "HNSwift": "用 SwiftUI 实现的 Hacker News 客户端。",
+    "GPT-from-scratch": "跟随 nano GPT 课程从零实现模型。",
+    "toy-web-render": "用 Rust 实现的小型网页渲染器。",
+    "buildGPT": "实现一个简单的 GPT 模型。",
+    "water-reminder": "用 Raycast 扩展记录每日饮水量。",
+    "minigrep": "学习 Rust 的示例项目。"
+   },
+   "posts": {
+    "reading-list": {
+     "title": "阅读清单",
+     "summary": "读过的 86 本书、文章与演讲，按时间倒序记录，并附简短感想。"
+    },
+    "100x-engineering": {
+     "title": "100x Engineering：agent 工程实践",
+     "summary": "记录 coding-agent 的调度、上下文检索与每日复盘，并思考 agent 参与开发后程序员的价值。"
+    },
+    "my-toolkit": {
+     "title": "我的工具箱",
+     "summary": "在各种场景中使用 Markdown 的个人工具与习惯。"
+    },
+    "rules-and-styles": {
+     "title": "规则与风格",
+     "summary": "简洁是一种美德。"
+    },
+    "cyber-green-plants": {
+     "title": "赛博绿植",
+     "summary": "贡献热力图就是程序员的赛博绿植。"
+    },
+    "how-to-read-a-book": {
+     "title": "如何读懂一本书",
+     "summary": "把已有知识与书中的概念联系起来，才能真正吸收读到的内容。"
+    },
+    "meaning-of-flag": {
+     "title": "Flag 的意义",
+     "summary": "Flag 的意义是尝试而不是完成。"
+    }
+   },
+   "activity_titles": {
+    "https://github.com/szupzj18/snap/pull/13": "编辑器背景：窗口与浏览器边框",
+    "https://github.com/szupzj18/mnemo/pull/57": "跨设备与 agent 使用 skill：按清单同步",
+    "https://github.com/szupzj18/mnemo/pull/56": "用 Pele PNG 替换多设备联合检索的 Mermaid 图",
+    "https://github.com/szupzj18/mnemo/pull/55": "跨设备与 agent 使用 skill：搜索与用量统计",
+    "https://github.com/szupzj18/snap/pull/12": "编辑器：缩放与平移",
+    "https://github.com/szupzj18/snap/pull/11": "标注和置顶已有图片",
+    "https://github.com/szupzj18/snap/pull/10": "编辑器：椭圆、线条、画笔与聚光效果",
+    "https://github.com/szupzj18/snap/pull/9": "编辑器：用于分享的背景",
+    "https://github.com/szupzj18/snap/pull/8": "裁剪录屏",
+    "https://github.com/szupzj18/snap/pull/7": "录屏：系统音频、麦克风与暂停恢复"
+   }
+  }
+ },
  "pinned": [
   "mnemo"
  ],

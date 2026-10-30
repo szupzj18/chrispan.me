@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Refreshes data.json from public GitHub data: profile counts, public non-fork repos, languages,
 // recent activity on those repos, and the public contribution calendar. The hand-written parts
-// (tagline, now, links, skills, selected_work, building, featured, projects_without_repo, learning, hello, pinned) are kept as they are.
+// (tagline, now, links, skills, selected_work, locales, building, featured, projects_without_repo, learning, hello, pinned) are kept as they are.
 //
 // Run weekly by .github/workflows/pages.yml. On any fetch error or implausible result it exits
 // non-zero and leaves data.json untouched, so the run fails and the live site keeps the old data.

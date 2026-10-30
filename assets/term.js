@@ -166,11 +166,12 @@
     }
   }
 
-  function catWork() {
-    print(s('y b', '● selected work'));
+  function catWork(zh = false) {
+    print(s('y b', zh ? '● 精选工作' : '● selected work'));
     for (const item of D.selected_work || []) {
-      printi(s('c b', item.title));
-      printi(item.summary);
+      const work = zh ? item.zh : item;
+      printi(h('span', { class: 'c b', lang: zh ? 'zh-CN' : 'en' }, work.title));
+      printi(h('span', { lang: zh ? 'zh-CN' : 'en' }, work.summary));
       blank();
     }
   }
@@ -428,6 +429,10 @@
   // ---------- commands ----------
   const CMDS = {
     help: { d: 'list commands', fn: help },
+    work: { d: 'selected work; --zh for 中文', usage: 'work [--zh]', complete: () => ['--zh'], fn: (args) => {
+      if (args.length > 1 || (args[0] && args[0] !== '--zh')) return print(s('dim', 'usage: work [--zh]'));
+      catWork(args[0] === '--zh');
+    } },
     whoami: { d: 'who is this', fn: () => {
       print(s('g b', D.profile.name), s('dim', ' · '), D.profile.tagline);
       if (D.profile.intro) print(D.profile.intro);
@@ -465,7 +470,7 @@
       print(s('dim', 'only '), run('git log'), s('dim', ' is wired up here'));
     } },
   };
-  const ALIASES = { '?': 'help', about: 'cat about.txt', work: 'cat work.txt', skills: 'cat skills.txt', links: 'cat links.txt', contact: 'cat links.txt', now: 'cat now.txt', repos: 'ls repos', posts: 'blog', ll: 'ls -a', dir: 'ls', cls: 'clear', fetch: 'neofetch' };
+  const ALIASES = { '?': 'help', about: 'cat about.txt', skills: 'cat skills.txt', links: 'cat links.txt', contact: 'cat links.txt', now: 'cat now.txt', repos: 'ls repos', posts: 'blog', ll: 'ls -a', dir: 'ls', cls: 'clear', fetch: 'neofetch' };
 
   function help() {
     print(s('dim', 'commands — type them, or tap them. Tab completes, ↑/↓ walks history.'));

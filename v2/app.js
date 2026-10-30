@@ -5,7 +5,7 @@
   const DAY = 86400000;
   const NOW = Date.now();
   const SORTS = ['pushed', 'name', 'stars', 'lang'];
-  const state = { sort: 'pushed', q: '', sel: 0, open: null, list: [] };
+  const state = { sort: 'pushed', q: '', sel: 0, open: null, list: [], workLang: 'en' };
   let D = null;
 
   // ---------- helpers ----------
@@ -89,9 +89,24 @@
   }
 
   function renderWork() {
-    $('work').replaceChildren(...(D.selected_work || []).map((item) =>
-      h('article', null, h('h3', null, item.title), h('p', null, item.summary))));
+    const zh = state.workLang === 'zh';
+    $('work').lang = zh ? 'zh-CN' : 'en';
+    $('work-label').lang = $('work').lang;
+    $('work-label').textContent = zh ? '精选工作' : 'selected work';
+    $('work').replaceChildren(...(D.selected_work || []).map((item) => {
+      const work = zh ? item.zh : item;
+      return h('article', null, h('h3', null, work.title), h('p', null, work.summary));
+    }));
+    document.querySelectorAll('[data-work-lang]').forEach((button) =>
+      button.setAttribute('aria-pressed', String(button.dataset.workLang === state.workLang)));
   }
+
+  $('p-work').addEventListener('click', (e) => {
+    const button = e.target.closest('button[data-work-lang]');
+    if (!button || !D) return;
+    state.workLang = button.dataset.workLang;
+    renderWork();
+  });
 
   // ---------- langs + env ----------
   function renderLang() {
@@ -428,7 +443,7 @@
         if (inAct) return;
         e.preventDefault(); select(state.list.length - 1, true); break;
       case 'Enter': case 'o':
-        if (t.closest && t.closest('a, dialog, #keys')) return;
+        if (t.closest && t.closest('a, dialog, #keys, .work-languages')) return;
         if (narrowMQ.matches && e.key === 'Enter' && t.closest && t.closest('#repos')) return; // let the button toggle
         e.preventDefault(); openSel(false); break;
       case 'w': e.preventDefault(); openSel(true); break;

@@ -205,6 +205,9 @@ kbd {
 .selected-work article { min-width: 0; }
 .selected-work h3 { margin: 0 0 .35em; color: var(--teal); font-size: 1em; }
 .selected-work p { margin: 0; }
+.work-languages { display: inline-flex; align-items: baseline; gap: .4ch; margin-left: 1.2ch; color: var(--dim); }
+.work-languages button { padding: 0 .3ch; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+.work-languages button[aria-pressed="true"] { color: var(--teal); text-decoration: underline; text-underline-offset: .2em; }
 @media (min-width: 760px) {
   .selected-work { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }

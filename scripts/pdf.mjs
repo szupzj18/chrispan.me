@@ -1,9 +1,10 @@
 #!/usr/bin/env node
-// Renders the man page (/v3/) to _site/v3/chrispan-resume.pdf with headless Chrome.
+// Renders /v3/ to chrispan-resume.pdf; --lang zh renders /v3/zh/ to chrispan-resume-zh.pdf.
+// Both PDFs are written to _site/v3/ with headless Chrome.
 // Run after scripts/build.mjs. No dependencies: the Chrome DevTools Protocol over Node's built-in WebSocket.
 // CDP_URL=http://127.0.0.1:9333 reuses an existing Chrome and closes only this script's target.
 //
-// The page is opened as https://chrispan.me/v3/, but every chrispan.me request is answered from _site/
+// Pages open at https://chrispan.me/v3/ (or /v3/zh/); every chrispan.me request is answered from _site/
 // (CDP Fetch domain): the PDF's links point at the live site, and the build never reads from it.
 // Exits non-zero (failing the deploy) if Chrome is missing, the page does not finish rendering, or the
 // PDF does not look right.
@@ -16,8 +17,18 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, '_site');
 const SITE = 'https://chrispan.me';
-const PAGE = '/v3/';
-const PDF = path.join(OUT, 'v3', 'chrispan-resume.pdf');
+const args = process.argv.slice(2);
+if (args.length === 1 && args[0] === '--help') {
+  console.log('Usage: [CDP_URL=http://127.0.0.1:9333] node scripts/pdf.mjs [--lang en|zh]\nRun after scripts/build.mjs. Writes the selected A4 resume to _site/v3/ (maximum 2 pages).\nCDP_URL reuses an existing browser and closes only this script\'s target.');
+  process.exit(0);
+}
+if (args.length && (args.length !== 2 || args[0] !== '--lang' || !['en', 'zh'].includes(args[1]))) {
+  console.error('Usage: node scripts/pdf.mjs [--lang en|zh]');
+  process.exit(1);
+}
+const LANG = args[1] || 'en';
+const PAGE = LANG === 'zh' ? '/v3/zh/' : '/v3/';
+const PDF = path.join(OUT, 'v3', LANG === 'zh' ? 'chrispan-resume-zh.pdf' : 'chrispan-resume.pdf');
 const MAX_PAGES = 2;
 const TIMEOUT_MS = 60000;
 // fonts that actually carry CJK glyphs (post titles can be Chinese); anything else prints as empty boxes
@@ -125,9 +136,11 @@ function serveFromSite(url) {
 }
 
 async function main() {
-  if (!fs.existsSync(path.join(OUT, 'v3', 'index.html'))) fail('_site/v3/ is missing; run scripts/build.mjs first');
+  if (!fs.existsSync(path.join(OUT, PAGE, 'index.html'))) fail('_site' + PAGE + ' is missing; run scripts/build.mjs first');
   const expectedPosts = JSON.parse(fs.readFileSync(path.join(OUT, 'blog', 'posts.json'), 'utf8')).posts.length;
-  const expectedWork = JSON.parse(fs.readFileSync(path.join(OUT, 'data.json'), 'utf8')).selected_work?.length || 0;
+  const work = JSON.parse(fs.readFileSync(path.join(OUT, 'data.json'), 'utf8')).selected_work || [];
+  const expectedWork = work.length;
+  const expectedContent = work.map((item) => LANG === 'zh' ? item.zh : item);
   timer = setTimeout(() => {
     console.error('pdf: timed out after ' + TIMEOUT_MS / 1000 + 's');
     cleanup().finally(() => process.exit(1));
@@ -159,17 +172,19 @@ async function main() {
     returnByValue: true,
     expression: `new Promise((resolve) => {
       const check = () => document.documentElement.dataset.ready === '1'
-        ? document.fonts.ready.then(() => resolve({ posts: document.querySelectorAll('#posts li').length, work: document.querySelectorAll('#selected-work dt').length, error: !!document.getElementById('error') }))
+        ? document.fonts.ready.then(() => resolve({ posts: document.querySelectorAll('#posts li').length, work: document.querySelectorAll('#selected-work dt').length, language: document.documentElement.lang, workContent: document.getElementById('selected-work')?.textContent || '', error: !!document.getElementById('error') }))
         : setTimeout(check, 50);
       check();
     })`,
   });
   const st = state.result.value;
   if (st.error || st.posts !== expectedPosts || st.work !== expectedWork) fail(`page did not render as expected (posts ${st.posts}/${expectedPosts}, selected work ${st.work}/${expectedWork}, error ${st.error})`);
+  if (st.language !== (LANG === 'zh' ? 'zh-CN' : 'en')) fail('unexpected page language: ' + st.language);
+  if (expectedContent.some((item) => !st.workContent.includes(item.title) || !st.workContent.includes(item.summary))) fail('selected work text is incomplete for ' + LANG);
 
   // Ask Chrome which system fonts drew each piece of CJK text; without a CJK font they come out as boxes.
-  // The page is lang="en", so Han text would fall back to whichever CJK face sorts first (Noto Sans CJK JP
-  // on the runner); mark it zh-CN so the PDF uses Simplified Chinese glyphs.
+  // English pages may contain Chinese post titles. Mark Han text zh-CN so both PDFs use
+  // Simplified Chinese glyphs instead of whichever CJK face sorts first on the runner.
   await send('Runtime.evaluate', { expression: `for (const el of document.querySelectorAll('#man *'))
     if ([...el.childNodes].some((n) => n.nodeType === 3 && /[\\u3400-\\u9fff\\uf900-\\ufaff]/.test(n.nodeValue))) {
       el.dataset.cjk = '';
