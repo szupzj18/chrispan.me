@@ -49,6 +49,11 @@
       p('The public record: ', b(String(own.length)), ' repositories on GitHub, ',
         b(String(D.contributions.total_last_year)), ' contributions in the last year, ', P.followers, ' followers.')));
 
+    if (D.selected_work?.length) out.push(section('selected-work', 'SELECTED WORK',
+      h('dl', null, D.selected_work.map((item) => [
+        h('dt', null, b(item.title)), h('dd', null, h('p', null, item.summary)),
+      ]))));
+
     const optFlags = { Languages: ['-l', '--languages'], Mobile: ['-m', '--mobile'], 'AI / Agents': ['-a', '--agents'], 'Dev Tools': ['-t', '--tools'] };
     out.push(section('options', 'OPTIONS',
       h('dl', null, D.skills.map((k) => {

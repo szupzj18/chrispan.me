@@ -76,6 +76,20 @@
    ]
   }
  ],
+ "selected_work": [
+  {
+   "title": "AI coding evaluation platform",
+   "summary": "Built a repeatable evaluation platform for coding agents, with versioned engineering tasks, layered scoring, batch execution, and run traces to assess changes to models, context, and tooling."
+  },
+  {
+   "title": "AI code review",
+   "summary": "Built and evolved a CI-integrated AI code-review workflow with repository-aware analysis, staged validation, controlled rule rollout, and feedback-driven evaluation."
+  },
+  {
+   "title": "Video-feed logic with Kotlin Multiplatform",
+   "summary": "Migrated video-feed interaction logic to Kotlin Multiplatform while preserving native UI, using lifecycle isolation, platform adapters, fallback paths, and staged rollout checks."
+  }
+ ],
  "building": [
   {
    "name": "zorua",

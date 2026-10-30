@@ -88,6 +88,11 @@
         h('dt', null, 'social'), h('dd', null, p.followers + ' followers', sep(), p.following + ' following')));
   }
 
+  function renderWork() {
+    $('work').replaceChildren(...(D.selected_work || []).map((item) =>
+      h('article', null, h('h3', null, item.title), h('p', null, item.summary))));
+  }
+
   // ---------- langs + env ----------
   function renderLang() {
     const langs = D.languages.slice(0, 6);
@@ -387,7 +392,7 @@
   });
 
   // ---------- global keys ----------
-  const PANELS = ['p-prof', 'p-lang', 'p-graph', 'p-repo', 'p-det', 'p-act', 'p-post'];
+  const PANELS = ['p-prof', 'p-lang', 'p-graph', 'p-repo', 'p-det', 'p-act', 'p-post', 'p-work'];
   function focusPanel(n) {
     const id = PANELS[n - 1];
     if (!id) return;
@@ -432,7 +437,7 @@
       case '?': e.preventDefault(); openHelp(); break;
       case 'Escape': if (state.q) { state.q = ''; renderRepos(); } break;
       default:
-        if (/^[1-7]$/.test(e.key)) { e.preventDefault(); focusPanel(Number(e.key)); }
+        if (/^[1-8]$/.test(e.key)) { e.preventDefault(); focusPanel(Number(e.key)); }
     }
   });
 
@@ -447,6 +452,7 @@
       renderPosts(posts);
       renderHead();
       renderProf();
+      renderWork();
       renderLang();
       renderGraph();
       renderRepos();

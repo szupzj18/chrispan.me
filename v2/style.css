@@ -64,11 +64,12 @@ kbd {
   padding-left: max(var(--gap), env(safe-area-inset-left));
   padding-right: max(var(--gap), env(safe-area-inset-right));
   grid-template-columns: minmax(0, 1fr);
-  grid-template-areas: "head" "prof" "graph" "lang" "repo" "post" "act" "keys";
+  grid-template-areas: "head" "prof" "work" "graph" "lang" "repo" "post" "act" "keys";
 }
 
 #head { grid-area: head; }
 #p-prof { grid-area: prof; }
+#p-work { grid-area: work; }
 #p-lang { grid-area: lang; }
 #p-graph { grid-area: graph; }
 #p-repo { grid-area: repo; }
@@ -83,6 +84,7 @@ kbd {
     grid-template-areas:
       "head head"
       "prof lang"
+      "work work"
       "graph post"
       "repo det"
       "repo act"
@@ -97,10 +99,11 @@ kbd {
     height: 100vh;
     height: 100dvh;
     grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-rows: auto auto auto minmax(0, 1fr) auto auto;
+    grid-template-rows: auto auto auto auto minmax(0, 1fr) auto auto;
     grid-template-areas:
       "head  head  head"
       "prof  lang  graph"
+      "work  work  work"
       "repo  repo  det"
       "repo  repo  act"
       "post  post  act"
@@ -199,6 +202,14 @@ kbd {
 .who h3 { margin: 0; font: inherit; font-weight: 700; color: var(--green); }
 .who p { margin: 0; }
 .who .intro { font-weight: 700; }
+.selected-work { display: grid; gap: 1em 2ch; }
+.selected-work article { min-width: 0; }
+.selected-work h3 { margin: 0 0 .35em; color: var(--teal); font-size: 1em; }
+.selected-work p { margin: 0; }
+@media (min-width: 760px) {
+  .selected-work { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
 .kv { display: grid; grid-template-columns: 8ch minmax(0, 1fr); column-gap: 1ch; margin-top: .5em; }
 .kv dt { color: var(--mauve); }
 .kv dd { margin: 0; }

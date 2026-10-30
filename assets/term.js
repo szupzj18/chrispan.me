@@ -77,6 +77,7 @@
   const FILES = {
     'about.txt': () => catAbout(),
     'now.txt': () => catNow(),
+    'work.txt': () => catWork(),
     'skills.txt': () => catSkills(),
     'links.txt': () => catLinks(),
     '.plan': () => catNow(),
@@ -162,6 +163,15 @@
       printi(run('cat ' + repoPath(findRepo(f.name)), f.name), s('dim', '  ' + f.stack.join(' · ')));
       printi(f.summary);
       printi(a(f.homepage || f.url));
+    }
+  }
+
+  function catWork() {
+    print(s('y b', '● selected work'));
+    for (const item of D.selected_work || []) {
+      printi(s('c b', item.title));
+      printi(item.summary);
+      blank();
     }
   }
 
@@ -305,6 +315,8 @@
     info.append(h('div', { class: 'ln swatch', 'aria-hidden': 'true' },
       ['r', 'o', 'y', 'g', 'c', 'bl', 'pu', 'h'].map((c) => s(c, '███'))));
     block.append(h('div', { class: 'fetch' }, logo, motto(p), info));
+    blank();
+    catWork();
   }
 
   function activityLine(e) {
@@ -453,7 +465,7 @@
       print(s('dim', 'only '), run('git log'), s('dim', ' is wired up here'));
     } },
   };
-  const ALIASES = { '?': 'help', about: 'cat about.txt', skills: 'cat skills.txt', links: 'cat links.txt', contact: 'cat links.txt', now: 'cat now.txt', repos: 'ls repos', posts: 'blog', ll: 'ls -a', dir: 'ls', cls: 'clear', fetch: 'neofetch' };
+  const ALIASES = { '?': 'help', about: 'cat about.txt', work: 'cat work.txt', skills: 'cat skills.txt', links: 'cat links.txt', contact: 'cat links.txt', now: 'cat now.txt', repos: 'ls repos', posts: 'blog', ll: 'ls -a', dir: 'ls', cls: 'clear', fetch: 'neofetch' };
 
   function help() {
     print(s('dim', 'commands — type them, or tap them. Tab completes, ↑/↓ walks history.'));
@@ -729,7 +741,7 @@
     input.focus({ preventScroll: true });
   });
 
-  const CHIPS = ['help', 'whoami', 'about', 'blog', 'now', 'ls repos', 'log', 'neofetch', 'contrib', 'skills', 'links', 'clear'];
+  const CHIPS = ['help', 'whoami', 'about', 'work', 'blog', 'now', 'ls repos', 'log', 'neofetch', 'contrib', 'skills', 'links', 'clear'];
   function buildChips() {
     chips.replaceChildren(...CHIPS.map((c) => h('button', { type: 'button', 'data-cmd': c }, c)));
     chips.hidden = false;

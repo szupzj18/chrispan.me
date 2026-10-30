@@ -105,6 +105,7 @@ function serveFromSite(url) {
 async function main() {
   if (!fs.existsSync(path.join(OUT, 'v3', 'index.html'))) fail('_site/v3/ is missing; run scripts/build.mjs first');
   const expectedPosts = JSON.parse(fs.readFileSync(path.join(OUT, 'blog', 'posts.json'), 'utf8')).posts.length;
+  const expectedWork = JSON.parse(fs.readFileSync(path.join(OUT, 'data.json'), 'utf8')).selected_work?.length || 0;
   const timer = setTimeout(() => fail('timed out after ' + TIMEOUT_MS / 1000 + 's'), TIMEOUT_MS);
 
   const c = cdp(await launch(findChrome()));
@@ -132,13 +133,13 @@ async function main() {
     returnByValue: true,
     expression: `new Promise((resolve) => {
       const check = () => document.documentElement.dataset.ready === '1'
-        ? document.fonts.ready.then(() => resolve({ posts: document.querySelectorAll('#posts li').length, error: !!document.getElementById('error') }))
+        ? document.fonts.ready.then(() => resolve({ posts: document.querySelectorAll('#posts li').length, work: document.querySelectorAll('#selected-work dt').length, error: !!document.getElementById('error') }))
         : setTimeout(check, 50);
       check();
     })`,
   });
   const st = state.result.value;
-  if (st.error || st.posts !== expectedPosts) fail(`page did not render as expected (posts ${st.posts}/${expectedPosts}, error ${st.error})`);
+  if (st.error || st.posts !== expectedPosts || st.work !== expectedWork) fail(`page did not render as expected (posts ${st.posts}/${expectedPosts}, selected work ${st.work}/${expectedWork}, error ${st.error})`);
 
   // Ask Chrome which system fonts drew each piece of CJK text; without a CJK font they come out as boxes.
   // The page is lang="en", so Han text would fall back to whichever CJK face sorts first (Noto Sans CJK JP
