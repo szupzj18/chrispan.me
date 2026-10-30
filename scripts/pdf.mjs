@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Renders the man page (/v3/) to _site/v3/chrispan-resume.pdf with headless Chrome.
 // Run after scripts/build.mjs. No dependencies: the Chrome DevTools Protocol over Node's built-in WebSocket.
+// CDP_URL=http://127.0.0.1:9333 reuses an existing Chrome and closes only this script's target.
 //
 // The page is opened as https://chrispan.me/v3/, but every chrispan.me request is answered from _site/
 // (CDP Fetch domain): the PDF's links point at the live site, and the build never reads from it.
@@ -28,14 +29,35 @@ const TYPES = {
 
 let chrome = null;
 let profile = null;
+let connection = null;
+let ownTarget = null;
+let timer = null;
 function fail(msg) {
-  console.error('pdf: ' + msg);
-  cleanup();
-  process.exit(1);
+  throw new Error(msg);
 }
-function cleanup() {
+async function cleanup() {
+  clearTimeout(timer);
+  if (connection && ownTarget) {
+    await Promise.race([
+      connection.send('Target.closeTarget', { targetId: ownTarget }).catch(() => {}),
+      new Promise((resolve) => setTimeout(resolve, 2000)),
+    ]);
+    ownTarget = null;
+  }
+  connection?.close();
   if (chrome && chrome.exitCode == null) chrome.kill('SIGKILL');
   if (profile) fs.rmSync(profile, { recursive: true, force: true });
+}
+
+async function debuggerUrl() {
+  const endpoint = process.env.CDP_URL;
+  if (!endpoint) return launch(findChrome());
+  if (/^wss?:\/\//.test(endpoint)) return endpoint;
+  const response = await fetch(new URL('/json/version', endpoint), { signal: AbortSignal.timeout(8000) });
+  if (!response.ok) fail('CDP endpoint returned HTTP ' + response.status);
+  const version = await response.json();
+  if (!version.webSocketDebuggerUrl) fail('CDP endpoint has no webSocketDebuggerUrl');
+  return version.webSocketDebuggerUrl;
 }
 
 function findChrome() {
@@ -106,11 +128,15 @@ async function main() {
   if (!fs.existsSync(path.join(OUT, 'v3', 'index.html'))) fail('_site/v3/ is missing; run scripts/build.mjs first');
   const expectedPosts = JSON.parse(fs.readFileSync(path.join(OUT, 'blog', 'posts.json'), 'utf8')).posts.length;
   const expectedWork = JSON.parse(fs.readFileSync(path.join(OUT, 'data.json'), 'utf8')).selected_work?.length || 0;
-  const timer = setTimeout(() => fail('timed out after ' + TIMEOUT_MS / 1000 + 's'), TIMEOUT_MS);
+  timer = setTimeout(() => {
+    console.error('pdf: timed out after ' + TIMEOUT_MS / 1000 + 's');
+    cleanup().finally(() => process.exit(1));
+  }, TIMEOUT_MS);
 
-  const c = cdp(await launch(findChrome()));
+  const c = connection = cdp(await debuggerUrl());
   await c.opened;
   const { targetId } = await c.send('Target.createTarget', { url: 'about:blank' });
+  ownTarget = targetId;
   const { sessionId } = await c.send('Target.attachToTarget', { targetId, flatten: true });
   const send = (method, params) => c.send(method, params, sessionId);
 
@@ -176,11 +202,14 @@ async function main() {
   fs.writeFileSync(PDF, pdf);
 
   clearTimeout(timer);
-  await c.send('Browser.close').catch(() => {});
-  c.close();
-  cleanup();
+  await c.send('Target.closeTarget', { targetId });
+  ownTarget = null;
+  if (!process.env.CDP_URL) await c.send('Browser.close').catch(() => {});
   const cjk = nodeIds.length ? `, CJK in ${nodeIds.length} element${nodeIds.length === 1 ? '' : 's'} via ${[...cjkFonts].join(', ')}` : '';
   console.log(`pdf: ${PAGE} → ${path.relative(ROOT, PDF)} (${pages} page${pages === 1 ? '' : 's'}, ${Math.round(pdf.length / 1024)} KB, ${links} links${cjk})`);
 }
 
-main().catch((err) => fail(err.stack || String(err)));
+main().catch((err) => {
+  console.error('pdf: ' + (err.stack || String(err)));
+  process.exitCode = 1;
+}).finally(cleanup);
