@@ -131,13 +131,12 @@ mark { background: var(--head); color: var(--bg); }
   a[href^="http"]:not(.bare)::after { content: " <" attr(href) ">"; color: #444; font-size: .9em; word-break: break-all; }
   section { break-inside: avoid-page; }
   h2 { break-after: avoid; }
-  /* résumé-length print/PDF: the activity log and per-repo descriptions stay on screen only */
+  /* Keep the PDF focused on selected work, featured projects, and recent writing. */
   body { font-size: 9.5pt; line-height: 1.38; }
   .mf { margin-top: 1.2em; }
   section { margin-bottom: .75em; }
   p, .pts { margin-bottom: .45em; }
   dt { margin-top: .35em; }
-  #history, #posts .sum, #repositories dd { display: none !important; }
-  #repositories dl { columns: 2; column-gap: 3ch; padding-left: var(--ind); }
-  #repositories dt { padding-left: 0; margin-top: 0; break-inside: avoid; }
+  #history, #repositories, #posts .sum, #posts li:nth-child(n+4) { display: none !important; }
+  #selected-work dd { padding-left: var(--ind); }
 }
