@@ -184,7 +184,7 @@ try {
           document.getElementById('line').dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
           return document.querySelector('#out .entry:last-child').innerText;
         })()` });
-        if (!command.result.value.includes('AI coding evaluation platform') || !command.result.value.includes('Video-feed logic with Kotlin Multiplatform')) throw new Error('work command failed');
+        if (!work.every((item) => command.result.value?.includes(item.title) && command.result.value.includes(item.summary))) throw new Error('work command failed');
         state.workCommand = true;
       }
       if (version.kind === 'v2') {

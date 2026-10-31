@@ -94,11 +94,11 @@
    }
   },
   {
-   "title": "Video-feed logic with Kotlin Multiplatform",
-   "summary": "Migrated video-feed interaction logic to Kotlin Multiplatform while preserving native UI, using lifecycle isolation, platform adapters, fallback paths, and staged rollout checks.",
+   "title": "Cross-platform refactoring with Kotlin Multiplatform",
+   "summary": "Coordinated KMP refactoring across Android, iOS and HarmonyOS: shared logic, native UI, lifecycle isolation, platform adapters, fallbacks and staged rollouts. Used parallel agents for integration, CI checks and rollout analysis.",
    "zh": {
-    "title": "视频 KMP 共享逻辑",
-    "summary": "将视频信息流互动逻辑迁移至 Kotlin Multiplatform，保留原生 UI，通过生命周期隔离、平台适配、回退与分阶段验证支持落地。"
+    "title": "KMP 跨平台重构迁移",
+    "summary": "组织 Android、iOS、HarmonyOS 三端代码库的 KMP 重构迁移，以共享逻辑层配合原生 UI，处理生命周期隔离、平台适配、回退与分阶段上线验证；使用多 agent 并行推进分支集成、CI 验证和上线分析。"
    }
   }
  ],
