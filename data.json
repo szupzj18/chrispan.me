@@ -227,6 +227,10 @@
     "minigrep": "学习 Rust 的示例项目。"
    },
    "posts": {
+    "evals-architecture": {
+     "title": "给 agent 技能做回归评测：执行器与架构",
+     "summary": "把出过的事故冻结成用例，每次改动前在假环境里让新旧两份技能各跑一遍；讲执行器和架构。"
+    },
     "reading-list": {
      "title": "阅读清单",
      "summary": "读过的 86 本书、文章与演讲，按时间倒序记录，并附简短感想。"
