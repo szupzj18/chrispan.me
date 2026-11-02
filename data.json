@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-26T06:09:13Z",
+ "generated_at": "2026-11-02T07:39:05Z",
  "source": "Public GitHub data for github.com/szupzj18 (profile, public repos, profile README, public events, public contribution calendar).",
  "profile": {
   "login": "szupzj18",
@@ -169,7 +169,12 @@
     "now": "正在开发围绕 coding-agent 的小工具，专注会话记忆、多账号管理与模拟器控制。"
    },
    "skills": {
-    "AI / Agents": ["Claude Code", "Codex", "MCP", "agent 工具开发"]
+    "AI / Agents": [
+     "Claude Code",
+     "Codex",
+     "MCP",
+     "agent 工具开发"
+    ]
    },
    "projects": {
     "zorua": {
@@ -177,7 +182,10 @@
     },
     "mnemo": {
      "summary": "为 coding-agent 提供统一的会话记忆，支持全文检索本机 Claude Code、Codex、OpenCode、Pi 会话，以及远程开发机上的记录。",
-     "stack": ["Python", "零依赖"]
+     "stack": [
+      "Python",
+      "零依赖"
+     ]
     },
     "flick": {
      "summary": "通过动态索引动作空间控制 iOS 模拟器的 agent，为上层 coding-agent 提供快速的移动 UI 操作。单次决策周期约 593 ms，执行过程中无需截图。"
@@ -189,7 +197,11 @@
       "从 skill 库与系统模型构建，包含 67 个节点、15 个视图。",
       "支持动态数据流、缩放、小地图、⌘K 搜索和明暗主题。"
      ],
-     "stack": ["Python", "SVG", "单文件 HTML 页面"],
+     "stack": [
+      "Python",
+      "SVG",
+      "单文件 HTML 页面"
+     ],
      "credit_text": "图形查看器改编自"
     }
    },
@@ -267,11 +279,11 @@
    "repos": 8
   },
   {
-   "name": "Rust",
-   "repos": 4
+   "name": "Swift",
+   "repos": 5
   },
   {
-   "name": "Swift",
+   "name": "Rust",
    "repos": 4
   },
   {
@@ -301,40 +313,27 @@
  ],
  "repos": [
   {
-   "name": "snap",
-   "description": "Open-source screenshot tool for macOS, in the spirit of CleanShot X",
+   "name": "BeautifulUI",
+   "description": "SwiftUI interface primitives for AI-native apps — a port of Beautiful UI with 21 components",
    "language": "Swift",
-   "stars": 2,
-   "archived": false,
-   "topics": [],
-   "homepage": null,
-   "url": "https://github.com/szupzj18/snap",
-   "created_at": "2026-10-22T08:42:11Z",
-   "pushed_at": "2026-10-25T15:12:18Z"
-  },
-  {
-   "name": "mnemo",
-   "description": "Full-text search across local coding-agent sessions (Claude Code, Codex, Pi) and remote devices",
-   "language": "Python",
-   "stars": 2,
-   "archived": false,
-   "topics": [],
-   "homepage": "https://szupzj18.github.io/mnemo/",
-   "url": "https://github.com/szupzj18/mnemo",
-   "created_at": "2026-09-24T08:05:01Z",
-   "pushed_at": "2026-10-25T05:48:01Z"
-  },
-  {
-   "name": "zorua",
-   "description": "Run several Codex and Claude Code accounts side by side — one per terminal. Each account keeps its own sign-in, sessions, settings and quota.",
-   "language": "Python",
    "stars": 0,
    "archived": false,
-   "topics": [],
-   "homepage": "https://szupzj18.github.io/zorua/",
-   "url": "https://github.com/szupzj18/zorua",
-   "created_at": "2026-09-30T15:26:44Z",
-   "pushed_at": "2026-10-23T02:09:17Z"
+   "topics": [
+    "agent",
+    "ai",
+    "chat-ui",
+    "design-system",
+    "ios",
+    "macos",
+    "swift",
+    "swift-package-manager",
+    "swiftui",
+    "ui-components"
+   ],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/BeautifulUI",
+   "created_at": "2026-11-01T04:11:29Z",
+   "pushed_at": "2026-11-02T06:59:54Z"
   },
   {
    "name": "chrispan.me",
@@ -346,7 +345,43 @@
    "homepage": null,
    "url": "https://github.com/szupzj18/chrispan.me",
    "created_at": "2026-10-15T06:35:52Z",
-   "pushed_at": "2026-10-22T08:43:55Z"
+   "pushed_at": "2026-11-01T17:35:33Z"
+  },
+  {
+   "name": "zorua",
+   "description": "Run several Codex and Claude Code accounts side by side — one per terminal. Each account keeps its own sign-in, sessions, settings and quota.",
+   "language": "Python",
+   "stars": 0,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://szupzj18.github.io/zorua/",
+   "url": "https://github.com/szupzj18/zorua",
+   "created_at": "2026-09-30T15:26:44Z",
+   "pushed_at": "2026-10-30T09:48:36Z"
+  },
+  {
+   "name": "mnemo",
+   "description": "Full-text search across local coding-agent sessions (Claude Code, Codex, Pi) and remote devices",
+   "language": "Python",
+   "stars": 2,
+   "archived": false,
+   "topics": [],
+   "homepage": "https://szupzj18.github.io/mnemo/",
+   "url": "https://github.com/szupzj18/mnemo",
+   "created_at": "2026-09-24T08:05:01Z",
+   "pushed_at": "2026-10-26T07:14:34Z"
+  },
+  {
+   "name": "snap",
+   "description": "Open-source screenshot tool for macOS, in the spirit of CleanShot X",
+   "language": "Swift",
+   "stars": 2,
+   "archived": false,
+   "topics": [],
+   "homepage": null,
+   "url": "https://github.com/szupzj18/snap",
+   "created_at": "2026-10-22T08:42:11Z",
+   "pushed_at": "2026-10-25T15:12:18Z"
   },
   {
    "name": "flick",
@@ -624,6 +659,81 @@
  ],
  "activity": [
   {
+   "at": "2026-11-02T06:59:52Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/BeautifulUI",
+   "number": 1,
+   "title": "Use generic icons in the Prompt Bar demo",
+   "url": "https://github.com/szupzj18/BeautifulUI/pull/1"
+  },
+  {
+   "at": "2026-10-31T04:40:27Z",
+   "kind": "push",
+   "repo": "szupzj18/chrispan.me",
+   "branch": "main",
+   "count": 1,
+   "url": "https://github.com/szupzj18/chrispan.me/commits/main"
+  },
+  {
+   "at": "2026-10-30T09:34:26Z",
+   "kind": "push",
+   "repo": "szupzj18/zorua",
+   "branch": "main",
+   "count": 1,
+   "url": "https://github.com/szupzj18/zorua/commits/main"
+  },
+  {
+   "at": "2026-10-30T09:34:24Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/zorua",
+   "number": 60,
+   "title": "feat: fuzzy ranking and highlighted matches in the command palette",
+   "url": "https://github.com/szupzj18/zorua/pull/60"
+  },
+  {
+   "at": "2026-10-28T10:15:53Z",
+   "kind": "push",
+   "repo": "szupzj18/chrispan.me",
+   "branch": "main",
+   "count": 3,
+   "url": "https://github.com/szupzj18/chrispan.me/commits/main"
+  },
+  {
+   "at": "2026-10-27T05:29:46Z",
+   "kind": "push",
+   "repo": "szupzj18/chrispan.me",
+   "branch": "main",
+   "count": 1,
+   "url": "https://github.com/szupzj18/chrispan.me/commits/main"
+  },
+  {
+   "at": "2026-10-26T07:14:38Z",
+   "kind": "release",
+   "repo": "szupzj18/mnemo",
+   "tag": "v0.7.0",
+   "title": "mnemo 0.7.0",
+   "url": "https://github.com/szupzj18/mnemo/releases/tag/v0.7.0"
+  },
+  {
+   "at": "2026-10-26T07:14:26Z",
+   "kind": "push",
+   "repo": "szupzj18/mnemo",
+   "branch": "main",
+   "count": 1,
+   "url": "https://github.com/szupzj18/mnemo/commits/main"
+  },
+  {
+   "at": "2026-10-26T07:14:25Z",
+   "kind": "pr",
+   "action": "merged",
+   "repo": "szupzj18/mnemo",
+   "number": 58,
+   "title": "Release 0.7.0",
+   "url": "https://github.com/szupzj18/mnemo/pull/58"
+  },
+  {
    "at": "2026-10-25T15:12:18Z",
    "kind": "push",
    "repo": "szupzj18/snap",
@@ -675,204 +785,81 @@
    "url": "https://github.com/szupzj18/mnemo/pull/56"
   },
   {
-   "at": "2026-10-23T07:24:24Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/mnemo",
-   "number": 55,
-   "title": "Skills across devices and agents, phase 1: search and usage stats",
-   "url": "https://github.com/szupzj18/mnemo/pull/55"
-  },
-  {
-   "at": "2026-10-23T07:03:51Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/snap",
-   "number": 12,
-   "title": "Editor: zoom and pan",
-   "url": "https://github.com/szupzj18/snap/pull/12"
-  },
-  {
    "at": "2026-10-23T06:54:34Z",
    "kind": "push",
    "repo": "szupzj18/snap",
    "branch": "main",
-   "count": 12,
+   "count": 4,
    "url": "https://github.com/szupzj18/snap/commits/main"
   },
   {
-   "at": "2026-10-23T06:54:33Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/snap",
-   "number": 11,
-   "title": "Annotate and pin existing images",
-   "url": "https://github.com/szupzj18/snap/pull/11"
+   "at": "2026-10-17T05:29:22Z",
+   "kind": "release",
+   "repo": "szupzj18/mnemo",
+   "tag": "v0.6.0",
+   "title": "mnemo 0.6.0",
+   "url": "https://github.com/szupzj18/mnemo/releases/tag/v0.6.0"
   },
   {
-   "at": "2026-10-23T06:47:52Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/snap",
-   "number": 10,
-   "title": "Editor: ellipse, line, pen, spotlight",
-   "url": "https://github.com/szupzj18/snap/pull/10"
+   "at": "2026-10-13T05:34:29Z",
+   "kind": "release",
+   "repo": "szupzj18/mnemo",
+   "tag": "v0.5.0",
+   "title": "mnemo 0.5.0",
+   "url": "https://github.com/szupzj18/mnemo/releases/tag/v0.5.0"
   },
   {
-   "at": "2026-10-23T06:35:21Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/snap",
-   "number": 9,
-   "title": "Editor: background for sharing",
-   "url": "https://github.com/szupzj18/snap/pull/9"
-  },
-  {
-   "at": "2026-10-23T06:18:45Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/snap",
-   "number": 8,
-   "title": "Trim recordings",
-   "url": "https://github.com/szupzj18/snap/pull/8"
-  },
-  {
-   "at": "2026-10-23T06:13:09Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/snap",
-   "number": 7,
-   "title": "Recording: system audio, microphone, pause/resume",
-   "url": "https://github.com/szupzj18/snap/pull/7"
-  },
-  {
-   "at": "2026-10-23T06:01:18Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/snap",
-   "number": 6,
-   "title": "Release packaging: DMG, draft releases, update check",
-   "url": "https://github.com/szupzj18/snap/pull/6"
-  },
-  {
-   "at": "2026-10-23T05:45:41Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/snap",
-   "number": 5,
-   "title": "Add make ui-snapshots",
-   "url": "https://github.com/szupzj18/snap/pull/5"
-  },
-  {
-   "at": "2026-10-23T03:54:54Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/snap",
-   "number": 4,
-   "title": "Refine the Quick Access preview",
-   "url": "https://github.com/szupzj18/snap/pull/4"
-  },
-  {
-   "at": "2026-10-23T02:25:19Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/snap",
-   "number": 3,
-   "title": "Editor: crop, Shift/Option constraints, edit text by double-click",
-   "url": "https://github.com/szupzj18/snap/pull/3"
-  },
-  {
-   "at": "2026-10-23T02:18:13Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/snap",
-   "number": 2,
-   "title": "Feedback: capture sound, confirmations, open at login",
-   "url": "https://github.com/szupzj18/snap/pull/2"
-  },
-  {
-   "at": "2026-10-23T02:13:25Z",
-   "kind": "pr",
-   "action": "merged",
-   "repo": "szupzj18/snap",
-   "number": 1,
-   "title": "Polish area selection: magnifier, Space to move or switch, Option from center",
-   "url": "https://github.com/szupzj18/snap/pull/1"
-  },
-  {
-   "at": "2026-10-23T02:09:15Z",
-   "kind": "pr",
-   "action": "merged",
+   "at": "2026-10-10T02:41:36Z",
+   "kind": "release",
    "repo": "szupzj18/zorua",
-   "number": 59,
-   "title": "feat: show the Antigravity CLI (agy) sign-in in ls and usage",
-   "url": "https://github.com/szupzj18/zorua/pull/59"
+   "tag": "v0.7.1",
+   "title": "Zorua 0.7.1",
+   "url": "https://github.com/szupzj18/zorua/releases/tag/v0.7.1"
   },
   {
-   "at": "2026-10-22T12:32:18Z",
-   "kind": "pr",
-   "action": "merged",
+   "at": "2026-10-09T15:25:56Z",
+   "kind": "release",
    "repo": "szupzj18/zorua",
-   "number": 58,
-   "title": "ci: run the python 3.8 shells job on ubuntu-24.04",
-   "url": "https://github.com/szupzj18/zorua/pull/58"
+   "tag": "v0.7.0",
+   "title": "Zorua 0.7.0",
+   "url": "https://github.com/szupzj18/zorua/releases/tag/v0.7.0"
   },
   {
-   "at": "2026-10-22T11:38:03Z",
-   "kind": "pr",
-   "action": "merged",
+   "at": "2026-10-09T03:50:03Z",
+   "kind": "release",
    "repo": "szupzj18/zorua",
-   "number": 57,
-   "title": "feat: zorua usage --remaining shows what is left, with a saved default (usage mode)",
-   "url": "https://github.com/szupzj18/zorua/pull/57"
+   "tag": "v0.6.0",
+   "title": "Zorua 0.6.0",
+   "url": "https://github.com/szupzj18/zorua/releases/tag/v0.6.0"
   },
   {
-   "at": "2026-10-22T10:11:53Z",
-   "kind": "push",
-   "repo": "szupzj18/snap",
-   "branch": "main",
-   "count": 3,
-   "url": "https://github.com/szupzj18/snap/commits/main"
+   "at": "2026-10-08T06:11:06Z",
+   "kind": "release",
+   "repo": "szupzj18/zorua",
+   "tag": "v0.5.0",
+   "title": "Zorua 0.5.0",
+   "url": "https://github.com/szupzj18/zorua/releases/tag/v0.5.0"
+  },
+  {
+   "at": "2026-09-30T08:56:59Z",
+   "kind": "release",
+   "repo": "szupzj18/mnemo",
+   "tag": "v0.4.1",
+   "title": "mnemo 0.4.1",
+   "url": "https://github.com/szupzj18/mnemo/releases/tag/v0.4.1"
+  },
+  {
+   "at": "2026-09-30T04:34:11Z",
+   "kind": "release",
+   "repo": "szupzj18/mnemo",
+   "tag": "v0.4.0",
+   "title": "mnemo 0.4.0",
+   "url": "https://github.com/szupzj18/mnemo/releases/tag/v0.4.0"
   }
  ],
  "contributions": {
-  "total_last_year": 1151,
+  "total_last_year": 1471,
   "days": [
-   {
-    "date": "2025-10-26",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-27",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-28",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-29",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-30",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-10-31",
-    "count": 0,
-    "level": 0
-   },
-   {
-    "date": "2025-11-01",
-    "count": 0,
-    "level": 0
-   },
    {
     "date": "2025-11-02",
     "count": 0,
@@ -1006,7 +993,7 @@
    {
     "date": "2025-11-28",
     "count": 20,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2025-11-29",
@@ -1401,7 +1388,7 @@
    {
     "date": "2026-02-15",
     "count": 31,
-    "level": 3
+    "level": 1
    },
    {
     "date": "2026-02-16",
@@ -1836,7 +1823,7 @@
    {
     "date": "2026-05-13",
     "count": 17,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-05-14",
@@ -2460,7 +2447,7 @@
    },
    {
     "date": "2026-09-15",
-    "count": 3,
+    "count": 4,
     "level": 1
    },
    {
@@ -2506,7 +2493,7 @@
    {
     "date": "2026-09-24",
     "count": 15,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-09-25",
@@ -2526,22 +2513,22 @@
    {
     "date": "2026-09-28",
     "count": 30,
-    "level": 3
+    "level": 1
    },
    {
     "date": "2026-09-29",
     "count": 31,
-    "level": 3
+    "level": 1
    },
    {
     "date": "2026-09-30",
     "count": 24,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-10-01",
     "count": 21,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-10-02",
@@ -2576,52 +2563,52 @@
    {
     "date": "2026-10-08",
     "count": 18,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-10-09",
     "count": 40,
-    "level": 3
+    "level": 2
    },
    {
     "date": "2026-10-10",
     "count": 82,
-    "level": 4
+    "level": 3
    },
    {
     "date": "2026-10-11",
     "count": 20,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-10-12",
     "count": 56,
-    "level": 4
+    "level": 2
    },
    {
     "date": "2026-10-13",
     "count": 27,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-10-14",
     "count": 17,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-10-15",
     "count": 24,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-10-16",
     "count": 16,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-10-17",
     "count": 20,
-    "level": 2
+    "level": 1
    },
    {
     "date": "2026-10-18",
@@ -2631,12 +2618,12 @@
    {
     "date": "2026-10-19",
     "count": 28,
-    "level": 3
+    "level": 1
    },
    {
     "date": "2026-10-20",
     "count": 55,
-    "level": 4
+    "level": 2
    },
    {
     "date": "2026-10-21",
@@ -2646,16 +2633,16 @@
    {
     "date": "2026-10-22",
     "count": 31,
-    "level": 3
+    "level": 1
    },
    {
     "date": "2026-10-23",
     "count": 34,
-    "level": 3
+    "level": 1
    },
    {
     "date": "2026-10-24",
-    "count": 11,
+    "count": 12,
     "level": 1
    },
    {
@@ -2665,8 +2652,43 @@
    },
    {
     "date": "2026-10-26",
-    "count": 0,
-    "level": 0
+    "count": 5,
+    "level": 1
+   },
+   {
+    "date": "2026-10-27",
+    "count": 12,
+    "level": 1
+   },
+   {
+    "date": "2026-10-28",
+    "count": 14,
+    "level": 1
+   },
+   {
+    "date": "2026-10-29",
+    "count": 48,
+    "level": 2
+   },
+   {
+    "date": "2026-10-30",
+    "count": 143,
+    "level": 4
+   },
+   {
+    "date": "2026-10-31",
+    "count": 40,
+    "level": 2
+   },
+   {
+    "date": "2026-11-01",
+    "count": 24,
+    "level": 1
+   },
+   {
+    "date": "2026-11-02",
+    "count": 32,
+    "level": 1
    }
   ]
  }
